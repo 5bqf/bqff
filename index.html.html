@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth" id="themeRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="白清凤">
+<meta name="description" content="白清凤 · AI产品探索者 — AIGC产品方案与思考 | 三角村·邻里汇">
+<title>白清凤 · AI产品探索者</title>
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['system-ui','-apple-system','BlinkMacSystemFont','"PingFang SC"','"Microsoft YaHei"','sans-serif'],
+        serif: ['"Noto Serif SC"','"STSong"','"Songti SC"','serif'],
+        mono: ['"Cascadia Code"','"JetBrains Mono"','"Fira Code"','"Consolas"','monospace'],
+      },
+    },
+  },
+}
+</script>
+
+<!-- 外部样式 -->
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans antialiased">
+
+<!-- ============================================================
+     NAV — 导航 + 主题切换圆点
+     ============================================================ -->
+<nav id="nav" class="fixed top-0 inset-x-0 z-50 px-6 py-4 transition-all duration-300">
+  <div class="flex items-center justify-between" style="max-width:var(--max-width);margin:0 auto;">
+
+    <!-- Logo -->
+    <a href="#hero" class="text-lg font-bold tracking-wide no-print" style="color:var(--text);">
+      BQF<span style="color:var(--primary-deep);">.</span>
+    </a>
+
+    <!-- 桌面导航链接 -->
+    <div class="hidden md:flex items-center gap-7 text-sm font-medium tracking-wide no-print">
+      <a href="#hero"    class="nav-link">首页</a>
+      <a href="#project" class="nav-link">核心项目</a>
+      <a href="#tech"    class="nav-link">技术实现</a>
+      <a href="#skills"  class="nav-link">技能</a>
+      <a href="#growth"  class="nav-link">📈 成长</a>
+      <a href="#contact" class="nav-link">联系</a>
+
+      <!-- ★ 主题切换圆点 ★ -->
+      <span class="w-px h-5" style="background:var(--border);"></span>
+      <span class="text-[0.65rem] tracking-wide" style="color:var(--text-muted);">主题</span>
+      <button class="theme-dot active" style="background:linear-gradient(135deg,#f2a7b0,#fde8ec);" onclick="setTheme('spring-berry')" title="春莓序曲"></button>
+      <button class="theme-dot" style="background:linear-gradient(135deg,#c4b5d8,#ede4f5);" onclick="setTheme('purple-yam')" title="紫薯奶方"></button>
+      <button class="theme-dot" style="background:linear-gradient(135deg,#a8c8e0,#dceafa);" onclick="setTheme('whale-fall')" title="鲸落于海"></button>
+      <button class="theme-dot" style="background:linear-gradient(135deg,#b8d4a8,#e2f2d8);" onclick="setTheme('bamboo-dew')" title="竹露青提"></button>
+    </div>
+
+    <!-- 移动端菜单按钮 -->
+    <div class="flex items-center gap-3 md:hidden no-print">
+      <button class="theme-dot active" style="background:linear-gradient(135deg,#f2a7b0,#fde8ec);" onclick="setTheme('spring-berry')"></button>
+      <button class="theme-dot" style="background:linear-gradient(135deg,#c4b5d8,#ede4f5);" onclick="setTheme('purple-yam')"></button>
+      <button class="theme-dot" style="background:linear-gradient(135deg,#a8c8e0,#dceafa);" onclick="setTheme('whale-fall')"></button>
+      <button class="theme-dot" style="background:linear-gradient(135deg,#b8d4a8,#e2f2d8);" onclick="setTheme('bamboo-dew')"></button>
+      <button id="menuBtn" class="text-xl" style="color:var(--text);" aria-label="菜单">☰</button>
+    </div>
+  </div>
+
+  <!-- 移动端菜单 -->
+  <div id="mobileMenu" class="md:hidden hidden mt-3 mx-2 rounded-2xl shadow-lg px-6 py-4 flex flex-col gap-3 text-sm font-medium no-print glass-card">
+    <a href="#hero"    class="nav-link">首页</a>
+    <a href="#project" class="nav-link">核心项目</a>
+    <a href="#tech"    class="nav-link">技术实现</a>
+    <a href="#skills"  class="nav-link">技能</a>
+    <a href="#growth"  class="nav-link">📈 成长</a>
+    <a href="#contact" class="nav-link">联系</a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" style="background:var(--bg);">
+  <!-- 柔光 -->
+  <div class="absolute top-20 left-1/4 w-64 h-64 rounded-full opacity-25 blur-3xl float" style="background:var(--primary-soft);"></div>
+  <div class="absolute bottom-32 right-1/4 w-80 h-80 rounded-full opacity-15 blur-3xl float" style="background:var(--primary);animation-delay:2s;"></div>
+
+  <div class="relative z-10 text-center px-6 max-w-3xl">
+    <div class="section-badge mx-auto mb-6 anim-in">AI PRODUCT EXPLORER · PORTFOLIO</div>
+    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-wide mb-4 anim-in" style="animation-delay:0.12s;color:var(--text);">
+      Hello, 欢迎来到<br>白清凤的作品集
+      <span class="block text-lg md:text-xl font-medium tracking-[0.10em] mt-3" style="color:var(--text-secondary);">AI 产品探索者 · AIGC / 大模型应用方向</span>
+    </h1>
+    <p class="text-sm md:text-base tracking-wide leading-relaxed anim-in" style="color:var(--text-secondary);animation-delay:0.24s;">
+      致力于用 AIGC 工具链解构复杂场景<br class="hidden sm:block">构建可持续的产品验证循环
+    </p>
+    <div class="mt-10 anim-in" style="animation-delay:0.36s;">
+      <a href="#project" class="btn-primary">🚀 探索我的 ACE 实践</a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-xs tracking-[0.12em] animate-pulse" style="color:var(--text-muted);">↓ 向下滚动</div>
+</section>
+
+<!-- ============================================================
+     ★ 核心项目：三角村·邻里汇
+     ============================================================ -->
+<section id="project" class="py-[var(--section-gap)] px-6" style="background:var(--bg-alt);">
+  <div class="mx-auto" style="max-width:var(--max-width);">
+
+    <div class="text-center mb-16">
+      <div class="section-badge">CORE PROJECT</div>
+      <h2 class="section-title">核心项目：三角村·邻里汇</h2>
+      <p class="section-subtitle">一次完整的 AI 产品 MVP 循环</p>
+      <p class="text-sm max-w-2xl mx-auto leading-relaxed" style="color:var(--text-secondary);">
+        珠海斗门三角村党群服务中心西侧口袋公园（300㎡），面对「建而不管、用而不活」的乡村公共空间痛点，
+        以 <strong style="color:var(--primary-deep);">¥5.1–9.0 万</strong> 极低预算，
+        探索「空间 + 运营」一体化产品方案。
+      </p>
+    </div>
+
+    <!-- ACE 流程图 -->
+    <div class="flex flex-col md:flex-row items-center justify-center gap-0 mb-16">
+      <div class="flex flex-col items-center text-center p-5 w-48">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-3" style="background:var(--primary-soft);">💡</div>
+        <div class="text-sm font-bold" style="color:var(--text);">A · Articulate</div>
+        <div class="text-xs" style="color:var(--text-muted);">问题定义与假设</div>
+      </div>
+      <div class="text-2xl hidden md:block" style="color:var(--text-muted);">→</div>
+      <div class="text-2xl md:hidden" style="color:var(--text-muted);">↓</div>
+      <div class="relative flex flex-col items-center text-center p-5 w-48" id="cNode">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl mb-3 cursor-pointer z-10 transition-all duration-300" style="background:var(--primary-soft);border:2px solid var(--primary);" id="cIcon">&lt;/&gt;</div>
+        <div class="text-sm font-bold" style="color:var(--primary-deep);">C · Code</div>
+        <div class="text-xs" style="color:var(--text-muted);">Vibe Coding 原型生成</div>
+        <div id="cTooltip" class="absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-lg px-4 py-2 text-xs whitespace-nowrap opacity-0 transition-opacity duration-300 pointer-events-none z-20 shadow-md" style="background:var(--card);color:var(--primary-deep);border:1px solid var(--border);">点击查看 Claude Code 实战脚本 &gt;&gt;</div>
+      </div>
+      <div class="text-2xl hidden md:block" style="color:var(--text-muted);">→</div>
+      <div class="text-2xl md:hidden" style="color:var(--text-muted);">↓</div>
+      <div class="flex flex-col items-center text-center p-5 w-48">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-3" style="background:var(--primary-soft);">🔄</div>
+        <div class="text-sm font-bold" style="color:var(--text);">E · Evaluate</div>
+        <div class="text-xs" style="color:var(--text-muted);">验证与数据驱动迭代</div>
+      </div>
+    </div>
+
+    <!-- 🎯 我的角色与核心贡献 -->
+    <div class="glass-card p-6 md:p-8 mb-16 rounded-2xl shadow-md transition-shadow hover:shadow-lg">
+      <h3 class="text-lg font-bold mb-5 flex items-center gap-2" style="color:var(--text);">🎯 我的角色与核心贡献</h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="p-5 rounded-2xl" style="background:var(--bg);">
+          <div class="text-xs font-bold tracking-[0.1em] mb-3" style="color:var(--primary-deep);">MY ROLE</div>
+          <h4 class="font-bold mb-2" style="color:var(--text);">项目发起人与 AI 产品负责人</h4>
+          <p class="text-xs leading-relaxed" style="color:var(--text-secondary);">作为发起人与 AI 产品负责人，主导从 0 到 1 探索——打造可验证的「空间+运营」产品原型。</p>
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            <span class="tag">需求定义</span><span class="tag">AI选型</span><span class="tag">原型开发</span><span class="tag">商业模式</span><span class="tag">方案包</span>
+          </div>
+        </div>
+        <div class="p-5 rounded-2xl" style="background:var(--bg);">
+          <div class="text-xs font-bold tracking-[0.1em] mb-3" style="color:var(--primary-deep);">SOLUTION</div>
+          <h4 class="font-bold mb-2" style="color:var(--text);">产品化创新</h4>
+          <ul class="text-xs leading-relaxed space-y-2" style="color:var(--text-secondary);">
+            <li>① AIGC 工具链极速验证，传统 1-2 周 → <strong style="color:var(--primary-deep);">48 小时</strong></li>
+            <li>② 轻量化社区经济模型：<strong style="color:var(--text);">村民轮值 + 营收分成</strong></li>
+            <li>③ 沉淀可复用 AI SOP，可在斗门任意绿地推广</li>
+          </ul>
+        </div>
+        <div class="p-5 rounded-2xl" style="background:var(--bg);">
+          <div class="text-xs font-bold tracking-[0.1em] mb-3" style="color:var(--primary-deep);">KEY OUTCOMES</div>
+          <h4 class="font-bold mb-2" style="color:var(--text);">48 小时从创意到原型</h4>
+          <p class="text-xs leading-relaxed mb-3" style="color:var(--text-secondary);">★ Vibe Coding 完整体现 —— 验证周期「周」→「天」。</p>
+          <div class="space-y-1.5">
+            <div class="flex justify-between text-[0.6rem]" style="color:var(--text-muted);"><span>传统</span><span>≈7-10天</span></div>
+            <div class="h-4 rounded-full overflow-hidden flex" style="background:var(--bg-alt);">
+              <div class="h-full flex items-center justify-center text-[0.5rem] text-white" style="width:30%;background:var(--text-muted);">设计</div>
+              <div class="h-full flex items-center justify-center text-[0.5rem] text-white" style="width:55%;background:color-mix(in srgb,var(--text-muted)60%,white);">前端+动效</div>
+              <div class="h-full flex items-center justify-center text-[0.5rem] text-white" style="width:15%;background:color-mix(in srgb,var(--text-muted)30%,white);">联调</div>
+            </div>
+            <div class="text-center text-xs" style="color:var(--primary-deep);">↓ AI 加速</div>
+            <div class="flex justify-between text-[0.6rem]" style="color:var(--primary-deep);"><span>AI 驱动</span><span>≈48h</span></div>
+            <div class="h-5 rounded-full overflow-hidden flex">
+              <div class="h-full flex items-center justify-center text-[0.5rem] text-white" style="width:25%;background:var(--primary);">需求</div>
+              <div class="h-full flex items-center justify-center text-[0.5rem] text-white" style="width:50%;background:color-mix(in srgb,var(--primary)70%,white);">Prompt+原型</div>
+              <div class="h-full flex items-center justify-center text-[0.5rem] text-white" style="width:25%;background:color-mix(in srgb,var(--primary)40%,white);">渲染</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 智能项目工作台 -->
+    <div class="mb-16">
+      <h3 class="text-lg font-bold mb-4 flex items-center gap-2" style="color:var(--text);">
+        <span class="w-1.5 h-5 rounded-full shrink-0" style="background:var(--primary);"></span> 智能项目工作台
+      </h3>
+      <div class="flex gap-4 workbench-grid">
+        <!-- 左栏 -->
+        <div class="workbench-left rounded-2xl shadow-md overflow-hidden" style="flex:0 0 68%;min-width:0;">
+          <div class="relative overflow-hidden" style="aspect-ratio:16/9;background:var(--code-bg);">
+            <div id="videoCover" class="absolute inset-0 z-20 flex items-center justify-center transition-all duration-500 rounded-2xl" style="background:rgba(0,0,0,0.25);">
+              <div class="text-center">
+                <button id="playBtn" onclick="startPlayback()" class="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-lg" style="background:var(--primary);color:var(--text);" title="点击播放">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+                <p class="text-white/50 text-xs mt-4 tracking-wide">点击播放项目演示</p>
+              </div>
+            </div>
+            <div id="playingToast" class="absolute inset-0 z-25 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+              <div class="rounded-xl px-6 py-3" style="background:rgba(0,0,0,0.5);"><span class="text-white/80 text-sm">▶ 正在播放...</span></div>
+            </div>
+            <!-- ★ 替换 src 为视频地址 ★ -->
+            <video id="mainVideo" src="" poster="" muted loop playsinline class="absolute inset-0 w-full h-full object-cover"></video>
+            <div id="videoPlaceholder" class="absolute inset-0 hidden items-center justify-center" style="background:var(--bg-alt);">
+              <div class="text-center"><div class="text-5xl mb-4 opacity-40">🎬</div><p class="text-sm" style="color:var(--text-secondary);">项目演示视频</p></div>
+            </div>
+            <div id="videoBadge" class="absolute top-3 right-3 z-30 text-white text-[0.6rem] tracking-[0.08em] px-3 py-1.5 rounded-lg shadow-lg transition-all duration-400 border" style="background:var(--primary-deep);border-color:rgba(255,255,255,0.2);">AI + Remotion 生成</div>
+          </div>
+          <p class="text-xs leading-relaxed mt-3 px-1" style="color:var(--text-muted);">本视频由 <strong style="color:var(--text-secondary);">Claude Code</strong> 生成 Remotion 脚本，ComfyUI+ControlNet 生成素材 —— 全程约 48 小时。</p>
+          <div class="flex gap-3 overflow-x-auto thumb-scroll pb-2 mt-3" id="thumbGallery">
+            <button onclick="showImage('plan')" class="flex-shrink-0 w-28 h-20 rounded-xl overflow-hidden border transition-all duration-200 hover:scale-105" style="background:var(--bg-alt);border-color:var(--border);"><div class="w-full h-full flex items-center justify-center text-xs" style="color:var(--text-muted);">📐<br>平面图</div></button>
+            <button onclick="showImage('model')" class="flex-shrink-0 w-28 h-20 rounded-xl overflow-hidden border transition-all duration-200 hover:scale-105" style="background:var(--bg-alt);border-color:var(--border);"><div class="w-full h-full flex items-center justify-center text-xs" style="color:var(--text-muted);">🏗️<br>3D模型</div></button>
+            <button onclick="showImage('canvas')" class="flex-shrink-0 w-28 h-20 rounded-xl overflow-hidden border transition-all duration-200 hover:scale-105" style="background:var(--bg-alt);border-color:var(--border);"><div class="w-full h-full flex items-center justify-center text-xs" style="color:var(--text-muted);">📊<br>商业画布</div></button>
+            <button onclick="showImage('render')" class="flex-shrink-0 w-28 h-20 rounded-xl overflow-hidden border transition-all duration-200 hover:scale-105" style="background:var(--bg-alt);border-color:var(--border);"><div class="w-full h-full flex items-center justify-center text-xs" style="color:var(--text-muted);">📐<br>剖面图</div></button>
+            <button onclick="showImage('effect')" class="flex-shrink-0 w-28 h-20 rounded-xl overflow-hidden border transition-all duration-200 hover:scale-105" style="background:var(--bg-alt);border-color:var(--border);"><div class="w-full h-full flex items-center justify-center text-xs" style="color:var(--text-muted);">🎨<br>效果图</div></button>
+          </div>
+        </div>
+        <!-- 右栏 AI 助手 -->
+        <div class="workbench-right glass-card flex flex-col overflow-hidden rounded-2xl shadow-md" style="flex:1;min-width:260px;max-height:500px;">
+          <div class="px-4 py-3 border-b flex items-center gap-2 shrink-0" style="border-color:var(--border);">
+            <div class="w-2.5 h-2.5 bg-green-400 rounded-full pulse-dot"></div>
+            <span class="text-sm font-semibold" style="color:var(--text);">AI 项目助手</span>
+            <span class="text-[0.6rem] ml-auto" style="color:var(--text-muted);">在线</span>
+          </div>
+          <div class="flex-1 overflow-y-auto chat-scroll px-4 py-3 space-y-3" id="chatMessages"></div>
+          <div class="px-4 py-2 flex flex-wrap gap-1.5 border-t shrink-0" style="border-color:var(--border);">
+            <button onclick="sendPreset('技术细节')" class="text-[0.6rem] rounded-full px-2.5 py-1 transition-all border" style="background:var(--bg);border-color:var(--border);color:var(--text-secondary);">技术细节</button>
+            <button onclick="sendPreset('商业模式')" class="text-[0.6rem] rounded-full px-2.5 py-1 transition-all border" style="background:var(--bg);border-color:var(--border);color:var(--text-secondary);">商业模式</button>
+            <button onclick="sendPreset('团队分工')" class="text-[0.6rem] rounded-full px-2.5 py-1 transition-all border" style="background:var(--bg);border-color:var(--border);color:var(--text-secondary);">团队分工</button>
+          </div>
+          <div class="px-3 py-3 border-t flex gap-2 shrink-0" style="border-color:var(--border);">
+            <input type="text" id="chatInput" placeholder="输入问题..." onkeydown="if(event.key==='Enter')sendMessage()" class="flex-1 rounded-lg px-3 py-2 text-xs outline-none border" style="background:var(--bg);border-color:var(--border);color:var(--text);">
+            <button onclick="sendMessage()" class="text-xs px-3 py-2 rounded-lg transition-colors shrink-0 font-medium" style="background:var(--primary);color:var(--text);border:1px solid var(--border);">发送</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 技术实现 -->
+    <div class="mb-16" id="tech">
+      <h3 class="text-lg font-bold mb-2 flex items-center gap-2" style="color:var(--text);">
+        <span class="w-1.5 h-5 rounded-full shrink-0" style="background:var(--primary);"></span> ⚙️ 技术深潜：从 Prompt 到产品的代码流水线
+      </h3>
+      <p class="text-sm mb-5" style="color:var(--text-muted);">以下是通过 Claude 描述动画需求，直接生成的 Remotion 脚本核心部分，耗时约 <strong style="color:var(--primary-deep);">2 小时</strong>。</p>
+      <div class="code-block p-4 md:p-6 rounded-2xl shadow-md">
+        <pre><code><span class="cm">/* ============================================================
+ * 文件: LiuShuJianJing.tsx  |  生成: Claude Code (Vibe Coding)
+ * Prompt: "请扮演AI产品经理，帮我写一段Remotion代码，
+ *         实现六棵树的依次弹性生长动画，叠加'三角茶寮'"
+ * 调优: 3轮迭代 — spring damping→12, stiffness→100
+ * 耗时: ≈2h（含Prompt调试+参数微调+渲染）| 传统方式≈1周
+ * ============================================================ */</span>
+
+<span class="kw">import</span> { useCurrentFrame, useVideoConfig, spring, interpolate } <span class="kw">from</span> <span class="str">"remotion"</span>;
+<span class="kw">import</span> { AbsoluteFill } <span class="kw">from</span> <span class="str">"remotion"</span>;
+
+<span class="kw">const</span> <span class="fn">TREES</span> = [
+  { name: <span class="str">"引"</span>, color: <span class="str">"#7B8FA1"</span>, offsetX: <span class="num">100</span>,  label: <span class="str">"境一·入口"</span> },
+  { name: <span class="str">"弈"</span>, color: <span class="str">"#8B9E8B"</span>, offsetX: <span class="num">280</span>,  label: <span class="str">"境二·棋盘"</span> },
+  { name: <span class="str">"聚"</span>, color: <span class="str">"#FF6B6B"</span>, offsetX: <span class="num">460</span>,  label: <span class="str">"境三·茶寮★"</span>, highlight: <span class="kw">true</span> },
+  { name: <span class="str">"憩"</span>, color: <span class="str">"#C4AF98"</span>, offsetX: <span class="num">640</span>,  label: <span class="str">"境四·卡座"</span> },
+  { name: <span class="str">"韵"</span>, color: <span class="str">"#D6C9B8"</span>, offsetX: <span class="num">820</span>,  label: <span class="str">"境五·木篱"</span> },
+];
+
+<span class="kw">export const</span> <span class="fn">LiuShuJianJing</span> = () => {
+  <span class="kw">const</span> frame = <span class="fn">useCurrentFrame</span>();
+  <span class="kw">const</span> { fps } = <span class="fn">useVideoConfig</span>();
+  <span class="kw">const</span> treeAnimations = TREES.<span class="fn">map</span>((tree, i) => {
+    <span class="kw">const</span> progress = <span class="fn">spring</span>({
+      fps, frame: frame - i * <span class="num">30</span>,
+      config: { damping: <span class="num">12</span>, stiffness: <span class="num">100</span> },
+    });
+    <span class="kw">return</span> { tree, progress };
+  });
+  <span class="kw">return</span> (
+    <span class="tag">&lt;AbsoluteFill</span> <span class="pro">style</span>={{ background: <span class="str">"#EDE8E1"</span> }}<span class="tag">&gt;</span>
+      {treeAnimations.<span class="fn">map</span>(({ tree, progress }) => (
+        <span class="tag">&lt;div</span> <span class="pro">style</span>={{
+          position:<span class="str">"absolute"</span>, left:tree.offsetX, bottom:<span class="num">120</span>,
+          width:<span class="num">100</span>, height:<span class="num">240</span>*progress, borderRadius:<span class="str">"50% 50% 0 0"</span>,
+          background:tree.color, opacity:progress,
+          transformOrigin:<span class="str">"bottom center"</span>,
+          transform:<span class="str">`scaleY(${progress})`</span>,
+        }}<span class="tag">&gt;</span>
+          <span class="tag">&lt;span</span> <span class="pro">style</span>={{color:<span class="str">"#fff"</span>,fontSize:<span class="num">20</span>,fontWeight:<span class="num">700</span>}}<span class="tag">&gt;</span>{tree.name}<span class="tag">&lt;/span&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+      ))}
+    <span class="tag">&lt;/AbsoluteFill&gt;</span>
+  );
+};</code></pre>
+      </div>
+    </div>
+
+    <!-- 成果卡片 -->
+    <div>
+      <h3 class="text-lg font-bold mb-4 flex items-center gap-2" style="color:var(--text);">
+        <span class="w-1.5 h-5 rounded-full shrink-0" style="background:var(--primary);"></span> 项目成果
+      </h3>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="glass-card p-6 text-center rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-4xl mb-3">🎬</div><h4 class="font-bold text-sm mb-2" style="color:var(--text);">可交互动态原型</h4><p class="text-xs" style="color:var(--text-muted);">Remotion 动画 + AI 助手联动</p></div>
+        <div class="glass-card p-6 text-center rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-4xl mb-3">📁</div><h4 class="font-bold text-sm mb-2" style="color:var(--text);">可复用的 AI SOP</h4><p class="text-xs" style="color:var(--text-muted);">「AIGC辅助设计-开发-验证」标准化流程</p></div>
+        <div class="glass-card p-6 text-center rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-4xl mb-3">📦</div><h4 class="font-bold text-sm mb-2" style="color:var(--text);">完整产品方案包</h4><p class="text-xs" style="color:var(--text-muted);">调研+设计+技术+运营完整交付</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ★ 技能与工具栈
+     ============================================================ -->
+<section id="skills" class="py-[var(--section-gap)] px-6" style="background:var(--bg);">
+  <div class="mx-auto" style="max-width:var(--max-width);">
+    <div class="text-center mb-14"><div class="section-badge">COMPETENCY</div><h2 class="section-title">技能与工具栈</h2><p class="section-subtitle">按 AI 产品经理能力模型组织</p></div>
+    <div class="mb-10"><h3 class="text-sm font-bold mb-4 tracking-wide" style="color:var(--primary-deep);">AI 产品能力</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="glass-card p-5 skill-card rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-xl mb-1.5">🔍</div><p class="text-xs font-bold mb-1" style="color:var(--text);">需求分析与拆解</p><p class="text-xs" style="color:var(--text-muted);">从复杂场景中识别真实痛点，将模糊需求拆解为可执行的功能模块与验收标准</p></div>
+        <div class="glass-card p-5 skill-card rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-xl mb-1.5">🧠</div><p class="text-xs font-bold mb-1" style="color:var(--text);">AI 技术选型</p><p class="text-xs" style="color:var(--text-muted);">根据场景匹配最佳 AI 工具组合（LLM/生图/3D），评估成本、效果与落地可行性</p></div>
+        <div class="glass-card p-5 skill-card rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-xl mb-1.5">⚡</div><p class="text-xs font-bold mb-1" style="color:var(--text);">Prompt Engineering</p><p class="text-xs" style="color:var(--text-muted);">构建领域约束词库与结构化 Prompt 模板，精确控制 AI 输出质量与风格一致性</p></div>
+        <div class="glass-card p-5 skill-card rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-xl mb-1.5">🔄</div><p class="text-xs font-bold mb-1" style="color:var(--text);">AI 原生工作流设计</p><p class="text-xs" style="color:var(--text-muted);">设计端到端 AI 生产流水线，用 Claude Code 等工具将创意→原型周期从周压缩至天</p></div>
+        <div class="glass-card p-5 skill-card rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-xl mb-1.5">📊</div><p class="text-xs font-bold mb-1" style="color:var(--text);">数据驱动迭代</p><p class="text-xs" style="color:var(--text-muted);">量化验证与优化，成绩提升 30%+，转化率提升 6.5%</p></div>
+        <div class="glass-card p-5 skill-card rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-xl mb-1.5">💡</div><p class="text-xs font-bold mb-1" style="color:var(--text);">商业模式设计</p><p class="text-xs" style="color:var(--text-muted);">可持续运营闭环设计，村民经营权轮值 + 营收分成</p></div>
+      </div>
+    </div>
+    <div class="mb-10"><h3 class="text-sm font-bold mb-4 tracking-wide" style="color:var(--primary-deep);">AI 工具栈</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="glass-card p-5 skill-card rounded-2xl shadow-md transition-shadow hover:shadow-lg relative overflow-hidden"><div class="absolute top-0 right-0 text-white text-[0.5rem] tracking-[0.08em] px-2 py-0.5 rounded-bl-lg" style="background:var(--primary-deep);">核心</div><div class="text-xl mb-1.5">🤖</div><p class="text-xs font-bold mb-1" style="color:var(--text);">Claude Code</p><p class="text-xs" style="color:var(--text-muted);">Vibe Coding·全栈原型。自然语言驱动代码生成，Remotion 动画、网页原型、Python 脚本</p></div>
+        <div class="glass-card p-5 skill-card rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-xl mb-1.5">🎨</div><p class="text-xs font-bold mb-1" style="color:var(--text);">Midjourney / SD</p><p class="text-xs" style="color:var(--text-muted);">熟练：多模态 Prompt 工程，40+ 张智能图片生产，风格精确可控</p></div>
+        <div class="glass-card p-5 skill-card rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-xl mb-1.5">💬</div><p class="text-xs font-bold mb-1" style="color:var(--text);">ChatGPT / Claude</p><p class="text-xs" style="color:var(--text-muted);">熟练：复杂任务规划、文案生成、用户访谈模拟、PRD 辅助撰写</p></div>
+        <div class="glass-card p-5 skill-card rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-xl mb-1.5">📐</div><p class="text-xs font-bold mb-1" style="color:var(--text);">ComfyUI / 3D 工具</p><p class="text-xs" style="color:var(--text-muted);">掌握：节点工作流搭建、腾讯混元 3D 生成、Blender 辅助建模</p></div>
+      </div>
+    </div>
+    <div><h3 class="text-sm font-bold mb-4 tracking-wide" style="color:var(--primary-deep);">通用能力</h3>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="glass-card p-4 text-center skill-card rounded-2xl shadow-md transition-shadow hover:shadow-lg"><p class="text-xs font-bold" style="color:var(--text);">项目管理</p><p class="text-xs" style="color:var(--text-muted);">SOP 搭建·流程优化，交付周期缩短 40%</p></div>
+        <div class="glass-card p-4 text-center skill-card rounded-2xl shadow-md transition-shadow hover:shadow-lg"><p class="text-xs font-bold" style="color:var(--text);">跨团队协作</p><p class="text-xs" style="color:var(--text-muted);">多方需求平衡</p></div>
+        <div class="glass-card p-4 text-center skill-card rounded-2xl shadow-md transition-shadow hover:shadow-lg"><p class="text-xs font-bold" style="color:var(--text);">快速学习</p><p class="text-xs" style="color:var(--text-muted);">新技术工具适配</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ★ 成长路径
+     ============================================================ -->
+<section id="growth" class="py-[var(--section-gap)] px-6" style="background:var(--bg-alt);">
+  <div class="mx-auto" style="max-width:var(--max-width);">
+    <div class="text-center mb-14"><div class="section-badge">GROWTH</div><h2 class="section-title">📈 我的成长路径与经历</h2></div>
+    <div class="mb-12"><h3 class="text-sm font-bold mb-5 tracking-wide" style="color:var(--primary-deep);">教育背景</h3>
+      <div class="glass-card p-6 md:p-8 rounded-2xl shadow-md">
+        <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+          <div><h4 class="font-bold text-lg mb-1" style="color:var(--text);">岭南师范学院 · 园林（本科）</h4><p class="text-sm" style="color:var(--text-secondary);">主修：PS、AI、SketchUp、CAD</p></div>
+          <div><span class="text-sm font-semibold" style="color:var(--primary-deep);">2023.09 – 2027.06</span><p class="text-xs mt-1" style="color:var(--text-muted);">GPA 3.69（专业前 0.12%）</p></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4 pt-4 border-t" style="border-color:var(--border);">
+          <div><h5 class="text-xs font-semibold mb-2" style="color:var(--text-secondary);">自学方向</h5><div class="flex flex-wrap gap-1.5"><span class="tag">AI产品方法论</span><span class="tag">AIGC大模型</span><span class="tag">数据分析</span><span class="tag">提示词工程</span><span class="tag">RAG落地</span></div></div>
+          <div><h5 class="text-xs font-semibold mb-2" style="color:var(--text-secondary);">荣誉</h5><p class="text-xs" style="color:var(--text-muted);">🏅 2024年9月 校级奖学金</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-12"><h3 class="text-sm font-bold mb-5 tracking-wide" style="color:var(--primary-deep);">实习与实践经历</h3>
+      <div class="space-y-0">
+        <div class="relative pl-10 pb-8 border-l-2" style="border-color:var(--primary-soft);">
+          <div class="absolute left-0 top-0 w-4 h-4 rounded-full -translate-x-[9px] pulse-dot" style="background:var(--primary);"></div>
+          <div class="glass-card p-5 rounded-2xl shadow-md"><div class="flex flex-wrap items-center justify-between gap-2 mb-2"><h4 class="font-bold text-sm" style="color:var(--text);">武汉震烨文化传播有限公司</h4><span class="text-xs font-semibold" style="color:var(--primary-deep);">2025.03 – 至今</span></div><p class="text-xs mb-3" style="color:var(--text-muted);">AIGC 内容产品助理</p><ul class="text-xs space-y-1.5" style="color:var(--text-secondary);"><li>▸ 主导 AI 工作流落地，搭建标准化 SOP，交付周期<strong style="color:var(--text);">缩短 40%</strong></li><li>▸ ChatGPT/Midjourney 完成<strong style="color:var(--text);">50+ 文案、40+ 图片</strong>，客户满意度 100%</li></ul></div>
+        </div>
+        <div class="relative pl-10 pb-8 border-l-2" style="border-color:var(--border);">
+          <div class="absolute left-0 top-0 w-3.5 h-3.5 rounded-full -translate-x-[8px]" style="background:var(--primary);opacity:0.6;"></div>
+          <div class="glass-card p-5 rounded-2xl shadow-md"><div class="flex flex-wrap items-center justify-between gap-2 mb-2"><h4 class="font-bold text-sm" style="color:var(--text);">高中数学个性化学习导师</h4><span class="text-xs" style="color:var(--text-muted);">2024.01 – 2025.02</span></div><p class="text-xs mb-3" style="color:var(--text-muted);">AI 教学方案设计</p><ul class="text-xs space-y-1.5" style="color:var(--text-secondary);"><li>▸ 构建学情模型，成绩<strong style="color:var(--text);">提升 30%+</strong></li><li>▸ 输出个性化方案与可复用 SOP，为智能知识库提供场景验证</li></ul></div>
+        </div>
+        <div class="relative pl-10 pb-8 border-l-2" style="border-color:var(--border);">
+          <div class="absolute left-0 top-0 w-3.5 h-3.5 rounded-full -translate-x-[8px]" style="background:var(--text-muted);"></div>
+          <div class="glass-card p-5 rounded-2xl shadow-md"><div class="flex flex-wrap items-center justify-between gap-2 mb-2"><h4 class="font-bold text-sm" style="color:var(--text);">艺术教育机构招生合作</h4><span class="text-xs" style="color:var(--text-muted);">2023.07 – 2023.09</span></div><p class="text-xs mb-3" style="color:var(--text-muted);">数据驱动增长</p><ul class="text-xs space-y-1.5" style="color:var(--text-secondary);"><li>▸ 统筹<strong style="color:var(--text);">10+ 机构</strong>，招生<strong style="color:var(--text);">1000+ 人</strong></li><li>▸ 客户转化率提升 <strong style="color:var(--text);">6.5%</strong></li></ul></div>
+        </div>
+        <div class="relative pl-10 border-l-2 border-transparent">
+          <div class="absolute left-0 top-0 w-3.5 h-3.5 rounded-full -translate-x-[8px]" style="background:var(--primary-soft);border:2px solid var(--primary);"></div>
+          <div class="glass-card p-5 rounded-2xl shadow-md"><div class="flex flex-wrap items-center justify-between gap-2 mb-2"><h4 class="font-bold text-sm" style="color:var(--text);">"三下乡"暑期社会实践</h4><span class="text-xs" style="color:var(--text-muted);">2024.06 – 2024.07</span></div><p class="text-xs mb-3" style="color:var(--text-muted);">宣传部长 / 项目负责人</p><ul class="text-xs space-y-1.5" style="color:var(--text-secondary);"><li>▸ 产出<strong style="color:var(--text);">10+ 篇</strong>宣传稿件，单篇阅读超<strong style="color:var(--text);">500+</strong> 人次</li></ul></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 class="text-sm font-bold mb-5 tracking-wide" style="color:var(--primary-deep);">我如何定义自己</h3>
+      <div class="glass-card p-8 text-center rounded-2xl shadow-md">
+        <p class="text-sm md:text-base leading-relaxed max-w-3xl mx-auto mb-6" style="color:var(--text-secondary);">
+          园林背景给了我从<span style="color:var(--primary-deep);font-weight:600;">物理空间中发现用户需求</span>的直觉；AI 工具链则让我拥有了<span style="color:var(--primary-deep);font-weight:600;">快速将需求转化为可验证产品原型</span>的能力。我不满足于画一张图——我想证明：一个实习生，用 AI 工具，可以在 48 小时内完成从需求定义到可交互原型的完整产品探索。
+        </p>
+        <div class="flex flex-wrap justify-center gap-2"><span class="tag">需求分析</span><span class="tag">AI技术选型</span><span class="tag">Prompt工程</span><span class="tag">产品原型</span><span class="tag">数据驱动</span><span class="tag">商业模式</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ★ 联系方式
+     ============================================================ -->
+<section id="contact" class="py-[var(--section-gap)] px-6" style="background:var(--bg);">
+  <div class="text-center mx-auto" style="max-width:var(--max-width);">
+    <div class="section-badge">CONTACT</div>
+    <h2 class="section-title">联系方式</h2>
+    <p class="section-subtitle">求职意向：AI 产品经理实习生（AIGC / 大模型应用方向）</p>
+    <div class="grid sm:grid-cols-3 gap-4 max-w-lg mx-auto mb-8 text-sm">
+      <a href="mailto:2785075414@qq.com" class="glass-card p-4 block rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-xs tracking-wide mb-1" style="color:var(--text-muted);">邮箱</div><div style="color:var(--text);">2785075414@qq.com</div></a>
+      <a href="tel:18187279171" class="glass-card p-4 block rounded-2xl shadow-md transition-shadow hover:shadow-lg"><div class="text-xs tracking-wide mb-1" style="color:var(--text-muted);">电话</div><div style="color:var(--text);">18187279171</div></a>
+      <div class="glass-card p-4 rounded-2xl shadow-md"><div class="text-xs tracking-wide mb-1" style="color:var(--text-muted);">地址</div><div style="color:var(--text);">广东省湛江市</div></div>
+    </div>
+    <div class="flex justify-center gap-4 mb-8">
+      <a href="mailto:2785075414@qq.com" class="w-10 h-10 rounded-xl flex items-center justify-center border transition-all shadow-sm" style="background:var(--card);border-color:var(--border);color:var(--text-muted);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></a>
+      <a href="#" class="w-10 h-10 rounded-xl flex items-center justify-center border transition-all shadow-sm" style="background:var(--card);border-color:var(--border);color:var(--text-muted);"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+    </div>
+    <div class="border-t pt-8" style="border-color:var(--border);"><p class="text-xs tracking-wide" style="color:var(--text-muted);">Built with Claude Code &amp; Tailwind CSS | &copy; 2026 白清凤</p></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     外部脚本
+     ============================================================ -->
+<script src="script.js"></script>
+</body>
+</html>
