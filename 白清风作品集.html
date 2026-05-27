@@ -87,7 +87,7 @@ tailwind.config = {
 </nav>
 
 <!-- ============================================================
-     HERO — 战略指挥中心 (Phase 1)
+     HERO — 原始首页
      ============================================================ -->
 <style>
 /* ── 视角系统变量 ── */
@@ -204,6 +204,247 @@ tailwind.config = {
 </style>
 
 <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" style="background:var(--bg);">
+  <div class="relative z-10 text-center px-6 max-w-3xl">
+    <div class="section-badge mx-auto mb-6 anim-in">AI PRODUCT EXPLORER · PORTFOLIO</div>
+    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-wide mb-4 anim-in" style="animation-delay:0.12s;color:var(--text);">
+      Hello, 欢迎来到<br>白清凤的作品集
+      <span class="block text-lg md:text-xl font-medium tracking-[0.10em] mt-3" style="color:var(--text-secondary);">AI 产品探索者 · 腾讯AI原生 / 网易游戏客户端</span>
+    </h1>
+    <p class="text-sm md:text-base tracking-wide leading-relaxed anim-in" style="color:var(--text-secondary);animation-delay:0.24s;">
+      园林背景 x AI工程能力 x 游戏开发理解<br class="hidden sm:block">48小时从0到1交付覆盖3引擎的完整2D素材管线
+    </p>
+    <div class="mt-10 anim-in flex flex-wrap justify-center gap-4" style="animation-delay:0.36s;">
+      <a href="#assetcraft-landing" class="btn-primary"> 探索旗舰项目 AssetCraft Studio</a>
+      <a href="#projects" class="btn-secondary" style="background:transparent;border:2px solid var(--border);color:var(--text);padding:0.75rem 2rem;border-radius:50px;font-weight:700;text-decoration:none;">浏览全部项目</a>
+    </div>
+  </div>
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-xs tracking-[0.12em] animate-pulse" style="color:var(--text-muted);">↓ 向下滚动</div>
+
+
+<!-- ★ 智能视角系统 + 管理员控制面板 ★ -->
+<style>
+.admin-panel {
+  position: fixed; bottom: 80px; right: 20px; z-index: 9999;
+  background: rgba(20,20,30,0.96); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 16px;
+  padding: 1.25rem; width: 280px; font-size: 0.78rem;
+  color: #ccc; display: none; box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+.admin-panel.show { display: block; }
+.admin-panel h4 { color: #fff; margin: 0 0 0.75rem; font-size: 0.85rem; }
+.admin-panel label { display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0; cursor: pointer; font-size:0.75rem; }
+.admin-panel select { width: 100%; padding: 0.4rem; border-radius: 6px; border: 1px solid #555; background: #222; color: #fff; font-size: 0.8rem; margin: 0.3rem 0; }
+.admin-toggle-btn {
+  position: fixed; bottom: 20px; right: 20px; z-index: 10000;
+  width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(20,20,30,0.7); color: #aaa; font-size: 1rem;
+  cursor: pointer; transition: all 0.2s; line-height: 38px; text-align: center;
+}
+.admin-toggle-btn:hover { color: #fff; background: rgba(20,20,30,0.95); }
+.admin-badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.65rem; font-weight: 700; }
+.admin-badge.locked { background: #D4380D; color: #fff; }
+.admin-badge.unlocked { background: #2d6a2d; color: #fff; }
+.admin-row { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+.admin-btn { flex:1; padding: 0.35rem; border-radius: 6px; border: none; cursor: pointer; font-size: 0.7rem; font-weight: 700; }
+.admin-btn.apply { background: var(--primary); color: #fff; }
+.admin-btn.reset { background: #444; color: #fff; }
+</style>
+
+<button class="admin-toggle-btn" id="adminToggle" title="管理员面板" onclick="toggleAdmin()"> </button>
+
+<div class="admin-panel" id="adminPanel">
+  <h4> 作品集控制系统</h4>
+  <div style="margin-bottom:0.5rem;">
+    <span class="admin-badge unlocked" id="adminLockBadge">未锁定</span>
+  </div>
+  <select id="adminViewSelect" onchange="onAdminViewChange()">
+    <option value="tencent"> 腾讯 · AI原生工程师</option>
+    <option value="netease"> 网易 · 游戏客户端开发</option>
+  </select>
+  <label>
+    <input type="checkbox" id="adminLockCheck" onchange="onAdminLockChange()">
+    锁定视角（禁止访客切换）
+  </label>
+  <div style="margin-top:0.5rem;font-size:0.68rem;color:#888;">
+    访问统计 | 腾讯: <span id="statTencent">0</span> | 网易: <span id="statNetEase">0</span>
+  </div>
+  <div class="admin-row">
+    <button class="admin-btn apply" onclick="adminApply()">应用</button>
+    <button class="admin-btn reset" onclick="adminReset()">重置</button>
+  </div>
+</div>
+
+<script>
+var ADMIN_KEY = 'pf-admin-config';
+var adminCfg = JSON.parse(localStorage.getItem(ADMIN_KEY) || '{}');
+var statT = 0, statN = 0;
+
+function saveAdmin() { localStorage.setItem(ADMIN_KEY, JSON.stringify(adminCfg)); }
+
+function toggleAdmin() {
+  var p = document.getElementById('adminPanel');
+  p.classList.toggle('show');
+  if (p.classList.contains('show')) refreshPanel();
+}
+
+function refreshPanel() {
+  document.getElementById('adminViewSelect').value = adminCfg.defaultView || 'tencent';
+  document.getElementById('adminLockCheck').checked = !!adminCfg.locked;
+  var b = document.getElementById('adminLockBadge');
+  if (adminCfg.locked) { b.textContent = '已锁定'; b.className = 'admin-badge locked'; }
+  else { b.textContent = '未锁定'; b.className = 'admin-badge unlocked'; }
+}
+
+function onAdminViewChange() {
+  adminCfg.defaultView = document.getElementById('adminViewSelect').value;
+  saveAdmin();
+}
+
+function onAdminLockChange() {
+  adminCfg.locked = document.getElementById('adminLockCheck').checked;
+  saveAdmin();
+  refreshPanel();
+  if (adminCfg.locked) applyGlobalView(adminCfg.defaultView || 'tencent');
+}
+
+function adminApply() {
+  adminCfg.defaultView = document.getElementById('adminViewSelect').value;
+  adminCfg.locked = document.getElementById('adminLockCheck').checked;
+  saveAdmin();
+  refreshPanel();
+  applyGlobalView(adminCfg.defaultView);
+}
+
+function adminReset() {
+  adminCfg = {};
+  localStorage.removeItem(ADMIN_KEY);
+  refreshPanel();
+  document.getElementById('adminViewSelect').value = 'tencent';
+  document.getElementById('adminLockCheck').checked = false;
+  document.getElementById('adminLockBadge').textContent = '未锁定';
+  document.getElementById('adminLockBadge').className = 'admin-badge unlocked';
+  applyGlobalView('tencent');
+}
+
+// ====== 全局视角引擎 ======
+function applyGlobalView(view) {
+  var isT = view === 'tencent';
+  // 战略页按钮
+  var tb = document.getElementById('btnTencent'), nb = document.getElementById('btnNetEase');
+  if (tb) tb.classList.toggle('active-view', isT);
+  if (nb) nb.classList.toggle('active-view', !isT);
+  // 标语
+  var tl = document.getElementById('viewTagline');
+  if (tl) tl.textContent = isT ? '我证明了AI不只是辅助——它是新的开发范式。48小时，从需求到引擎就绪的完整管线。' : '我理解游戏开发者真正需要什么——不是会生图的AI，而是能直接导入引擎的资产管线。';
+  // 证明卡片
+  document.querySelectorAll('.proof-card').forEach(function(c) {
+    var tt = c.querySelector('.tencent-text'), nt = c.querySelector('.netease-text');
+    if (tt && nt) { tt.style.display = isT ? '' : 'none'; nt.style.display = isT ? 'none' : ''; }
+  });
+  // 详情页内容层
+  var tL = document.getElementById('viewTencent'), nL = document.getElementById('viewNetEase');
+  if (tL) tL.classList.toggle('active', isT);
+  if (nL) nL.classList.toggle('active', !isT);
+  // 详情页按钮
+  var pt = document.getElementById('pBtnTencent'), pn = document.getElementById('pBtnNetEase');
+  if (pt) pt.className = 'perspective-btn ' + (isT ? 'tencent-active' : '');
+  if (pn) pn.className = 'perspective-btn ' + (isT ? '' : 'net-ease-active');
+}
+
+(function() {
+  var saved = localStorage.getItem('view-perspective') || adminCfg.defaultView || 'tencent';
+  var effective = adminCfg.locked ? (adminCfg.defaultView || 'tencent') : saved;
+  applyGlobalView(effective);
+  if (effective === 'tencent') statT++; else statN++;
+})();
+
+window.switchView = function(view) {
+  if (adminCfg.locked) {
+    alert('当前视角已被管理员锁定为 ' + (adminCfg.defaultView === 'tencent' ? '腾讯' : '网易') + ' 视角');
+    return;
+  }
+  localStorage.setItem('view-perspective', view);
+  applyGlobalView(view);
+  if (view === 'tencent') statT++; else statN++;
+  document.getElementById('statTencent').textContent = statT;
+  document.getElementById('statNetEase').textContent = statN;
+};
+
+window.switchDetailView = function(view) {
+  if (adminCfg.locked && view !== adminCfg.defaultView) {
+    alert('当前视角已被管理员锁定');
+    return;
+  }
+  localStorage.setItem('view-perspective', view);
+  applyGlobalView(view);
+  if (view === 'tencent') statT++; else statN++;
+  document.getElementById('statTencent').textContent = statT;
+  document.getElementById('statNetEase').textContent = statN;
+};
+
+window.toggleCard = function(card) {
+  var wasExpanded = card.classList.contains('expanded');
+  document.querySelectorAll('.proof-card').forEach(function(c) { c.classList.remove('expanded'); });
+  if (!wasExpanded) card.classList.add('expanded');
+};
+
+// 初始化
+if (!adminCfg.defaultView) { adminCfg.defaultView = saved || 'tencent'; saveAdmin(); }
+</script>
+
+<!-- ============================================================
+     项目列表
+     ============================================================ -->
+<section id="projects" class="py-[var(--section-gap)] px-6" style="background:var(--bg);">
+  <div class="mx-auto" style="max-width:var(--max-width);">
+    <div class="text-center mb-12">
+      <div class="section-badge">PROJECTS</div>
+      <h2 class="section-title">选择探索项目</h2>
+      <p class="section-subtitle">三个 AI 产品实践，从不同维度展示产品能力</p>
+    </div>
+    <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <!-- ★ 旗舰项目 — AssetCraft Studio ★ -->
+      <a href="#project-assetcraft" class="glass-card p-6 text-center no-underline block transition-all duration-300 hover:scale-[1.02] md:col-span-2" style="border:2px solid var(--primary);">
+        <div class="text-4xl mb-4"></div>
+        <h3 class="font-bold text-xl mb-2" style="color:var(--primary);">AssetCraft Studio</h3>
+        <p class="text-sm leading-relaxed font-medium" style="color:var(--text);">牛七云AI训练营 优胜项目</p>
+        <p class="text-xs leading-relaxed mt-1" style="color:var(--text-secondary);">48h · 双项目架构 · 3引擎导出<br>AI协同开发 · 24项自动化测试</p>
+        <span class="inline-block mt-3 text-xs font-bold px-5 py-2 rounded-full" style="background:var(--primary);color:#fff;">🏆 旗舰项目 →</span>
+      </a>
+      <!-- 项目卡片 1 -->
+      <a href="#project-ai" class="glass-card p-6 text-center no-underline block transition-all duration-300 hover:scale-[1.02]">
+        <div class="text-4xl mb-4">🤖</div>
+        <h3 class="font-bold text-lg mb-2" style="color:var(--text);">多模态AI交互助手</h3>
+        <p class="text-xs leading-relaxed" style="color:var(--text-secondary);">基于 Claude API 的全栈实验<br>视频/图片/UI 交互 AI 助手</p>
+        <span class="inline-block mt-4 text-xs font-medium px-4 py-1.5 rounded-full" style="background:var(--primary-soft);color:var(--primary-deep);">查看详情 →</span>
+      </a>
+      <!-- 项目卡片 2 -->
+      <a href="#project-accordion" class="glass-card p-6 text-center no-underline block transition-all duration-300 hover:scale-[1.02]">
+        <div class="text-4xl mb-4">💕</div>
+        <h3 class="font-bold text-lg mb-2" style="color:var(--text);">情侣"风琴本"</h3>
+        <p class="text-xs leading-relaxed" style="color:var(--text-secondary);">情感化互动小程序<br>WebAR + Canvas 动画</p>
+        <span class="inline-block mt-4 text-xs font-medium px-4 py-1.5 rounded-full" style="background:var(--primary-soft);color:var(--primary-deep);">查看详情 →</span>
+      </a>
+      <!-- 项目卡片 3 -->
+      <a href="#project" class="glass-card p-6 text-center no-underline block transition-all duration-300 hover:scale-[1.02]">
+        <div class="text-4xl mb-4">🏘️</div>
+        <h3 class="font-bold text-lg mb-2" style="color:var(--text);">三角村·邻里汇</h3>
+        <p class="text-xs leading-relaxed" style="color:var(--text-secondary);">AI 产品 MVP 完整循环<br>空间+运营一体化方案</p>
+        <span class="inline-block mt-4 text-xs font-medium px-4 py-1.5 rounded-full" style="background:var(--primary-soft);color:var(--primary-deep);">查看详情 →</span>
+      </a>
+    </div>
+    <div class="text-center mt-10">
+      <a href="#skills" class="text-xs tracking-wide" style="color:var(--text-muted);">↓ 跳过，继续向下浏览</a>
+    </div>
+  </div>
+</section>
+<!-- ============================================================
+     ASSETCRAFT LANDING — 战略展示页
+     ============================================================ -->
+<section id="assetcraft-landing" class="relative min-h-screen flex items-center justify-center py-20 px-6 overflow-hidden" style="background:var(--bg);">
+  <div class="absolute top-10 left-1/4 w-72 h-72 rounded-full opacity-20 blur-3xl float" style="background:var(--primary-soft);"></div>
+  <div class="absolute bottom-20 right-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl float" style="background:var(--primary);animation-delay:2s;"></div>
+
   <!-- 柔光背景 -->
   <div class="absolute top-10 left-1/4 w-72 h-72 rounded-full opacity-20 blur-3xl float" style="background:var(--primary-soft);"></div>
   <div class="absolute bottom-20 right-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl float" style="background:var(--primary);animation-delay:2s;"></div>
@@ -297,102 +538,12 @@ tailwind.config = {
   </div>
 
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs tracking-[0.12em] animate-pulse" style="color:var(--text-muted);">↓ 向下探索</div>
-</section>
 
-<!-- ★ 视角切换脚本 ★ -->
-<script>
-(function() {
-  // 恢复上次视角
-  const saved = localStorage.getItem('view-perspective') || 'tencent';
-  applyView(saved);
-
-  window.switchView = function(view) {
-    localStorage.setItem('view-perspective', view);
-    applyView(view);
-    // 更新URL参数 (不刷新)
-    const url = new URL(window.location);
-    url.searchParams.set('view', view);
-    window.history.replaceState({}, '', url);
-  };
-
-  function applyView(view) {
-    const isTencent = view === 'tencent';
-    // 按钮状态
-    document.getElementById('btnTencent').classList.toggle('active-view', isTencent);
-    document.getElementById('btnNetEase').classList.toggle('active-view', !isTencent);
-    // 标语切换
-    const tagline = document.getElementById('viewTagline');
-    if (tagline) {
-      tagline.textContent = isTencent
-        ? '"我证明了AI不只是辅助——它是新的开发范式。48小时，从需求到引擎就绪的完整管线。"'
-        : '"我理解游戏开发者真正需要什么——不是会生图的AI，而是能直接导入引擎的资产管线。"';
-    }
-    // 证明卡片文字切换
-    document.querySelectorAll('.proof-card').forEach(card => {
-      const tencentText = card.querySelector('.tencent-text');
-      const neteaseText = card.querySelector('.netease-text');
-      if (tencentText && neteaseText) {
-        tencentText.style.display = isTencent ? '' : 'none';
-        neteaseText.style.display = isTencent ? 'none' : '';
-      }
-    });
-  }
-
-  // 卡片点击展开
-  window.toggleCard = function(card) {
-    const wasExpanded = card.classList.contains('expanded');
-    document.querySelectorAll('.proof-card').forEach(c => c.classList.remove('expanded'));
-    if (!wasExpanded) card.classList.add('expanded');
-  };
-})();
-</script>
-
-<!-- ============================================================
-     项目列表
-     ============================================================ -->
-<section id="projects" class="py-[var(--section-gap)] px-6" style="background:var(--bg);">
-  <div class="mx-auto" style="max-width:var(--max-width);">
-    <div class="text-center mb-12">
-      <div class="section-badge">PROJECTS</div>
-      <h2 class="section-title">选择探索项目</h2>
-      <p class="section-subtitle">三个 AI 产品实践，从不同维度展示产品能力</p>
-    </div>
-    <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-      <!-- ★ 旗舰项目 — AssetCraft Studio ★ -->
-      <a href="#project-assetcraft" class="glass-card p-6 text-center no-underline block transition-all duration-300 hover:scale-[1.02] md:col-span-2" style="border:2px solid var(--primary);">
-        <div class="text-4xl mb-4"></div>
-        <h3 class="font-bold text-xl mb-2" style="color:var(--primary);">AssetCraft Studio</h3>
-        <p class="text-sm leading-relaxed font-medium" style="color:var(--text);">牛七云AI训练营 优胜项目</p>
-        <p class="text-xs leading-relaxed mt-1" style="color:var(--text-secondary);">48h · 双项目架构 · 3引擎导出<br>AI协同开发 · 24项自动化测试</p>
-        <span class="inline-block mt-3 text-xs font-bold px-5 py-2 rounded-full" style="background:var(--primary);color:#fff;">🏆 旗舰项目 →</span>
-      </a>
-      <!-- 项目卡片 1 -->
-      <a href="#project-ai" class="glass-card p-6 text-center no-underline block transition-all duration-300 hover:scale-[1.02]">
-        <div class="text-4xl mb-4">🤖</div>
-        <h3 class="font-bold text-lg mb-2" style="color:var(--text);">多模态AI交互助手</h3>
-        <p class="text-xs leading-relaxed" style="color:var(--text-secondary);">基于 Claude API 的全栈实验<br>视频/图片/UI 交互 AI 助手</p>
-        <span class="inline-block mt-4 text-xs font-medium px-4 py-1.5 rounded-full" style="background:var(--primary-soft);color:var(--primary-deep);">查看详情 →</span>
-      </a>
-      <!-- 项目卡片 2 -->
-      <a href="#project-accordion" class="glass-card p-6 text-center no-underline block transition-all duration-300 hover:scale-[1.02]">
-        <div class="text-4xl mb-4">💕</div>
-        <h3 class="font-bold text-lg mb-2" style="color:var(--text);">情侣"风琴本"</h3>
-        <p class="text-xs leading-relaxed" style="color:var(--text-secondary);">情感化互动小程序<br>WebAR + Canvas 动画</p>
-        <span class="inline-block mt-4 text-xs font-medium px-4 py-1.5 rounded-full" style="background:var(--primary-soft);color:var(--primary-deep);">查看详情 →</span>
-      </a>
-      <!-- 项目卡片 3 -->
-      <a href="#project" class="glass-card p-6 text-center no-underline block transition-all duration-300 hover:scale-[1.02]">
-        <div class="text-4xl mb-4">🏘️</div>
-        <h3 class="font-bold text-lg mb-2" style="color:var(--text);">三角村·邻里汇</h3>
-        <p class="text-xs leading-relaxed" style="color:var(--text-secondary);">AI 产品 MVP 完整循环<br>空间+运营一体化方案</p>
-        <span class="inline-block mt-4 text-xs font-medium px-4 py-1.5 rounded-full" style="background:var(--primary-soft);color:var(--primary-deep);">查看详情 →</span>
-      </a>
-    </div>
-    <div class="text-center mt-10">
-      <a href="#skills" class="text-xs tracking-wide" style="color:var(--text-muted);">↓ 跳过，继续向下浏览</a>
-    </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs tracking-[0.12em]">
+    <a href="#project-assetcraft" style="color:var(--primary);font-weight:700;text-decoration:none;">↓ 查看完整项目详情（含双视角STAR解析）</a>
   </div>
 </section>
+
 
 <!-- ============================================================
      ASSETCRAFT STUDIO 动态视角详情页 (Phase 2)
