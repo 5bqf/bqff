@@ -220,10 +220,13 @@ window.PORTFOLIO_CONFIG = {
 
     <!-- 双视角引导 -->
     <div class="text-center mb-6 anim-in">
-      <p class="text-sm font-bold mb-3" style="color:var(--text);">选择面试官视角，体验定制化项目解读</p>
-      <div class="flex flex-wrap justify-center gap-3" id="landingBadges">
-        <button class="view-badge tencent active-view" id="lbTencent" onclick="landingSwitch('tencent')" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.2rem;border-radius:50px;font-weight:700;font-size:0.85rem;cursor:pointer;border:2px solid transparent;background:#0052D9;color:#fff;"> 腾讯 · AI原生工程师</button>
-        <button class="view-badge net-ease" id="lbNetEase" onclick="landingSwitch('netease')" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.2rem;border-radius:50px;font-weight:700;font-size:0.85rem;cursor:pointer;border:2px solid transparent;background:#D4380D;color:#fff;"> 网易 · 游戏客户端开发</button>
+      <div class="flex flex-wrap justify-center gap-4" id="landingBadges">
+        <button id="lbTencent" onclick="landingSwitch('tencent')" title="腾讯 · AI原生工程师视角" style="width:44px;height:44px;cursor:pointer;border:none;background:transparent;padding:0;position:relative;">
+          <div style="width:0;height:0;border-left:22px solid transparent;border-right:22px solid transparent;border-bottom:38px solid #0052D9;margin:3px auto 0;"></div>
+        </button>
+        <button id="lbNetEase" onclick="landingSwitch('netease')" title="网易 · 游戏客户端开发视角" style="width:44px;height:44px;cursor:pointer;border:none;background:transparent;padding:0;position:relative;">
+          <div style="width:0;height:0;border-left:22px solid transparent;border-right:22px solid transparent;border-bottom:38px solid #D4380D;margin:3px auto 0;"></div>
+        </button>
       </div>
       <p id="landingTagline" class="text-sm mt-3 font-medium anim-in" style="color:var(--primary);">
         "48小时单人AI协同交付，3引擎原生导出——证明AI不是辅助，是新的开发范式。"
@@ -407,8 +410,12 @@ window.PORTFOLIO_CONFIG = {
   <!-- ★ 固定视角切换条 ★ -->
   <div class="perspective-bar" id="perspectiveBar">
     <span style="font-weight:700;font-size:0.85rem;color:var(--text);">AssetCraft Studio · 视角切换</span>
-    <button class="perspective-btn tencent-active" id="pBtnTencent" onclick="switchDetailView('tencent')"> 腾讯 · AI原生工程师</button>
-    <button class="perspective-btn" id="pBtnNetEase" onclick="switchDetailView('netease')"> 网易 · 游戏客户端开发</button>
+    <button id="pBtnTencent" onclick="switchDetailView('tencent')" title="腾讯 · AI原生工程师" style="width:36px;height:36px;cursor:pointer;border:none;background:transparent;padding:0;vertical-align:middle;">
+      <div style="width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:28px solid #0052D9;margin:4px auto 0;opacity:1;" class="p-tri-tencent"></div>
+    </button>
+    <button id="pBtnNetEase" onclick="switchDetailView('netease')" title="网易 · 游戏客户端开发" style="width:36px;height:36px;cursor:pointer;border:none;background:transparent;padding:0;vertical-align:middle;">
+      <div style="width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:28px solid #D4380D;margin:4px auto 0;opacity:0.5;" class="p-tri-netease"></div>
+    </button>
     <a href="#projects" style="font-size:0.78rem;color:var(--text-muted);margin-left:1rem;">← 返回</a>
   </div>
 
@@ -599,15 +606,11 @@ PixelForge AI (主项目 — 5 Tab)          AssetCraft Studio (补充工具 —
 
   function applyDetailView(view) {
     const isTencent = view === 'tencent';
-    // 按钮状态
-    const tBtn = document.getElementById('pBtnTencent');
-    const nBtn = document.getElementById('pBtnNetEase');
-    if (tBtn) {
-      tBtn.className = 'perspective-btn ' + (isTencent ? 'tencent-active' : '');
-    }
-    if (nBtn) {
-      nBtn.className = 'perspective-btn ' + (isTencent ? '' : 'net-ease-active');
-    }
+    // 三角形透明度切换
+    const tTri = document.querySelector('#pBtnTencent .p-tri-tencent');
+    const nTri = document.querySelector('#pBtnNetEase .p-tri-netease');
+    if (tTri) tTri.style.opacity = isTencent ? '1' : '0.35';
+    if (nTri) nTri.style.opacity = isTencent ? '0.35' : '1';
     // 内容层切换
     const tLayer = document.getElementById('viewTencent');
     const nLayer = document.getElementById('viewNetEase');
