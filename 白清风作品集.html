@@ -87,310 +87,52 @@ tailwind.config = {
 </nav>
 
 <!-- ============================================================
-     HERO — 原始首页
+     ★ 管理员配置 (在 </head> 前加载)
      ============================================================ -->
-<style>
-/* ── 视角系统变量 ── */
-:root {
-  --tencent-blue: #0052D9;
-  --tencent-blue-light: #E8F0FE;
-  --netease-red: #D4380D;
-  --netease-red-light: #FFF1E8;
-  --view-accent: var(--tencent-blue);
-  --view-accent-light: var(--tencent-blue-light);
-}
+<script>
+// ── 作品集智能控制系统 ──
+window.PORTFOLIO_CONFIG = {
+  // 【投递时修改这里】
+  targetCompany: 'auto',    // 'tencent' | 'netease' | 'auto'
+  lockView: false,          // true=锁定视角，访客不能切换
+  adminPassword: 'bqf2025', // 管理员密码
+};
 
-/* ── 数据看板 ── */
-.hero-dashboard {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  max-width: 560px;
-  margin: 0 auto 1.5rem;
-}
-.hero-stat {
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 16px;
-  padding: 1.25rem 0.75rem;
-  text-align: center;
-}
-.hero-stat-value {
-  font-size: 2rem;
-  font-weight: 800;
-  font-family: var(--font-mono, 'Cascadia Code', monospace);
-  letter-spacing: -0.02em;
-}
-.hero-stat-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-top: 0.25rem;
-}
+// ── 访问统计 ──
+(function() {
+  var stats = JSON.parse(localStorage.getItem('_visits') || '{"total":0,"tencent":0,"netease":0,"last":"","history":[]}');
+  stats.total++;
+  var today = new Date().toISOString().slice(0,10);
+  if (stats.last !== today) { stats.last = today; stats.history.push({date:today,count:1}); }
+  else { stats.history[stats.history.length-1].count++; }
+  localStorage.setItem('_visits', JSON.stringify(stats));
+})();
+</script>
 
-/* ── 视角徽章 ── */
-.view-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  border: 2px solid transparent;
-}
-.view-badge:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-.view-badge.tencent {
-  background: #0052D9;
-  color: #fff;
-  border-color: #0052D9;
-}
-.view-badge.net-ease {
-  background: #D4380D;
-  color: #fff;
-  border-color: #D4380D;
-}
-.view-badge.active-view {
-  box-shadow: 0 0 0 4px rgba(255,255,255,0.3);
-  transform: scale(1.05);
-}
-
-/* ── 证明卡片 ── */
-.proof-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  max-width: 600px;
-  margin: 1.5rem auto 0;
-  text-align: left;
-}
-.proof-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
-  padding: 1rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.proof-card:hover { background: rgba(255,255,255,0.08); }
-.proof-card h4 { font-size: 0.85rem; font-weight: 700; margin: 0 0 0.25rem; }
-.proof-card p { font-size: 0.78rem; margin: 0; opacity: 0.7; line-height: 1.5; }
-.proof-card.expanded { grid-column: 1 / -1; }
-
-/* ── 演示视频容器 ── */
-.hero-video-wrap {
-  max-width: 560px;
-  margin: 1.5rem auto;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-}
-.hero-video-wrap video {
-  width: 100%;
-  display: block;
-}
-
-/* ── 响应式 ── */
-@media (max-width: 768px) {
-  .hero-dashboard { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-  .hero-stat-value { font-size: 1.4rem; }
-  .hero-stat-label { font-size: 0.65rem; }
-  .proof-cards { grid-template-columns: 1fr; }
-  .view-badge { font-size: 0.8rem; padding: 0.5rem 1rem; }
-}
-</style>
-
+<!-- ============================================================
+     HERO — 简约首页
+     ============================================================ -->
 <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" style="background:var(--bg);">
+  <div class="absolute top-20 left-1/4 w-64 h-64 rounded-full opacity-25 blur-3xl float" style="background:var(--primary-soft);"></div>
+  <div class="absolute bottom-32 right-1/4 w-80 h-80 rounded-full opacity-15 blur-3xl float" style="background:var(--primary);animation-delay:2s;"></div>
+
   <div class="relative z-10 text-center px-6 max-w-3xl">
     <div class="section-badge mx-auto mb-6 anim-in">AI PRODUCT EXPLORER · PORTFOLIO</div>
     <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-wide mb-4 anim-in" style="animation-delay:0.12s;color:var(--text);">
       Hello, 欢迎来到<br>白清凤的作品集
-      <span class="block text-lg md:text-xl font-medium tracking-[0.10em] mt-3" style="color:var(--text-secondary);">AI 产品探索者 · 腾讯AI原生 / 网易游戏客户端</span>
+      <span class="block text-lg md:text-xl font-medium tracking-[0.10em] mt-3" style="color:var(--text-secondary);">AI 产品探索者 · AIGC / 大模型应用方向</span>
     </h1>
     <p class="text-sm md:text-base tracking-wide leading-relaxed anim-in" style="color:var(--text-secondary);animation-delay:0.24s;">
-      园林背景 x AI工程能力 x 游戏开发理解<br class="hidden sm:block">48小时从0到1交付覆盖3引擎的完整2D素材管线
+      致力于用 AIGC 工具链解构复杂场景<br class="hidden sm:block">构建可持续的产品验证循环
     </p>
     <div class="mt-10 anim-in flex flex-wrap justify-center gap-4" style="animation-delay:0.36s;">
-      <a href="#assetcraft-landing" class="btn-primary"> 探索旗舰项目 AssetCraft Studio</a>
-      <a href="#projects" class="btn-secondary" style="background:transparent;border:2px solid var(--border);color:var(--text);padding:0.75rem 2rem;border-radius:50px;font-weight:700;text-decoration:none;">浏览全部项目</a>
+      <a href="#projects" class="btn-primary"> 探索项目</a>
+      <a href="#project-assetcraft" class="btn-secondary" style="background:transparent;border:2px solid var(--primary);color:var(--primary);padding:0.7rem 2rem;border-radius:50px;font-weight:700;text-decoration:none;"> AssetCraft 旗舰项目</a>
     </div>
   </div>
+
   <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-xs tracking-[0.12em] animate-pulse" style="color:var(--text-muted);">↓ 向下滚动</div>
-
-
-<!-- ★ 智能视角系统 + 管理员控制面板 ★ -->
-<style>
-.admin-panel {
-  position: fixed; bottom: 80px; right: 20px; z-index: 9999;
-  background: rgba(20,20,30,0.96); backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.15); border-radius: 16px;
-  padding: 1.25rem; width: 280px; font-size: 0.78rem;
-  color: #ccc; display: none; box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-}
-.admin-panel.show { display: block; }
-.admin-panel h4 { color: #fff; margin: 0 0 0.75rem; font-size: 0.85rem; }
-.admin-panel label { display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0; cursor: pointer; font-size:0.75rem; }
-.admin-panel select { width: 100%; padding: 0.4rem; border-radius: 6px; border: 1px solid #555; background: #222; color: #fff; font-size: 0.8rem; margin: 0.3rem 0; }
-.admin-toggle-btn {
-  position: fixed; bottom: 20px; right: 20px; z-index: 10000;
-  width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(20,20,30,0.7); color: #aaa; font-size: 1rem;
-  cursor: pointer; transition: all 0.2s; line-height: 38px; text-align: center;
-}
-.admin-toggle-btn:hover { color: #fff; background: rgba(20,20,30,0.95); }
-.admin-badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.65rem; font-weight: 700; }
-.admin-badge.locked { background: #D4380D; color: #fff; }
-.admin-badge.unlocked { background: #2d6a2d; color: #fff; }
-.admin-row { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
-.admin-btn { flex:1; padding: 0.35rem; border-radius: 6px; border: none; cursor: pointer; font-size: 0.7rem; font-weight: 700; }
-.admin-btn.apply { background: var(--primary); color: #fff; }
-.admin-btn.reset { background: #444; color: #fff; }
-</style>
-
-<button class="admin-toggle-btn" id="adminToggle" title="管理员面板" onclick="toggleAdmin()"> </button>
-
-<div class="admin-panel" id="adminPanel">
-  <h4> 作品集控制系统</h4>
-  <div style="margin-bottom:0.5rem;">
-    <span class="admin-badge unlocked" id="adminLockBadge">未锁定</span>
-  </div>
-  <select id="adminViewSelect" onchange="onAdminViewChange()">
-    <option value="tencent"> 腾讯 · AI原生工程师</option>
-    <option value="netease"> 网易 · 游戏客户端开发</option>
-  </select>
-  <label>
-    <input type="checkbox" id="adminLockCheck" onchange="onAdminLockChange()">
-    锁定视角（禁止访客切换）
-  </label>
-  <div style="margin-top:0.5rem;font-size:0.68rem;color:#888;">
-    访问统计 | 腾讯: <span id="statTencent">0</span> | 网易: <span id="statNetEase">0</span>
-  </div>
-  <div class="admin-row">
-    <button class="admin-btn apply" onclick="adminApply()">应用</button>
-    <button class="admin-btn reset" onclick="adminReset()">重置</button>
-  </div>
-</div>
-
-<script>
-var ADMIN_KEY = 'pf-admin-config';
-var adminCfg = JSON.parse(localStorage.getItem(ADMIN_KEY) || '{}');
-var statT = 0, statN = 0;
-
-function saveAdmin() { localStorage.setItem(ADMIN_KEY, JSON.stringify(adminCfg)); }
-
-function toggleAdmin() {
-  var p = document.getElementById('adminPanel');
-  p.classList.toggle('show');
-  if (p.classList.contains('show')) refreshPanel();
-}
-
-function refreshPanel() {
-  document.getElementById('adminViewSelect').value = adminCfg.defaultView || 'tencent';
-  document.getElementById('adminLockCheck').checked = !!adminCfg.locked;
-  var b = document.getElementById('adminLockBadge');
-  if (adminCfg.locked) { b.textContent = '已锁定'; b.className = 'admin-badge locked'; }
-  else { b.textContent = '未锁定'; b.className = 'admin-badge unlocked'; }
-}
-
-function onAdminViewChange() {
-  adminCfg.defaultView = document.getElementById('adminViewSelect').value;
-  saveAdmin();
-}
-
-function onAdminLockChange() {
-  adminCfg.locked = document.getElementById('adminLockCheck').checked;
-  saveAdmin();
-  refreshPanel();
-  if (adminCfg.locked) applyGlobalView(adminCfg.defaultView || 'tencent');
-}
-
-function adminApply() {
-  adminCfg.defaultView = document.getElementById('adminViewSelect').value;
-  adminCfg.locked = document.getElementById('adminLockCheck').checked;
-  saveAdmin();
-  refreshPanel();
-  applyGlobalView(adminCfg.defaultView);
-}
-
-function adminReset() {
-  adminCfg = {};
-  localStorage.removeItem(ADMIN_KEY);
-  refreshPanel();
-  document.getElementById('adminViewSelect').value = 'tencent';
-  document.getElementById('adminLockCheck').checked = false;
-  document.getElementById('adminLockBadge').textContent = '未锁定';
-  document.getElementById('adminLockBadge').className = 'admin-badge unlocked';
-  applyGlobalView('tencent');
-}
-
-// ====== 全局视角引擎 ======
-function applyGlobalView(view) {
-  var isT = view === 'tencent';
-  // 战略页按钮
-  var tb = document.getElementById('btnTencent'), nb = document.getElementById('btnNetEase');
-  if (tb) tb.classList.toggle('active-view', isT);
-  if (nb) nb.classList.toggle('active-view', !isT);
-  // 标语
-  var tl = document.getElementById('viewTagline');
-  if (tl) tl.textContent = isT ? '我证明了AI不只是辅助——它是新的开发范式。48小时，从需求到引擎就绪的完整管线。' : '我理解游戏开发者真正需要什么——不是会生图的AI，而是能直接导入引擎的资产管线。';
-  // 证明卡片
-  document.querySelectorAll('.proof-card').forEach(function(c) {
-    var tt = c.querySelector('.tencent-text'), nt = c.querySelector('.netease-text');
-    if (tt && nt) { tt.style.display = isT ? '' : 'none'; nt.style.display = isT ? 'none' : ''; }
-  });
-  // 详情页内容层
-  var tL = document.getElementById('viewTencent'), nL = document.getElementById('viewNetEase');
-  if (tL) tL.classList.toggle('active', isT);
-  if (nL) nL.classList.toggle('active', !isT);
-  // 详情页按钮
-  var pt = document.getElementById('pBtnTencent'), pn = document.getElementById('pBtnNetEase');
-  if (pt) pt.className = 'perspective-btn ' + (isT ? 'tencent-active' : '');
-  if (pn) pn.className = 'perspective-btn ' + (isT ? '' : 'net-ease-active');
-}
-
-(function() {
-  var saved = localStorage.getItem('view-perspective') || adminCfg.defaultView || 'tencent';
-  var effective = adminCfg.locked ? (adminCfg.defaultView || 'tencent') : saved;
-  applyGlobalView(effective);
-  if (effective === 'tencent') statT++; else statN++;
-})();
-
-window.switchView = function(view) {
-  if (adminCfg.locked) {
-    alert('当前视角已被管理员锁定为 ' + (adminCfg.defaultView === 'tencent' ? '腾讯' : '网易') + ' 视角');
-    return;
-  }
-  localStorage.setItem('view-perspective', view);
-  applyGlobalView(view);
-  if (view === 'tencent') statT++; else statN++;
-  document.getElementById('statTencent').textContent = statT;
-  document.getElementById('statNetEase').textContent = statN;
-};
-
-window.switchDetailView = function(view) {
-  if (adminCfg.locked && view !== adminCfg.defaultView) {
-    alert('当前视角已被管理员锁定');
-    return;
-  }
-  localStorage.setItem('view-perspective', view);
-  applyGlobalView(view);
-  if (view === 'tencent') statT++; else statN++;
-  document.getElementById('statTencent').textContent = statT;
-  document.getElementById('statNetEase').textContent = statN;
-};
-
-window.toggleCard = function(card) {
-  var wasExpanded = card.classList.contains('expanded');
-  document.querySelectorAll('.proof-card').forEach(function(c) { c.classList.remove('expanded'); });
-  if (!wasExpanded) card.classList.add('expanded');
-};
-
-// 初始化
-if (!adminCfg.defaultView) { adminCfg.defaultView = saved || 'tencent'; saveAdmin(); }
-</script>
+</section>
 
 <!-- ============================================================
      项目列表
@@ -438,112 +180,126 @@ if (!adminCfg.defaultView) { adminCfg.defaultView = saved || 'tencent'; saveAdmi
     </div>
   </div>
 </section>
+
 <!-- ============================================================
-     ASSETCRAFT LANDING — 战略展示页
+     ASSETCRAFT 战略指挥中心前导页
      ============================================================ -->
-<section id="assetcraft-landing" class="relative min-h-screen flex items-center justify-center py-20 px-6 overflow-hidden" style="background:var(--bg);">
-  <div class="absolute top-10 left-1/4 w-72 h-72 rounded-full opacity-20 blur-3xl float" style="background:var(--primary-soft);"></div>
-  <div class="absolute bottom-20 right-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl float" style="background:var(--primary);animation-delay:2s;"></div>
+<section id="project-assetcraft" class="py-[var(--section-gap)] px-6" style="background:var(--bg-alt);">
+  <div class="mx-auto" style="max-width:var(--max-width);">
+    <div class="text-center mb-10">
+      <div class="section-badge mx-auto">ASSETCRAFT STUDIO · 牛七云AI训练营优胜</div>
+      <h2 class="section-title">AssetCraft Studio</h2>
+      <p class="section-subtitle">48小时 · 1人 · AI协同 · 双项目架构 · 3引擎导出</p>
+    </div>
 
-  <!-- 柔光背景 -->
-  <div class="absolute top-10 left-1/4 w-72 h-72 rounded-full opacity-20 blur-3xl float" style="background:var(--primary-soft);"></div>
-  <div class="absolute bottom-20 right-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl float" style="background:var(--primary);animation-delay:2s;"></div>
-
-  <div class="relative z-10 text-center px-4 max-w-4xl w-full">
-    <!-- Badge -->
-    <div class="section-badge mx-auto mb-4 anim-in">ASSETCRAFT STUDIO · 牛七云AI训练营优胜项目</div>
-
-    <!-- 标题 -->
-    <h1 class="font-serif text-3xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-wide mb-3 anim-in" style="animation-delay:0.10s;color:var(--text);">
-      AssetCraft Studio
-    </h1>
-    <p class="text-base md:text-lg tracking-wide anim-in mb-6" style="animation-delay:0.18s;color:var(--text-secondary);">
-      48小时 · 1人 · AI协同 · 双项目架构<br class="hidden sm:block">
-      <span style="color:var(--primary-deep);">从"文本描述"到"引擎就绪资产"的完整AI管线</span>
-    </p>
-
-    <!-- ★ 数据看板 ★ -->
-    <div class="hero-dashboard anim-in" style="animation-delay:0.22s;">
-      <div class="hero-stat">
-        <div class="hero-stat-value" style="color:var(--primary);">48<span style="font-size:1rem;">h</span></div>
-        <div class="hero-stat-label" style="color:var(--text-muted);">从0到1完成</div>
+    <!-- 数据看板 -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;max-width:480px;margin:0 auto 1.5rem;" class="anim-in">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1rem 0.5rem;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:800;color:var(--primary);">48<span style="font-size:0.8rem;">h</span></div>
+        <div style="font-size:0.7rem;color:var(--text-muted);">单人交付</div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-value" style="color:var(--primary);">2<span style="font-size:1rem;">层</span></div>
-        <div class="hero-stat-label" style="color:var(--text-muted);">双项目架构</div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1rem 0.5rem;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:800;color:var(--primary);">2<span style="font-size:0.8rem;">层</span></div>
+        <div style="font-size:0.7rem;color:var(--text-muted);">双项目架构</div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-value" style="color:var(--primary);">3<span style="font-size:1rem;">引擎</span></div>
-        <div class="hero-stat-label" style="color:var(--text-muted);">引擎原生导出</div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1rem 0.5rem;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:800;color:var(--primary);">3<span style="font-size:0.8rem;">引擎</span></div>
+        <div style="font-size:0.7rem;color:var(--text-muted);">原生导出</div>
       </div>
     </div>
 
-    <!-- ★ 演示视频 ★ -->
-    <div class="hero-video-wrap anim-in" style="animation-delay:0.28s;">
-      <!-- 替换 src 为你的B站下载视频地址 -->
-      <video autoplay muted loop playsinline preload="auto" poster="">
+    <!-- 视频 -->
+    <div style="max-width:560px;margin:1rem auto;border-radius:14px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.2);" class="anim-in">
+      <video autoplay muted loop playsinline preload="auto" style="width:100%;display:block;" poster="">
         <source src="" type="video/mp4">
-        你的浏览器不支持视频播放。
       </video>
     </div>
-    <p class="text-xs mt-2 anim-in" style="color:var(--text-muted);animation-delay:0.30s;">
-      视频链接: <a href="https://b23.tv/3jsCy5s" target="_blank" style="color:var(--primary);">B站 — 小白花不白</a>
-      （下载视频后将 src 替换为本地路径，实现自动静音循环播放）
+    <p class="text-xs text-center mt-1 mb-4" style="color:var(--text-muted);">
+      <a href="https://b23.tv/3jsCy5s" target="_blank" style="color:var(--primary);">B站演示视频</a>
     </p>
 
-    <!-- ★ 双视角引导 ★ -->
-    <div class="flex flex-wrap justify-center gap-3 mt-5 anim-in" style="animation-delay:0.34s;">
-      <button class="view-badge tencent active-view" id="btnTencent" onclick="switchView('tencent')">
-        腾讯 AI原生工程师视角
-      </button>
-      <button class="view-badge net-ease" id="btnNetEase" onclick="switchView('netease')">
-        网易 游戏客户端开发视角
-      </button>
+    <!-- 双视角引导 -->
+    <div class="text-center mb-6 anim-in">
+      <p class="text-sm font-bold mb-3" style="color:var(--text);">选择面试官视角，体验定制化项目解读</p>
+      <div class="flex flex-wrap justify-center gap-3" id="landingBadges">
+        <button class="view-badge tencent active-view" id="lbTencent" onclick="landingSwitch('tencent')" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.2rem;border-radius:50px;font-weight:700;font-size:0.85rem;cursor:pointer;border:2px solid transparent;background:#0052D9;color:#fff;"> 腾讯 · AI原生工程师</button>
+        <button class="view-badge net-ease" id="lbNetEase" onclick="landingSwitch('netease')" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.2rem;border-radius:50px;font-weight:700;font-size:0.85rem;cursor:pointer;border:2px solid transparent;background:#D4380D;color:#fff;"> 网易 · 游戏客户端开发</button>
+      </div>
+      <p id="landingTagline" class="text-sm mt-3 font-medium anim-in" style="color:var(--primary);">
+        "48小时单人AI协同交付，3引擎原生导出——证明AI不是辅助，是新的开发范式。"
+      </p>
     </div>
 
-    <!-- 视角标语 -->
-    <p id="viewTagline" class="text-sm mt-3 anim-in font-medium" style="animation-delay:0.38s;color:var(--primary-deep);">
-      "我证明了AI不只是辅助——它是新的开发范式。48小时，从需求到引擎就绪的完整管线。"
-    </p>
-
-    <!-- ★ 交互式证明卡片 ★ -->
-    <div class="proof-cards anim-in" style="animation-delay:0.42s;" id="proofCards">
-      <div class="proof-card" onclick="toggleCard(this)" data-tencent="AI驱动全流程：Claude Code协同完成架构设计→代码生成→测试→部署" data-netease="Unity/Godot/Cocos 三引擎原生格式导出，拖入即用">
-        <h4 style="color:var(--primary);"> 架构证明</h4>
-        <p class="tencent-text">AI驱动全流程：Claude Code协同完成架构设计→代码生成→测试→部署</p>
-        <p class="netease-text" style="display:none;">Unity/Godot/Cocos 三引擎原生格式导出，拖入即用</p>
+    <!-- 证明卡片 -->
+    <div class="proof-cards anim-in" id="landingCards" style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;max-width:600px;margin:0 auto 1.5rem;text-align:left;">
+      <div class="proof-card" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.8rem;cursor:pointer;" onclick="this.classList.toggle('expanded')">
+        <h4 style="font-size:0.8rem;font-weight:700;color:var(--primary);"> 架构证明</h4>
+        <p class="landing-tencent" style="font-size:0.75rem;">AI全流程：Claude Code → 架构设计 → 代码生成 → 测试 → 部署</p>
+        <p class="landing-netease" style="font-size:0.75rem;display:none;">Unity/Godot/Cocos 三引擎原生格式导出，拖入即用</p>
       </div>
-      <div class="proof-card" onclick="toggleCard(this)" data-tencent="24项pytest自动化测试，feature-branch工作流，原子化commit" data-netease="5大游戏素材品类 + 6种风格模板 + 10种提示词引擎">
-        <h4 style="color:var(--primary);"> 工程证明</h4>
-        <p class="tencent-text">24项pytest自动化测试，feature-branch工作流，原子化commit</p>
-        <p class="netease-text" style="display:none;">5大游戏素材品类 + 6种风格模板 + 10种提示词引擎</p>
+      <div class="proof-card" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.8rem;cursor:pointer;" onclick="this.classList.toggle('expanded')">
+        <h4 style="font-size:0.8rem;font-weight:700;color:var(--primary);"> 工程证明</h4>
+        <p class="landing-tencent" style="font-size:0.75rem;">24项pytest · feature-branch · 原子化commit</p>
+        <p class="landing-netease" style="font-size:0.75rem;display:none;">5大素材品类 · 6种风格 · 10种提示词模板</p>
       </div>
-      <div class="proof-card" onclick="toggleCard(this)" data-tencent="48h单人交付：核心引擎+3导出器+Gradio Web+Docker部署" data-netease="一键批量生成风格统一素材，效率从2天缩减到10分钟">
-        <h4 style="color:var(--primary);"> 效率证明</h4>
-        <p class="tencent-text">48h单人交付：核心引擎+3导出器+Gradio Web+Docker部署</p>
-        <p class="netease-text" style="display:none;">一键批量生成风格统一素材，效率从2天缩减到10分钟</p>
+      <div class="proof-card" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.8rem;cursor:pointer;" onclick="this.classList.toggle('expanded')">
+        <h4 style="font-size:0.8rem;font-weight:700;color:var(--primary);"> 效率证明</h4>
+        <p class="landing-tencent" style="font-size:0.75rem;">48h单人: 引擎+导出器+Web+Docker</p>
+        <p class="landing-netease" style="font-size:0.75rem;display:none;">一键批量生成，效率从2天→10分钟</p>
       </div>
-      <div class="proof-card" onclick="toggleCard(this)" data-tencent="模块化分层架构：core/exporters/app三层分离，依赖注入，可测试" data-netease="风格一致性控制：种子管理+调色板提取+提示词工程，确保系列素材视觉统一">
-        <h4 style="color:var(--primary);"> 系统证明</h4>
-        <p class="tencent-text">模块化分层架构：core/exporters/app三层分离，依赖注入，可测试</p>
-        <p class="netease-text" style="display:none;">风格一致性控制：种子管理+调色板提取+提示词工程，确保素材视觉统一</p>
+      <div class="proof-card" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.8rem;cursor:pointer;" onclick="this.classList.toggle('expanded')">
+        <h4 style="font-size:0.8rem;font-weight:700;color:var(--primary);"> 系统证明</h4>
+        <p class="landing-tencent" style="font-size:0.75rem;">core/exporters/app 三层分离 · DI · 可测试</p>
+        <p class="landing-netease" style="font-size:0.75rem;display:none;">种子管理+调色板+提示词工程=风格一致</p>
       </div>
     </div>
 
-    <!-- CTA -->
-    <div class="mt-8 anim-in flex flex-wrap justify-center gap-4" style="animation-delay:0.48s;">
-      <a href="#project-assetcraft" class="btn-primary"> 探索完整项目详情</a>
-      <a href="https://github.com/5bqf/AssetCraft-Studio" target="_blank" class="btn-secondary" style="background:transparent;border:2px solid var(--border);color:var(--text);padding:0.75rem 2rem;border-radius:50px;font-weight:700;text-decoration:none;transition:all 0.2s;"> GitHub 仓库</a>
+    <div class="text-center mt-6">
+      <a href="#assetcraft-detail" class="btn-primary" style="display:inline-block;"> 进入完整 STAR 详情 →</a>
     </div>
-  </div>
-
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs tracking-[0.12em] animate-pulse" style="color:var(--text-muted);">↓ 向下探索</div>
-
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs tracking-[0.12em]">
-    <a href="#project-assetcraft" style="color:var(--primary);font-weight:700;text-decoration:none;">↓ 查看完整项目详情（含双视角STAR解析）</a>
   </div>
 </section>
 
+<!-- ★ 前导页视角切换 (受管理员锁定控制) ★ -->
+<script>
+(function() {
+  var saved = localStorage.getItem('view-perspective') || 'tencent';
+  showLandingView(saved);
+
+  window.landingSwitch = function(view) {
+    if (window.PORTFOLIO_CONFIG.lockView) {
+      alert('当前视角已锁定为 ' + (window.PORTFOLIO_CONFIG.targetCompany === 'tencent' ? '腾讯' : '网易') + ' 视角，访客无法切换。');
+      return;
+    }
+    localStorage.setItem('view-perspective', view);
+    showLandingView(view);
+    if (window.switchDetailView) window.switchDetailView(view);
+  };
+
+  function showLandingView(view) {
+    var isTencent = view === 'tencent';
+    var lbT = document.getElementById('lbTencent');
+    var lbN = document.getElementById('lbNetEase');
+    if (lbT) { lbT.style.opacity = isTencent ? '1' : '0.5'; lbT.style.transform = isTencent ? 'scale(1.05)' : 'scale(1)'; }
+    if (lbN) { lbN.style.opacity = isTencent ? '0.5' : '1'; lbN.style.transform = isTencent ? 'scale(1)' : 'scale(1.05)'; }
+
+    var tagline = document.getElementById('landingTagline');
+    if (tagline) {
+      tagline.textContent = isTencent
+        ? '"48小时单人AI协同交付，3引擎原生导出——证明AI不是辅助，是新的开发范式。"'
+        : '"我理解游戏开发者需要什么——不是会生图的AI，而是能直接导入引擎的资产管线。"';
+    }
+
+    document.querySelectorAll('.landing-tencent').forEach(function(el) { el.style.display = isTencent ? '' : 'none'; });
+    document.querySelectorAll('.landing-netease').forEach(function(el) { el.style.display = isTencent ? 'none' : ''; });
+  }
+
+  // 应用管理员默认配置
+  if (window.PORTFOLIO_CONFIG.targetCompany !== 'auto') {
+    showLandingView(window.PORTFOLIO_CONFIG.targetCompany);
+  }
+})();
+</script>
 
 <!-- ============================================================
      ASSETCRAFT STUDIO 动态视角详情页 (Phase 2)
@@ -647,7 +403,7 @@ if (!adminCfg.defaultView) { adminCfg.defaultView = saved || 'tencent'; saveAdmi
 }
 </style>
 
-<section id="project-assetcraft" class="py-[var(--section-gap)] px-6" style="background:var(--bg);">
+<section id="assetcraft-detail" class="py-[var(--section-gap)] px-6" style="background:var(--bg);">
   <!-- ★ 固定视角切换条 ★ -->
   <div class="perspective-bar" id="perspectiveBar">
     <span style="font-weight:700;font-size:0.85rem;color:var(--text);">AssetCraft Studio · 视角切换</span>
@@ -1275,5 +1031,167 @@ PixelForge AI (主项目 — 5 Tab)          AssetCraft Studio (补充工具 —
      外部脚本
      ============================================================ -->
 <script src="script.js"></script>
+
+<!-- ============================================================
+     ★ 管理员控制面板 (Ctrl+Shift+A 打开)
+     ============================================================ -->
+<style>
+/* ── 管理员面板 ── */
+#adminPanel {
+  position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+  width: 340px; max-height: 80vh; overflow-y: auto;
+  background: #1a1a2e; color: #e0e0e0; border-radius: 16px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.5); font-size: 0.82rem;
+  display: none; padding: 1.2rem;
+}
+#adminPanel.show { display: block; }
+#adminPanel h3 { font-size: 1rem; margin: 0 0 0.8rem; color: #7c8aff; display: flex; justify-content: space-between; align-items: center; }
+#adminPanel label { display: block; font-size: 0.75rem; margin: 0.6rem 0 0.2rem; color: #aaa; }
+#adminPanel select, #adminPanel input { width: 100%; padding: 0.4rem 0.6rem; border-radius: 8px; border: 1px solid #444; background: #2a2a3e; color: #fff; font-size: 0.8rem; }
+#adminPanel button { padding: 0.4rem 1rem; border-radius: 8px; border: none; cursor: pointer; font-size: 0.8rem; font-weight: 700; margin: 0.3rem; }
+.btn-save { background: #0052D9; color: #fff; }
+.btn-reset { background: #444; color: #fff; }
+.btn-close { background: none; color: #aaa; font-size: 1.2rem; cursor: pointer; border: none; }
+#adminToggle { position: fixed; bottom: 20px; right: 20px; z-index: 9998; width: 36px; height: 36px; border-radius: 50%; background: #1a1a2e; color: #7c8aff; border: 1px solid #333; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; margin: 0.6rem 0; }
+.stat-item { background: #2a2a3e; padding: 0.5rem; border-radius: 8px; text-align: center; }
+.stat-item .val { font-size: 1.1rem; font-weight: 800; color: #7c8aff; }
+.stat-item .lbl { font-size: 0.65rem; color: #888; }
+
+/* ── 移动端适配 ── */
+@media (max-width: 768px) {
+  #adminPanel { width: calc(100vw - 2rem); right: 1rem; bottom: 60px; }
+  .proof-cards { grid-template-columns: 1fr !important; }
+}
+</style>
+
+<!-- 管理员入口按钮 -->
+<button id="adminToggle" onclick="toggleAdmin()" title="管理员面板 (Ctrl+Shift+A)"></button>
+
+<!-- 管理员面板 -->
+<div id="adminPanel">
+  <h3> 作品集控制面板 <button class="btn-close" onclick="toggleAdmin()">×</button></h3>
+
+  <label>目标公司 (默认视角)</label>
+  <select id="cfgCompany" onchange="saveConfig()">
+    <option value="auto">自动 (访客上次选择)</option>
+    <option value="tencent">腾讯 — AI原生工程师</option>
+    <option value="netease">网易 — 游戏客户端开发</option>
+  </select>
+
+  <label>视角锁定</label>
+  <select id="cfgLock" onchange="saveConfig()">
+    <option value="false">未锁定 (访客可切换)</option>
+    <option value="true">已锁定 (访客不可切换)</option>
+  </select>
+
+  <label>管理员密码</label>
+  <input type="password" id="cfgPassword" placeholder="修改密码..." onchange="saveConfig()">
+
+  <div class="stats-grid" style="margin-top:0.8rem;">
+    <div class="stat-item"><div class="val" id="statTotal">0</div><div class="lbl">总访问</div></div>
+    <div class="stat-item"><div class="val" id="statToday">0</div><div class="lbl">今日</div></div>
+    <div class="stat-item"><div class="val" id="statTencent">0</div><div class="lbl">腾讯视角</div></div>
+    <div class="stat-item"><div class="val" id="statNetEase">0</div><div class="lbl">网易视角</div></div>
+  </div>
+
+  <div style="text-align:center;margin-top:0.8rem;">
+    <button class="btn-save" onclick="saveConfig()"> 保存配置</button>
+    <button class="btn-reset" onclick="resetStats()"> 重置统计</button>
+  </div>
+
+  <p style="font-size:0.65rem;color:#666;margin-top:0.6rem;text-align:center;">
+    快捷键: Ctrl+Shift+A · 配置存于 localStorage
+  </p>
+</div>
+
+<script>
+// ── 管理员面板逻辑 ──
+(function() {
+  var panel = document.getElementById('adminPanel');
+  var toggle = document.getElementById('adminToggle');
+  var cfg = window.PORTFOLIO_CONFIG;
+  var pw = localStorage.getItem('_admin_pw') || cfg.adminPassword;
+
+  // 加载配置
+  try {
+    var savedCfg = JSON.parse(localStorage.getItem('_portfolio_cfg') || '{}');
+    if (savedCfg.targetCompany) cfg.targetCompany = savedCfg.targetCompany;
+    if (savedCfg.lockView !== undefined) cfg.lockView = savedCfg.lockView;
+    if (savedCfg.adminPassword) pw = savedCfg.adminPassword;
+  } catch(e) {}
+
+  // 初始化 UI
+  document.getElementById('cfgCompany').value = cfg.targetCompany;
+  document.getElementById('cfgLock').value = String(cfg.lockView);
+  document.getElementById('cfgPassword').value = pw;
+
+  // 加载统计
+  updateStats();
+
+  // 快捷键
+  document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.shiftKey && e.key === 'A') { e.preventDefault(); toggleAdmin(); }
+  });
+
+  // URL 参数: ?admin=true 打开面板
+  if (new URL(window.location).searchParams.get('admin') === 'true') {
+    panel.classList.add('show'); toggle.style.display = 'none';
+  }
+
+  window.toggleAdmin = function() {
+    var show = !panel.classList.contains('show');
+    panel.classList.toggle('show');
+    toggle.style.display = show ? 'none' : '';
+    if (!show) { saveConfig(); updateStats(); }
+  };
+
+  window.saveConfig = function() {
+    cfg.targetCompany = document.getElementById('cfgCompany').value;
+    cfg.lockView = document.getElementById('cfgLock').value === 'true';
+    var newPw = document.getElementById('cfgPassword').value;
+    if (newPw && newPw !== pw) { pw = newPw; cfg.adminPassword = pw; localStorage.setItem('_admin_pw', pw); }
+
+    localStorage.setItem('_portfolio_cfg', JSON.stringify({
+      targetCompany: cfg.targetCompany,
+      lockView: cfg.lockView,
+      adminPassword: pw,
+    }));
+
+    // 应用默认视角
+    if (cfg.targetCompany !== 'auto' && window.landingSwitch) {
+      window.landingSwitch(cfg.targetCompany);
+    }
+
+    alert('配置已保存');
+  };
+
+  window.resetStats = function() {
+    if (confirm('确定重置所有访问统计？')) {
+      localStorage.setItem('_visits', JSON.stringify({total:0,tencent:0,netease:0,last:'',history:[]}));
+      updateStats();
+    }
+  };
+
+  function updateStats() {
+    var stats = JSON.parse(localStorage.getItem('_visits') || '{}');
+    document.getElementById('statTotal').textContent = stats.total || 0;
+    var today = (stats.history || []).slice(-1)[0];
+    document.getElementById('statToday').textContent = today ? today.count : 0;
+    document.getElementById('statTencent').textContent = stats.tencent || 0;
+    document.getElementById('statNetEase').textContent = stats.netease || 0;
+  }
+
+  // 在视角切换时记录统计
+  var origSwitch = window.landingSwitch;
+  window.landingSwitch = function(view) {
+    if (origSwitch) origSwitch(view);
+    var stats = JSON.parse(localStorage.getItem('_visits') || '{}');
+    stats[view] = (stats[view] || 0) + 1;
+    localStorage.setItem('_visits', JSON.stringify(stats));
+  };
+})();
+</script>
+
 </body>
 </html>
