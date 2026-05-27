@@ -370,6 +370,28 @@ window.PORTFOLIO_CONFIG = {
   font-weight: 700;
 }
 
+/* ── 截图占位容器 ── */
+.screenshot-placeholder {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border: 1px dashed rgba(255,255,255,0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  margin-bottom: 0.8rem;
+  position: relative;
+  overflow: hidden;
+}
+.screenshot-placeholder .screenshot-label {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 1rem;
+}
+.screenshot-placeholder.tall { min-height: 180px; }
+
 /* ── 证据链接 ── */
 .evidence-link {
   display: inline-flex;
@@ -477,7 +499,11 @@ PixelForge AI (主项目 — 5 Tab)          AssetCraft Studio (补充工具 —
       <div class="star-grid mb-10">
         <!-- S: Situation -->
         <div class="star-card">
-          <div style="text-align:center;font-size:3rem;margin-bottom:0.5rem;opacity:0.6;">🏁</div>
+          <a href="https://github.com/5bqf/AssetCraft-Studio/commit/25d4a18" target="_blank" style="text-decoration:none;">
+            <div class="screenshot-placeholder">
+              <div class="screenshot-label">📸 牛七云AI训练营题目二 · 48小时赛制截图</div>
+            </div>
+          </a>
           <h4><span class="star-tag" style="background:var(--tencent-blue-light);color:var(--tencent-blue);">S</span> 情境 Situation</h4>
           <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
             牛七云AI实习训练营题目二"2D游戏素材生成"，要求48小时内完成。传统做法需要前后端分离、手动集成SDK、编写大量样板代码——但我选择了一条更激进的路线：
@@ -488,7 +514,11 @@ PixelForge AI (主项目 — 5 Tab)          AssetCraft Studio (补充工具 —
 
         <!-- T: Task -->
         <div class="star-card">
-          <div style="text-align:center;font-size:3rem;margin-bottom:0.5rem;opacity:0.6;">🎯</div>
+          <a href="https://github.com/5bqf/AssetCraft-Studio/pulls" target="_blank" style="text-decoration:none;">
+            <div class="screenshot-placeholder">
+              <div class="screenshot-label">📸 PR 列表 · feature-branch 工作流截图</div>
+            </div>
+          </a>
           <h4><span class="star-tag" style="background:var(--tencent-blue-light);color:var(--tencent-blue);">T</span> 任务 Task</h4>
           <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
             设计并实现一个<strong>模块化、可测试、可部署</strong>的2D素材生成平台：
@@ -500,7 +530,18 @@ PixelForge AI (主项目 — 5 Tab)          AssetCraft Studio (补充工具 —
 
         <!-- A: Action -->
         <div class="star-card">
-          <div style="text-align:center;font-size:3rem;margin-bottom:0.5rem;opacity:0.6;">🏗️</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.8rem;">
+            <a href="https://github.com/5bqf/AssetCraft-Studio/commits/main" target="_blank" style="text-decoration:none;">
+              <div class="screenshot-placeholder tall">
+                <div class="screenshot-label">📸 Commit 时间线图谱<br><small style="opacity:0.5;">30+ 原子化提交</small></div>
+              </div>
+            </a>
+            <a href="https://github.com/5bqf/AssetCraft-Studio/blob/main/pixelforge-ai/tests/" target="_blank" style="text-decoration:none;">
+              <div class="screenshot-placeholder tall">
+                <div class="screenshot-label">📸 24 项 pytest 测试代码<br><small style="opacity:0.5;">test_core + test_exporters</small></div>
+              </div>
+            </a>
+          </div>
           <h4><span class="star-tag" style="background:var(--tencent-blue-light);color:var(--tencent-blue);">A</span> 行动 Action</h4>
           <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
             采用<strong>分层模块化架构</strong> + <strong>AI驱动的原子化提交策略</strong>：
@@ -517,7 +558,11 @@ PixelForge AI (主项目 — 5 Tab)          AssetCraft Studio (补充工具 —
 
         <!-- R: Result -->
         <div class="star-card">
-          <div style="text-align:center;font-size:3rem;margin-bottom:0.5rem;opacity:0.6;">🏆</div>
+          <a href="https://b23.tv/3jsCy5s" target="_blank" style="text-decoration:none;">
+            <div class="screenshot-placeholder">
+              <div class="screenshot-label">📸 PixelForge AI · 5 Tab 完整界面截图</div>
+            </div>
+          </a>
           <h4><span class="star-tag" style="background:var(--tencent-blue-light);color:var(--tencent-blue);">R</span> 成果 Result</h4>
           <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
             48小时单人交付<strong>完整生产级系统</strong>：
@@ -541,7 +586,11 @@ PixelForge AI (主项目 — 5 Tab)          AssetCraft Studio (补充工具 —
 
       <div class="star-grid mb-10">
         <div class="star-card">
-          <div style="text-align:center;font-size:3rem;margin-bottom:0.5rem;opacity:0.6;">⏱️</div>
+          <a href="https://github.com/5bqf/AssetCraft-Studio" target="_blank" style="text-decoration:none;">
+            <div class="screenshot-placeholder">
+              <div class="screenshot-label">📸 传统 2D 游戏素材工作流痛点 · 2天→10分钟</div>
+            </div>
+          </a>
           <h4><span class="star-tag" style="background:var(--netease-red-light);color:var(--netease-red);">S</span> 情境 Situation</h4>
           <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
             2D游戏开发中，美术素材是最大的效率瓶颈。找素材→调风格→切图→导入引擎→配置参数，
@@ -549,7 +598,11 @@ PixelForge AI (主项目 — 5 Tab)          AssetCraft Studio (补充工具 —
           </p>
         </div>
         <div class="star-card">
-          <div style="text-align:center;font-size:3rem;margin-bottom:0.5rem;opacity:0.6;">🎮</div>
+          <a href="https://github.com/5bqf/AssetCraft-Studio/tree/main/pixelforge-ai/exporters" target="_blank" style="text-decoration:none;">
+            <div class="screenshot-placeholder">
+              <div class="screenshot-label">📸 5 大游戏素材品类 · 6 种风格模板界面截图</div>
+            </div>
+          </a>
           <h4><span class="star-tag" style="background:var(--netease-red-light);color:var(--netease-red);">T</span> 任务 Task</h4>
           <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
             构建一个<strong>覆盖完整游戏素材品类的生成工具</strong>：
@@ -559,7 +612,18 @@ PixelForge AI (主项目 — 5 Tab)          AssetCraft Studio (补充工具 —
           <a href="https://github.com/5bqf/AssetCraft-Studio/tree/main/pixelforge-ai/exporters" target="_blank" class="evidence-link gh"> 导出器源码</a>
         </div>
         <div class="star-card">
-          <div style="text-align:center;font-size:3rem;margin-bottom:0.5rem;opacity:0.6;">🔧</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.8rem;">
+            <a href="https://github.com/5bqf/AssetCraft-Studio/blob/main/pixelforge-ai/core/style_manager.py" target="_blank" style="text-decoration:none;">
+              <div class="screenshot-placeholder tall">
+                <div class="screenshot-label">📸 StyleManager 代码<br><small style="opacity:0.5;">种子管理 · 风格一致性</small></div>
+              </div>
+            </a>
+            <a href="https://github.com/5bqf/AssetCraft-Studio/blob/main/pixelforge-ai/core/color_palette.py" target="_blank" style="text-decoration:none;">
+              <div class="screenshot-placeholder tall">
+                <div class="screenshot-label">📸 ColorPalette 代码<br><small style="opacity:0.5;">K-means · 色板提取</small></div>
+              </div>
+            </a>
+          </div>
           <h4><span class="star-tag" style="background:var(--netease-red-light);color:var(--netease-red);">A</span> 行动 Action</h4>
           <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
             深度逆向分析三个引擎的资源格式，<strong>自主实现原生格式导出</strong>：
@@ -573,7 +637,11 @@ PixelForge AI (主项目 — 5 Tab)          AssetCraft Studio (补充工具 —
           <a href="https://github.com/5bqf/AssetCraft-Studio/blob/main/pixelforge-ai/core/color_palette.py" target="_blank" class="evidence-link gh"> ColorPalette</a>
         </div>
         <div class="star-card">
-          <div style="text-align:center;font-size:3rem;margin-bottom:0.5rem;opacity:0.6;">⚡</div>
+          <a href="https://b23.tv/3jsCy5s" target="_blank" style="text-decoration:none;">
+            <div class="screenshot-placeholder">
+              <div class="screenshot-label">📸 批量导出 · 引擎导入效果 · 视频 1:05 截图</div>
+            </div>
+          </a>
           <h4><span class="star-tag" style="background:var(--netease-red-light);color:var(--netease-red);">R</span> 成果 Result</h4>
           <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
             效率提升<strong>从2天→10分钟</strong>。覆盖5大游戏素材品类，支持3大引擎原生导出。
