@@ -390,6 +390,322 @@ tailwind.config = {
 </section>
 
 <!-- ============================================================
+     ASSETCRAFT STUDIO 动态视角详情页 (Phase 2)
+     ============================================================ -->
+<style>
+/* ── 视角详情页样式 ── */
+.perspective-bar {
+  position: sticky;
+  top: 60px;
+  z-index: 40;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  backdrop-filter: blur(12px);
+}
+.perspective-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.25s;
+  background: transparent;
+}
+.perspective-btn.tencent-active {
+  background: var(--tencent-blue); color: #fff; border-color: var(--tencent-blue);
+}
+.perspective-btn.net-ease-active {
+  background: var(--netease-red); color: #fff; border-color: var(--netease-red);
+}
+.perspective-btn:not(.tencent-active):not(.net-ease-active) {
+  border-color: var(--border); color: var(--text-muted);
+}
+
+/* ── 视角内容层 ── */
+.view-layer { display: none; }
+.view-layer.active { display: block; }
+
+/* ── STAR 框架 ── */
+.star-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.star-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+.star-card h4 {
+  font-size: 0.85rem; font-weight: 700; margin: 0 0 0.75rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.star-card .star-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* ── 证据链接 ── */
+.evidence-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  margin: 0.25rem;
+  transition: all 0.15s;
+}
+.evidence-link.gh { background: #f0f0f0; color: #333; }
+.evidence-link.demo { background: var(--primary-soft); color: var(--primary-deep); }
+.evidence-link:hover { transform: translateY(-1px); }
+
+/* ── 架构图 ── */
+.arch-diagram {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.82rem;
+  line-height: 1.8;
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .star-grid { grid-template-columns: 1fr; }
+  .perspective-bar { top: 50px; gap: 0.5rem; }
+  .perspective-btn { padding: 0.4rem 0.8rem; font-size: 0.75rem; }
+}
+</style>
+
+<section id="project-assetcraft" class="py-[var(--section-gap)] px-6" style="background:var(--bg);">
+  <!-- ★ 固定视角切换条 ★ -->
+  <div class="perspective-bar" id="perspectiveBar">
+    <span style="font-weight:700;font-size:0.85rem;color:var(--text);">AssetCraft Studio · 视角切换</span>
+    <button class="perspective-btn tencent-active" id="pBtnTencent" onclick="switchDetailView('tencent')"> 腾讯 · AI原生工程师</button>
+    <button class="perspective-btn" id="pBtnNetEase" onclick="switchDetailView('netease')"> 网易 · 游戏客户端开发</button>
+    <a href="#projects" style="font-size:0.78rem;color:var(--text-muted);margin-left:1rem;">← 返回</a>
+  </div>
+
+  <div class="mx-auto mt-8" style="max-width:var(--max-width);">
+    <!-- ====== 基础事实层 (不变) ====== -->
+    <div class="text-center mb-8">
+      <div class="section-badge mx-auto">FLAGSHIP PROJECT · 牛七云AI训练营优胜</div>
+      <h2 class="section-title">AssetCraft Studio</h2>
+      <p class="section-subtitle">48小时 · 1人 · AI协同 · 双项目架构 · 24项自动化测试</p>
+      <div class="flex flex-wrap justify-center gap-3 mt-4 text-xs font-mono">
+        <span style="background:var(--card);padding:0.3rem 0.7rem;border-radius:20px;"> Python</span>
+        <span style="background:var(--card);padding:0.3rem 0.7rem;border-radius:20px;"> Gradio 6</span>
+        <span style="background:var(--card);padding:0.3rem 0.7rem;border-radius:20px;"> SiliconFlow API</span>
+        <span style="background:var(--card);padding:0.3rem 0.7rem;border-radius:20px;"> Qwen-Image</span>
+        <span style="background:var(--card);padding:0.3rem 0.7rem;border-radius:20px;"> Pytest</span>
+        <span style="background:var(--card);padding:0.3rem 0.7rem;border-radius:20px;"> Docker</span>
+        <span style="background:var(--card);padding:0.3rem 0.7rem;border-radius:20px;"> Unity/Godot/Cocos</span>
+      </div>
+    </div>
+
+    <!-- ====== 架构图 ====== -->
+    <div class="arch-diagram mb-10 anim-in">
+      <div style="font-weight:700;margin-bottom:1rem;color:var(--primary);"> 双项目架构可视化</div>
+      <pre style="margin:0;white-space:pre;color:var(--text-secondary);">
+PixelForge AI (主项目 — 5 Tab)          AssetCraft Studio (补充工具 — 设计协调)
+┌────────────────────────────┐           ┌──────────────────────────┐
+│  app.py  ←── Gradio UI ──→ │           │  app.py  ←── Gradio UI ──→│
+│  ┌──────────────────────┐  │           │  文生图 | 图生图 | 调色板 │
+│  │ core/                │  │           │  批量导出 (@1x + @2x)     │
+│  │  generator.py        │──│── API ───│  modules/                 │
+│  │  prompt_engine.py    │  │           │  generator.py / palette   │
+│  │  style_manager.py    │  │           │  style_templates.py       │
+│  │  animation.py        │  │           │  exporter.py              │
+│  │  tileset.py          │  │           └──────────────────────────┘
+│  │  color_palette.py    │  │
+│  │  cache.py            │  │           共享: SiliconFlow API / .env
+│  ├──────────────────────┤  │
+│  │ exporters/           │  │
+│  │  unity_exporter.py   │──│──→  .meta + GUID
+│  │  godot_exporter.py   │──│──→  .tres + .tscn
+│  │  cocos_exporter.py   │──│──→  .plist + sprite sheet
+│  └──────────────────────┘  │
+│  tests/ — 24项 pytest       │
+└────────────────────────────┘</pre>
+      <div style="margin-top:1rem;font-size:0.75rem;color:var(--text-muted);">
+        证据: <a href="https://github.com/5bqf/AssetCraft-Studio/commits/main" target="_blank" class="evidence-link gh">Git 提交历史</a>
+      </div>
+    </div>
+
+    <!-- ====== STAR 框架 — 腾讯视角 ====== -->
+    <div class="view-layer active" id="viewTencent">
+      <div class="text-center mb-6">
+        <span style="display:inline-block;background:var(--tencent-blue);color:#fff;padding:0.3rem 1rem;border-radius:20px;font-weight:700;font-size:0.8rem;"> 腾讯视角 · AI原生工程师</span>
+        <p class="mt-2 text-sm" style="color:var(--tencent-blue);font-weight:600;">
+          "如何用AI重新定义2D游戏资产的生产关系"
+        </p>
+      </div>
+
+      <div class="star-grid mb-10">
+        <!-- S: Situation -->
+        <div class="star-card">
+          <h4><span class="star-tag" style="background:var(--tencent-blue-light);color:var(--tencent-blue);">S</span> 情境 Situation</h4>
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
+            牛七云AI实习训练营题目二"2D游戏素材生成"，要求48小时内完成。传统做法需要前后端分离、手动集成SDK、编写大量样板代码——但我选择了一条更激进的路线：
+            <strong>全程使用Claude Code进行AI协同开发</strong>，一人完成全流程。
+          </p>
+          <a href="https://github.com/5bqf/AssetCraft-Studio/commit/25d4a18" target="_blank" class="evidence-link gh"> 初始提交</a>
+        </div>
+
+        <!-- T: Task -->
+        <div class="star-card">
+          <h4><span class="star-tag" style="background:var(--tencent-blue-light);color:var(--tencent-blue);">T</span> 任务 Task</h4>
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
+            设计并实现一个<strong>模块化、可测试、可部署</strong>的2D素材生成平台：
+            文本输入→风格控制→批量生成→引擎原生格式导出。
+            关键约束：评委要求"主分支时刻可运行"、"PR粒度精细"、"commit时间均匀分布"。
+          </p>
+          <a href="https://github.com/5bqf/AssetCraft-Studio/pulls" target="_blank" class="evidence-link gh"> PR 列表</a>
+        </div>
+
+        <!-- A: Action -->
+        <div class="star-card">
+          <h4><span class="star-tag" style="background:var(--tencent-blue-light);color:var(--tencent-blue);">A</span> 行动 Action</h4>
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
+            采用<strong>分层模块化架构</strong> + <strong>AI驱动的原子化提交策略</strong>：
+            1. core/层封装所有业务逻辑（生成器/提示词引擎/风格管理器/缓存）
+            2. exporters/层为三个引擎独立实现导出器（策略模式）
+            3. app.py作为单一Web入口（Gradio Blocks）
+            4. tests/层覆盖所有核心模块（24项pytest）
+            <br>
+            每个功能独立feature分支，<code>--no-ff</code> merge保持历史清晰。
+          </p>
+          <a href="https://github.com/5bqf/AssetCraft-Studio/commits/main" target="_blank" class="evidence-link gh"> Commit图谱</a>
+          <a href="https://github.com/5bqf/AssetCraft-Studio/blob/main/pixelforge-ai/tests/" target="_blank" class="evidence-link demo"> 24项测试</a>
+        </div>
+
+        <!-- R: Result -->
+        <div class="star-card">
+          <h4><span class="star-tag" style="background:var(--tencent-blue-light);color:var(--tencent-blue);">R</span> 成果 Result</h4>
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
+            48小时单人交付<strong>完整生产级系统</strong>：
+            18个源文件 / 5个Web功能Tab / 3引擎导出 / 24项自动化测试。
+            代码架构清晰分层，可直接扩展新引擎、新模型。
+            Docker一键部署，systemd守护进程。
+          </p>
+          <a href="https://b23.tv/3jsCy5s" target="_blank" class="evidence-link demo"> B站演示视频</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== STAR 框架 — 网易视角 ====== -->
+    <div class="view-layer" id="viewNetEase">
+      <div class="text-center mb-6">
+        <span style="display:inline-block;background:var(--netease-red);color:#fff;padding:0.3rem 1rem;border-radius:20px;font-weight:700;font-size:0.8rem;">🔴 网易视角 · 游戏客户端开发</span>
+        <p class="mt-2 text-sm" style="color:var(--netease-red);font-weight:600;">
+          "让每个独立开发者都能拥有自己的美术资产管线"
+        </p>
+      </div>
+
+      <div class="star-grid mb-10">
+        <div class="star-card">
+          <h4><span class="star-tag" style="background:var(--netease-red-light);color:var(--netease-red);">S</span> 情境 Situation</h4>
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
+            2D游戏开发中，美术素材是最大的效率瓶颈。找素材→调风格→切图→导入引擎→配置参数，
+            一套5个图标的工作流通常需要<strong>2天时间</strong>。对于独立开发者和小团队，这是不可承受的成本。
+          </p>
+        </div>
+        <div class="star-card">
+          <h4><span class="star-tag" style="background:var(--netease-red-light);color:var(--netease-red);">T</span> 任务 Task</h4>
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
+            构建一个<strong>覆盖完整游戏素材品类的生成工具</strong>：
+            精灵/瓦片/UI/特效/动画 — 5大品类，6种风格，10种提示词模板。
+            输出格式必须无缝对接<strong>Unity/Godot/Cocos Creator</strong>三大主流引擎。
+          </p>
+          <a href="https://github.com/5bqf/AssetCraft-Studio/tree/main/pixelforge-ai/exporters" target="_blank" class="evidence-link gh"> 导出器源码</a>
+        </div>
+        <div class="star-card">
+          <h4><span class="star-tag" style="background:var(--netease-red-light);color:var(--netease-red);">A</span> 行动 Action</h4>
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
+            深度逆向分析三个引擎的资源格式，<strong>自主实现原生格式导出</strong>：
+            1. Unity: <code>.meta</code> GUID + TextureImporter配置，filterMode=Point保持像素清晰
+            2. Godot: <code>.tscn</code> Sprite2D节点 + <code>.tres</code> SpriteFrames动画资源
+            3. Cocos: <code>.plist</code> 精灵表 + 帧数据，Cocos Creator 3.x兼容
+            <br>
+            同时实现<strong>风格一致性控制系统</strong>：种子管理→调色板提取→提示词工程，确保系列素材视觉统一。
+          </p>
+          <a href="https://github.com/5bqf/AssetCraft-Studio/blob/main/pixelforge-ai/core/style_manager.py" target="_blank" class="evidence-link gh"> StyleManager</a>
+          <a href="https://github.com/5bqf/AssetCraft-Studio/blob/main/pixelforge-ai/core/color_palette.py" target="_blank" class="evidence-link gh"> ColorPalette</a>
+        </div>
+        <div class="star-card">
+          <h4><span class="star-tag" style="background:var(--netease-red-light);color:var(--netease-red);">R</span> 成果 Result</h4>
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
+            效率提升<strong>从2天→10分钟</strong>。覆盖5大游戏素材品类，支持3大引擎原生导出。
+            批量生成+风格一致性保证+一键打包下载，完整的2D游戏美术资产生产管线。
+          </p>
+          <a href="https://b23.tv/3jsCy5s" target="_blank" class="evidence-link demo"> 视频演示 (1:05 批量导出)</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== 证据索引 ====== -->
+    <div class="text-center mt-10 pt-8" style="border-top:1px solid var(--border);">
+      <h3 class="font-bold mb-4" style="font-size:1.1rem;"> 证据快速索引</h3>
+      <div class="flex flex-wrap justify-center gap-2 text-xs">
+        <a href="https://github.com/5bqf/AssetCraft-Studio" target="_blank" class="evidence-link gh"> 仓库首页</a>
+        <a href="https://github.com/5bqf/AssetCraft-Studio/commits/main" target="_blank" class="evidence-link gh"> 提交历史 (30+)</a>
+        <a href="https://github.com/5bqf/AssetCraft-Studio/blob/main/pixelforge-ai/core/generator.py" target="_blank" class="evidence-link gh"> 生成引擎</a>
+        <a href="https://github.com/5bqf/AssetCraft-Studio/blob/main/pixelforge-ai/exporters/" target="_blank" class="evidence-link gh"> 三引擎导出</a>
+        <a href="https://github.com/5bqf/AssetCraft-Studio/blob/main/pixelforge-ai/tests/" target="_blank" class="evidence-link demo"> 24项测试</a>
+        <a href="https://b23.tv/3jsCy5s" target="_blank" class="evidence-link demo"> 演示视频</a>
+        <a href="https://github.com/5bqf/AssetCraft-Studio/blob/main/DEMO_SCRIPT.md" target="_blank" class="evidence-link demo"> 视频脚本</a>
+        <a href="https://github.com/5bqf/AssetCraft-Studio/blob/main/deploy/aliyun/README.md" target="_blank" class="evidence-link gh"> 部署指南</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ★ 详情页视角切换脚本 ★ -->
+<script>
+(function() {
+  const savedDetail = localStorage.getItem('view-perspective') || 'tencent';
+  applyDetailView(savedDetail);
+
+  window.switchDetailView = function(view) {
+    localStorage.setItem('view-perspective', view);
+    applyDetailView(view);
+  };
+
+  function applyDetailView(view) {
+    const isTencent = view === 'tencent';
+    // 按钮状态
+    const tBtn = document.getElementById('pBtnTencent');
+    const nBtn = document.getElementById('pBtnNetEase');
+    if (tBtn) {
+      tBtn.className = 'perspective-btn ' + (isTencent ? 'tencent-active' : '');
+    }
+    if (nBtn) {
+      nBtn.className = 'perspective-btn ' + (isTencent ? '' : 'net-ease-active');
+    }
+    // 内容层切换
+    const tLayer = document.getElementById('viewTencent');
+    const nLayer = document.getElementById('viewNetEase');
+    if (tLayer) tLayer.classList.toggle('active', isTencent);
+    if (nLayer) nLayer.classList.toggle('active', !isTencent);
+  }
+})();
+</script>
+
+<!-- ============================================================
      项目一：多模态AI交互助手
      ============================================================ -->
 <section id="project-ai" class="py-[var(--section-gap)] px-6" style="background:var(--bg);">
