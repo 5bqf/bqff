@@ -1,0 +1,20 @@
+{
+  "name": "remotion-video",
+  "version": "1.0.0",
+  "description": "漫剧创作系统 - Remotion 视频渲染引擎",
+  "scripts": {
+    "start": "npx remotion studio",
+    "build": "npx remotion render MainScene out/video.mp4",
+    "preview": "npx remotion preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@remotion/bundler": "^4.0.459",
+    "@remotion/cli": "^4.0.459",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "remotion": "^4.0.459"
+  }
+}

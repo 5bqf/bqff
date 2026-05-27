@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三角村 · 三环五境 — 作品集</title>
+<style>
+  /* ============================================================
+     MORANDI 色系变量 — 可在此处自由编辑整体色调
+     ============================================================ */
+  :root {
+    /* 基础色 */
+    --bg-primary:    #EDE8E1;   /* 暖灰米白 — 主背景 */
+    --bg-secondary:  #E3DDD5;   /* 稍深米灰 — 卡片背景 */
+    --bg-tertiary:   #D9D2CA;   /* 中灰褐 — 分隔/边框 */
+    --bg-card-hover: #F0ECE6;   /* 卡片悬停 */
+
+    /* 文字色 */
+    --text-primary:   #4A423B;  /* 深褐灰 — 正文 */
+    --text-secondary: #7A7068;  /* 中灰褐 — 辅助文字 */
+    --text-heading:   #3B332D;  /* 最深褐 — 标题 */
+    --text-light:     #9B9188;  /* 浅灰褐 — 次要标注 */
+
+    /* MORANDI 重点色 */
+    --accent-sage:    #B0B9A7;  /* 鼠尾草绿 — 自然/生态 */
+    --accent-dusty-rose: #C2A8A5; /* 灰玫瑰 — 温暖/人文 */
+    --accent-muted-blue:  #A2ACB8; /* 灰蓝 — 理性/技术 */
+    --accent-warm-ochre:  #C4B292; /* 暖赭 — 木/土元素 */
+    --accent-lavender:    #B8ACB6; /* 灰紫 — 文化点缀 */
+    --accent-terracotta:  #C29682; /* 灰陶 — 亮点 */
+
+    /* 功能色 */
+    --shadow: rgba(74, 66, 59, 0.10);
+    --shadow-lg: rgba(74, 66, 59, 0.16);
+    --border: #D5CFC7;
+
+    /* 排版 */
+    --font-serif: 'Noto Serif SC', '思源宋体 CN', 'Songti SC', serif;
+    --font-sans:  'Noto Sans SC', '思源黑体 CN', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --font-en:     'Cormorant Garamond', 'EB Garamond', 'Georgia', serif;
+
+    /* 间距 */
+    --section-gap: 80px;
+    --card-radius: 6px;
+    --max-width: 1120px;
+  }
+
+  /* ============================================================
+     RESET & BASE
+     ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============================================================
+     TYPOGRAPHY
+     ============================================================ */
+  h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-heading); }
+  h1 { font-size: 3.2rem; font-weight: 900; letter-spacing: 0.08em; line-height: 1.2; }
+  h2 { font-size: 1.75rem; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 32px; display: flex; align-items: center; gap: 14px; }
+  h2::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  h3 { font-size: 1.2rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 12px; }
+  p  { margin-bottom: 14px; }
+  .en { font-family: var(--font-en); font-style: italic; letter-spacing: 0.04em; }
+
+  /* ============================================================
+     LAYOUT
+     ============================================================ */
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 36px; }
+  section { padding: var(--section-gap) 0; }
+  section + section { border-top: 1px solid var(--border); }
+
+  /* ============================================================
+     HERO / COVER
+     ============================================================ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 40%, rgba(176,185,167,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 80% 70%, rgba(194,168,165,0.14) 0%, transparent 70%),
+      var(--bg-primary);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(0deg, var(--bg-primary) 0%, transparent 25%),
+      linear-gradient(180deg, var(--bg-primary) 0%, transparent 15%);
+    pointer-events: none; z-index: 1;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 800px; }
+  .hero-tag {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: var(--accent-muted-blue);
+    border: 1px solid var(--accent-muted-blue);
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: 3.8rem;
+    margin-bottom: 12px;
+    color: var(--text-heading);
+  }
+  .hero h1 span { display: block; font-size: 1.6rem; font-weight: 400; color: var(--text-secondary); letter-spacing: 0.10em; margin-top: 6px; }
+  .hero .subtitle {
+    font-size: 1.05rem; color: var(--text-secondary);
+    letter-spacing: 0.08em; margin-top: 20px;
+  }
+  .hero-line { width: 60px; height: 2px; background: var(--accent-dusty-rose); margin: 28px auto; }
+  .scroll-hint {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    font-size: 0.75rem; letter-spacing: 0.12em; color: var(--text-light); z-index: 2;
+    animation: fadePulse 3s ease-in-out infinite;
+  }
+  @keyframes fadePulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+  /* ============================================================
+     PROJECT OVERVIEW — 项目概况
+     ============================================================ */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .overview-text .lead {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.9;
+    color: var(--text-heading);
+    padding-left: 18px;
+    border-left: 3px solid var(--accent-dusty-rose);
+    margin-bottom: 28px;
+  }
+  .overview-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+    background: var(--bg-secondary);
+    border-radius: var(--card-radius);
+    padding: 24px 28px;
+  }
+  .overview-meta dt { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-light); text-transform: uppercase; }
+  .overview-meta dd { font-family: var(--font-serif); font-size: 0.95rem; color: var(--text-heading); margin-bottom: 8px; }
+
+  /* ============================================================
+     DESIGN CONCEPT — 设计概念
+     ============================================================ */
+  .concept-block {
+    background: var(--bg-secondary);
+    border-radius: var(--card-radius);
+    padding: 36px 40px;
+    margin-bottom: 32px;
+  }
+  .concept-block.quote {
+    background: transparent;
+    border-left: 4px solid var(--accent-dusty-rose);
+    border-radius: 0;
+    padding: 20px 32px;
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 2;
+    color: var(--text-heading);
+  }
+
+  /* ============================================================
+     COLOR PALETTE SHOWCASE
+     ============================================================ */
+  .palette-strip {
+    display: flex;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    height: 80px;
+    margin-bottom: 24px;
+  }
+  .palette-strip div {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    font-family: var(--font-sans);
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  .palette-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 12px;
+  }
+  .palette-info .chip { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; }
+  .palette-info .chip span:first-child {
+    width: 32px; height: 32px; border-radius: 50%;
+    flex-shrink: 0; border: 1px solid var(--border);
+  }
+
+  /* ============================================================
+     COMPARISON TABLE — 对比表
+     ============================================================ */
+  .table-wrap {
+    overflow-x: auto;
+    margin-bottom: 24px;
+    border-radius: var(--card-radius);
+    border: 1px solid var(--border);
+  }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  thead { background: var(--bg-secondary); }
+  th {
+    text-align: left; padding: 14px 18px;
+    font-family: var(--font-serif); font-weight: 700;
+    color: var(--text-heading); letter-spacing: 0.04em;
+    font-size: 0.85rem;
+  }
+  td {
+    padding: 12px 18px;
+    border-top: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: rgba(0,0,0,0.01); }
+
+  /* ============================================================
+     SIX TREES GRID — 六境卡片
+     ============================================================ */
+  .trees-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .tree-card {
+    background: var(--bg-secondary);
+    border-radius: var(--card-radius);
+    padding: 28px;
+    border-top: 4px solid var(--accent-sage);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .tree-card:hover { background: var(--bg-card-hover); }
+  .tree-card.highlight { border-top-color: var(--accent-terracotta); }
+  .tree-card.quiet { border-top-color: var(--accent-lavender); }
+  .tree-card.enter { border-top-color: var(--accent-warm-ochre); }
+  .tree-card.play { border-top-color: var(--accent-dusty-rose); }
+  .tree-card h4 {
+    font-family: var(--font-serif); font-size: 1.1rem;
+    color: var(--text-heading); margin-bottom: 6px;
+  }
+  .tree-card .tag {
+    display: inline-block;
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    padding: 2px 10px; border-radius: 12px;
+    margin-bottom: 12px;
+    background: var(--bg-tertiary); color: var(--text-secondary);
+  }
+  .tree-card ul { list-style: none; font-size: 0.88rem; color: var(--text-secondary); }
+  .tree-card ul li { padding: 3px 0; }
+  .tree-card ul li::before { content: '— '; color: var(--accent-sage); }
+
+  /* ============================================================
+     PAVING GRADIENT
+     ============================================================ */
+  .gradient-bar {
+    display: flex; height: 24px; border-radius: 12px; overflow: hidden; margin-bottom: 24px;
+  }
+  .gradient-bar div { flex: 1; }
+  .gradient-labels {
+    display: flex; justify-content: space-between;
+    font-size: 0.78rem; color: var(--text-light); letter-spacing: 0.04em;
+    margin-bottom: 32px;
+  }
+
+  /* ============================================================
+     FURNITURE CARDS
+     ============================================================ */
+  .furniture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .furniture-card {
+    background: var(--bg-secondary);
+    border-radius: var(--card-radius);
+    padding: 24px;
+    border-left: 3px solid var(--accent-warm-ochre);
+  }
+  .furniture-card h4 { margin-bottom: 8px; }
+  .furniture-card .spec { font-size: 0.82rem; color: var(--text-light); margin-bottom: 8px; }
+  .furniture-card p { font-size: 0.88rem; }
+
+  /* ============================================================
+     CREATIVE PRODUCTS
+     ============================================================ */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+  }
+  .product-card {
+    background: var(--bg-secondary);
+    border-radius: var(--card-radius);
+    padding: 20px;
+    text-align: center;
+  }
+  .product-card .icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .product-card h4 { font-size: 0.95rem; margin-bottom: 6px; }
+  .product-card .detail { font-size: 0.8rem; color: var(--text-light); line-height: 1.5; }
+
+  /* ============================================================
+     BUDGET TABLE
+     ============================================================ */
+  .budget-summary {
+    display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+  }
+  .budget-total {
+    background: var(--bg-secondary);
+    border-radius: var(--card-radius);
+    padding: 24px 32px;
+    text-align: center;
+    flex: 1; min-width: 180px;
+  }
+  .budget-total .amount {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--text-heading);
+    font-weight: 700;
+  }
+  .budget-total .label { font-size: 0.8rem; color: var(--text-light); letter-spacing: 0.08em; }
+
+  /* ============================================================
+     PROMPT BLOCK
+     ============================================================ */
+  .prompt-block {
+    background: var(--bg-secondary);
+    border-radius: var(--card-radius);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+  .prompt-block .lang-tag {
+    display: inline-block;
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    padding: 2px 8px; border-radius: 4px;
+    background: var(--accent-muted-blue);
+    color: #fff; margin-bottom: 10px;
+  }
+  .prompt-block pre {
+    white-space: pre-wrap;
+    font-family: var(--font-sans);
+    color: var(--text-secondary);
+  }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  .site-footer {
+    text-align: center;
+    padding: 48px 0;
+    border-top: 1px solid var(--border);
+    color: var(--text-light);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+  }
+  .site-footer .logo-mark {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--text-heading);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 768px) {
+    :root { --section-gap: 48px; }
+    h1 { font-size: 2.2rem; }
+    .hero h1 { font-size: 2.4rem; }
+    .hero h1 span { font-size: 1.2rem; }
+    .overview-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 20px; }
+    .concept-block { padding: 24px 20px; }
+  }
+
+  /* ============================================================
+     PRINT STYLES
+     ============================================================ */
+  @media print {
+    body { background: #fff; color: #333; }
+    section { padding: 32px 0; page-break-inside: avoid; }
+    .hero { min-height: auto; padding: 40px 0; }
+    .scroll-hint { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">LANDSCAPE ARCHITECTURE · PORTFOLIO</div>
+    <h1>三角 · 邻里汇<span>邻里汇</span></h1>
+    <div class="hero-line"></div>
+    <p class="subtitle">珠海斗门三角村街角微景观设计<br>从兴安广场的「渐变空间」到岭南乡村的「三环五境」</p>
+  </div>
+  <div class="scroll-hint">▼ 向下浏览</div>
+</section>
+
+<!-- ============================================================
+     PROJECT OVERVIEW
+     ============================================================ -->
+<section>
+  <div class="container">
+    <h2>项目概况 <span class="en">Overview</span></h2>
+    <div class="overview-grid">
+      <div class="overview-text">
+        <p class="lead">六棵树，六段渐渐慢下来的时光。窄不是问题，关键是让空间自己"说话"——铺装从硬质透水砖慢慢变成碎石草缝，再变成树皮木屑；家具从路边的一张石凳，慢慢变成树下的棋盘桌，再变成围着树干的一圈卡座。</p>
+        <p>本项目位于珠海市斗门区三角村沿路带状绿地，场地面积约 <strong>300㎡</strong>（长约 26m，进深约 7m），保留 6 棵沿路乔木。设计核心借鉴湖北宜昌兴安广场（HID 翰地景观）的「渐变空间」理念，将其从城市商业语境转译为岭南乡村公共空间——以铺装密度、家具高度、植物郁闭度的三向渐变，取代传统硬质围墙分隔。</p>
+      </div>
+      <dl class="overview-meta">
+        <dt>项目类型</dt><dd>乡村公共空间微景观</dd>
+        <dt>地点</dt><dd>珠海市斗门区三角村</dd>
+        <dt>场地面积</dt><dd>约 160 ㎡</dd>
+        <dt>造价估算</dt><dd>约 3.2–5.3 万元</dd>
+        <dt>设计周期</dt><dd>竞赛方案</dd>
+        <dt>保留树木</dt><dd>6 棵沿路乔木</dd>
+        <dt>参考案例</dt><dd>兴安广场 / HID 翰地景观</dd>
+        <dt>色调体系</dt><dd>MORANDI 莫兰迪</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COLOR PALETTE
+     ============================================================ -->
+<section>
+  <div class="container">
+    <h2>MORANDI 色系 <span class="en">Color Palette</span></h2>
+    <p style="margin-bottom:24px;color:var(--text-secondary);">以下为本作品集的莫兰迪色系设定，所有后续设计表达均基于此套色板。如需调整色调，编辑 CSS <code>:root</code> 区块中的变量值即可自动全局更新。</p>
+
+    <div class="palette-strip">
+      <div style="background:#B0B9A7;">鼠尾草绿</div>
+      <div style="background:#C2A8A5;">灰玫瑰</div>
+      <div style="background:#A2ACB8;">灰蓝</div>
+      <div style="background:#C4B292;">暖赭</div>
+      <div style="background:#B8ACB6;">灰紫</div>
+      <div style="background:#C29682;">灰陶</div>
+    </div>
+    <div class="palette-info">
+      <div class="chip"><span style="background:#B0B9A7;"></span> Sage Green 鼠尾草绿<br><small>#B0B9A7 · 自然/生态</small></div>
+      <div class="chip"><span style="background:#C2A8A5;"></span> Dusty Rose 灰玫瑰<br><small>#C2A8A5 · 温暖/人文</small></div>
+      <div class="chip"><span style="background:#A2ACB8;"></span> Muted Blue 灰蓝<br><small>#A2ACB8 · 理性/技术</small></div>
+      <div class="chip"><span style="background:#C4B292;"></span> Warm Ochre 暖赭<br><small>#C4B292 · 木/土元素</small></div>
+      <div class="chip"><span style="background:#B8ACB6;"></span> Lavender Gray 灰紫<br><small>#B8ACB6 · 文化点缀</small></div>
+      <div class="chip"><span style="background:#C29682;"></span> Dusty Terracotta 灰陶<br><small>#C29682 · 视觉焦点</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DESIGN CONCEPT
+     ============================================================ -->
+<section>
+  <div class="container">
+    <h2>设计概念 <span class="en">Design Concept</span></h2>
+
+    <h3>兴安广场 → 三角村渐变转译</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>渐变维度</th><th>兴安广场（城市版）</th><th>三角村·三环五境（乡村版）</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>铺装渐变</strong></td>
+            <td>市政人行道透水砖 → 渐变拼色铺装 → 木平台 → 室内地面</td>
+            <td>透水砖 → 碎石草缝 → 蚝壳水磨石圆广场 → 树皮木屑</td>
+          </tr>
+          <tr>
+            <td><strong>家具密度渐变</strong></td>
+            <td>沿路散点座椅 → 中段组合卡座+吧台 → 内区围合式卡座</td>
+            <td>路边石凳 → 树下棋盘桌 → 茶寮推车+遮阳伞 → 环抱卡座</td>
+          </tr>
+          <tr>
+            <td><strong>活动强度渐变</strong></td>
+            <td>外圈通过/驻足 → 中圈社交/消费 → 内圈沉浸/停留</td>
+            <td>入口平缓 → 中段社交高峰 → 东端静坐回落（像一个深呼吸）</td>
+          </tr>
+          <tr>
+            <td><strong>色调体系</strong></td>
+            <td>红灰工业色调</td>
+            <td>蚝壳白 + 青砖灰 + 老木褐 + 水色蓝绿 + 疍家土黄 + 莲雾粉</td>
+          </tr>
+          <tr>
+            <td><strong>核心家具</strong></td>
+            <td>咖啡馆固定吧台</td>
+            <td>「三角茶寮」可折叠推车（村民轮值）</td>
+          </tr>
+          <tr>
+            <td><strong>主要客群</strong></td>
+            <td>城市青年</td>
+            <td>老年下棋 / 青年打卡 / 儿童认知 / 路人歇脚，全龄共用</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="concept-block quote">
+      <p>六棵树，六段渐渐慢下来的时光。从西到东，铺装从硬质透水砖慢慢变成碎石草缝，再变成树皮木屑；家具从路边的一张石凳，慢慢变成树下的棋盘桌，再变成围着树干的一圈卡座，最后是一把遮阳伞下的茶寮推车——一个不想走的人，自然会沿着这六棵树走进去、坐下来、聊起来。</p>
+      <p style="margin-bottom:0; color:var(--text-light);">蚝壳白的铺地、青砖灰的矮墙、水蓝色的伞面、莲雾粉的招牌……斗门本土的六种颜色不吵不闹地散落在这条"渐境"里。阿伯在第二棵树下下棋，阿婆在第四棵树下剥花生，年轻人在第五棵树前举着莲雾汁拍照——六棵树，把一段普通的村路边角地，变成了全村最有温度的一排"檐下座"。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SITE ANALYSIS
+     ============================================================ -->
+<section>
+  <div class="container">
+    <h2>场地解读 <span class="en">Site Analysis</span></h2>
+
+    <h3>基本参数</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>参数</th><th>数据</th></tr></thead>
+        <tbody>
+          <tr><td>沿路长度</td><td>约 24–28m</td></tr>
+          <tr><td>最大进深</td><td>约 6–8m</td></tr>
+          <tr><td>形状</td><td>长条形，沿村路线性展开</td></tr>
+          <tr><td>北侧界面</td><td>村路（宽约 4–5m），路对面为民居</td></tr>
+          <tr><td>南侧/内侧</td><td>场地内边界（围墙/农田/空地）</td></tr>
+          <tr><td>保留树木</td><td>6 棵，沿路侧排列，胸径约 15–25cm</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>6 棵树 = 6 个空间锚点</h3>
+    <p>每棵树自带遮荫半径（约 3–5m）、"树下领域感"和视觉焦点属性。设计原则：<strong>不移动任何一棵树</strong>，以每棵树为中心组织一个"微空间"，6 个微空间之间不设硬隔断，而是用铺装纹理和家具密度形成渐变。</p>
+
+    <h3>现状问题 → 设计对策</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>现状问题</th><th>渐变策略</th></tr></thead>
+        <tbody>
+          <tr><td>长条形 → 行人径直路过，不停留</td><td>用铺装纹理的"方向性渐变"（横向条纹→散点→无方向）暗示减速</td></tr>
+          <tr><td>仅 6–8m 进深，做不了大广场</td><td>不做"面状聚集"，做"线状串联"——沿树列形成 6 个口袋空间</td></tr>
+          <tr><td>6 棵树看似均匀，实际间距不等</td><td>中段 2 棵树间距最大处放大为"聚场"，两端收拢为"静角"</td></tr>
+          <tr><td>路边界面生硬（路牙+裸土）</td><td>取消路牙，铺装从路边"渗入"树根区——让道路和绿地之间没有那条线</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SPACE LAYOUT — SIX TREES
+     ============================================================ -->
+<section>
+  <div class="container">
+    <h2>三环五境 · 空间布局 <span class="en">Six Trees · Six Realms</span></h2>
+
+    <h3>三带 × 六境 的渐变网格</h3>
+    <p><strong>纵向（垂直于村路）</strong>：3 条渐变带——Layer A 通行带（透水砖，全公共）→ Layer B 坐憩带（碎石+草缝，半公共）→ Layer C 沉浸带（树皮/木屑，半私密）。三条带之间<strong>没有任何硬质边界</strong>，铺装的"纹理密度"和家具的"坐面高度"是唯一的分界语言。</p>
+    <p><strong>横向（沿村路）</strong>：6 棵树 = 5 个渐境节点，活动强度从西到东呈"深呼吸"曲线：入口平缓 → 中段高峰 → 东端回落。</p>
+
+    <div class="gradient-bar">
+      <div style="background:#A2ACB8;"></div>
+      <div style="background:#B0B9A7;"></div>
+      <div style="background:#C4B292;"></div>
+      <div style="background:#C2A8A5;"></div>
+      <div style="background:#B8ACB6;"></div>
+    </div>
+    <div class="gradient-labels">
+      <span>境一·引 ↑ 入口</span>
+      <span>境二·弈 ↑ 半公共</span>
+      <span>境三·聚 ↑ 核心</span>
+      <span>境四·憩 ↑ 半私密</span>
+      <span>境五·韵 ↑ 静坐</span>
+    </div>
+
+    <div class="trees-grid">
+      <div class="tree-card enter">
+        <h4>境一 · 引</h4>
+        <div class="tag">树 1 · 西端入口</div>
+        <ul>
+          <li>青砖标识矮墙嵌铜字「三角·邻里汇」</li>
+          <li>3 个旧木抬升种植箱（紫苏/香茅/红葱头）</li>
+          <li>村民认养 + 亚克力名牌</li>
+          <li>地面：100% 透水砖</li>
+          <li>活动强度：★★</li>
+        </ul>
+      </div>
+      <div class="tree-card play">
+        <h4>境二 · 弈</h4>
+        <div class="tag">树 2 · 西段</div>
+        <ul>
+          <li>榕荫棋盘桌（花岗岩 + 青砖墩腿）</li>
+          <li>石凳 ×4 + 旧木长凳 ×1</li>
+          <li>桌面激光雕刻象棋棋盘格</li>
+          <li>地面：70% 砖 + 30% 碎石（渐变起点）</li>
+          <li>活动强度：★★★</li>
+        </ul>
+      </div>
+      <div class="tree-card highlight">
+        <h4>境三 · 聚 ★ 核心</h4>
+        <div class="tag">树 3–4 · 中段高潮区</div>
+        <ul>
+          <li>「三角茶寮」折叠推车（蚝壳水磨石台面）</li>
+          <li>咸水歌遮阳伞 ×2（红外感应音频桩）</li>
+          <li>蚝壳水磨石圆形小广场（直径 2.4m）</li>
+          <li>伞面：水蓝→莲雾粉渐变</li>
+          <li>活动强度：★★★★★</li>
+        </ul>
+      </div>
+      <div class="tree-card quiet">
+        <h4>境四 · 憩</h4>
+        <div class="tag">树 5 · 东段</div>
+        <ul>
+          <li>树池环抱卡座（150°弧形，距树干 1.2m+）</li>
+          <li>回收旧木坐面 + 靠背（激光蚀刻歌词）</li>
+          <li>驱蚊植物丛：香茅 + 迷迭香 + 艾草</li>
+          <li>地面：70% 碎石草缝 + 30% 树皮</li>
+          <li>活动强度：★★★</li>
+        </ul>
+      </div>
+      <div class="tree-card">
+        <h4>境五 · 韵</h4>
+        <div class="tag">树 6 · 东端静区</div>
+        <ul>
+          <li>咸水歌木篱（3 根荔枝木柱 + 锈板歌词）</li>
+          <li>风吹锈板与木柱碰撞发出"笃笃"声</li>
+          <li>新植莲雾树 ×1（可生长文化符号）</li>
+          <li>地面：100% 树皮木屑</li>
+          <li>活动强度：★★</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:40px;">空间渐变总表</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>维度</th><th>境一·引</th><th>境二·弈</th><th>境三·聚</th><th>境四·憩</th><th>境五·韵</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>铺装</td><td>100% 透水砖</td><td>70%砖+30%碎石</td><td>50%碎石+20%蚝壳水磨石+30%砖</td><td>70%碎石草缝+30%树皮</td><td>100% 树皮木屑</td></tr>
+          <tr><td>家具密度</td><td>低</td><td>中</td><td>高（核心区）</td><td>中</td><td>低</td></tr>
+          <tr><td>活动强度</td><td>★★</td><td>★★★</td><td>★★★★★</td><td>★★★</td><td>★★</td></tr>
+          <tr><td>公共→私密</td><td>全公共</td><td>半公共</td><td>半公共（核心）</td><td>半私密</td><td>半私密</td></tr>
+          <tr><td>声音氛围</td><td>村路车行声</td><td>棋子落盘声</td><td>聊天声+咸水歌轻唱</td><td>闲聊声+虫鸣</td><td>风吹锈板声+鸟鸣</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAVING GRADIENT SYSTEM
+     ============================================================ -->
+<section>
+  <div class="container">
+    <h2>铺装渐变体系 <span class="en">Paving Gradient</span></h2>
+
+    <p>这是兴安广场最具参考价值的技法——<strong>铺装不换，空间不分</strong>。三种铺装之间不设金属收边条，碎石自然"渗入"砖缝，树皮自然"蔓延"进碎石区。路边与场地之间<strong>不设路牙石</strong>——你还没决定"要不要进去"，就已经进去了。</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>铺装类型</th><th>应用区域</th><th>面积（估）</th><th>占比</th></tr></thead>
+        <tbody>
+          <tr><td>透水混凝土砖（浅灰白仿蚝壳色）</td><td>Layer A 全线 + 境一/境二 Layer B 部分</td><td>约 55㎡</td><td>35%</td></tr>
+          <tr><td>白麻碎石 + 草缝</td><td>Layer B 主体（境二 ~ 境五）</td><td>约 65㎡</td><td>40%</td></tr>
+          <tr><td>蚝壳碎 + 树脂水磨石（精装）</td><td>仅境三中央圆形广场（直径 2.4m）</td><td>约 4.5㎡</td><td>3%</td></tr>
+          <tr><td>树皮/木屑覆盖</td><td>Layer C 全线 + 所有树根保护区</td><td>约 35㎡</td><td>22%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="color:var(--text-light);">蚝壳实际用量：仅 4.5㎡ × 3cm 厚 ≈ 0.14m³，约需蚝壳碎 100–150kg。一个海鲜餐厅约 3–5 天的蚝壳量即可满足。</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     FURNITURE & FACILITIES
+     ============================================================ -->
+<section>
+  <div class="container">
+    <h2>户外家具与设施 <span class="en">Furniture &amp; Facilities</span></h2>
+    <p style="margin-bottom:28px;">精简为 4 件非标设计 + 1 个文化装置，全部采用本土回收材料。</p>
+
+    <div class="furniture-grid">
+      <div class="furniture-card">
+        <h4>榕荫棋盘桌</h4>
+        <div class="spec">境二 · 0.8×0.8m · H0.7m</div>
+        <p>斗门本地花岗岩整石切割，桌面激光雕刻象棋棋盘格 + 边缘阴刻「馬」「炮」粤语俗称。四角各一个不锈钢杯槽。桌腿由 4 墩旧青砖砌成。耐久免维护。</p>
+      </div>
+      <div class="furniture-card">
+        <h4>树池环抱卡座</h4>
+        <div class="spec">境四 · 150°弧形 · 内径 1.8m</div>
+        <p>围绕树 5，坐面+靠背由回收旧建筑木梁拼成（木蜡油做旧），骨架热镀锌方钢。靠背激光蚀刻咸水歌歌词。扶手嵌可取出烟灰缸槽。坐面下透气格栅保护树根。</p>
+      </div>
+      <div class="furniture-card">
+        <h4>三角茶寮折叠推车</h4>
+        <div class="spec">境三 · 展开态 1.5×0.8m</div>
+        <p>展开为 L 型台面（蚝壳水磨石），台下储物格，侧面可擦写黑板菜单。折叠态为 0.8m 见方木盒雕塑，顶部暖光 LED 仍亮。304 不锈钢骨架 + 万向轮带刹车。村民轮值经营。</p>
+      </div>
+      <div class="furniture-card">
+        <h4>咸水歌遮阳伞 + 音频桩</h4>
+        <div class="spec">境三 ×2 · 伞径 2.5m · H2.4m</div>
+        <p>Sunbrella 防水帆布，水蓝→莲雾粉渐变伞面。伞缘垂帘丝印咸水歌五线谱。红外感应 + 微型音箱，有人坐下时轻声播放咸水歌选段（音量仅伞下可闻）。伞顶太阳能板供电。</p>
+      </div>
+      <div class="furniture-card">
+        <h4>咸水歌木篱</h4>
+        <div class="spec">境五 · 3 柱 · H1.5m</div>
+        <p>回收荔枝木粗枝立柱，顶部悬挂 3mm 耐候钢板激光镂空《海底珍珠容易揾》歌词。风吹锈板微晃，与木柱碰撞发出低沉"笃笃"声——"咸水歌在风里自己唱"。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CULTURAL & CREATIVE PRODUCTS
+     ============================================================ -->
+<section>
+  <div class="container">
+    <h2>文创产品系列 <span class="en">Cultural &amp; Creative Products</span></h2>
+
+    <h3>实用类</h3>
+    <div class="product-grid">
+      <div class="product-card">
+        <span class="icon">🧧</span>
+        <h4>莲雾杯垫（四枚组）</h4>
+        <div class="detail">蚝壳粉+树脂浇筑，莲雾切片五角星形，四色渐变。正面压印 Logo，背面防滑软木。</div>
+      </div>
+      <div class="product-card">
+        <span class="icon">🛍️</span>
+        <h4>「袋你饮茶」帆布袋</h4>
+        <div class="detail">米白帆布，丝印简笔线稿茶寮推车 + 手写字"得闲来饮茶"，可折叠收纳。</div>
+      </div>
+      <div class="product-card">
+        <span class="icon">🥤</span>
+        <h4>咸水歌歌词纸杯</h4>
+        <div class="detail">280ml 牛皮纸双层隔热杯，外壁竖排印咸水歌选段，杯底小字 Logo。</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:28px;">互动类</h3>
+    <div class="product-grid">
+      <div class="product-card">
+        <span class="icon">🗺️</span>
+        <h4>「三角漫步」折页</h4>
+        <div class="detail">手风琴六折，正面手绘线稿版六棵树+场地平面图。集齐 6 枚"树叶印章"可在茶寮兑换一杯莲雾汁。</div>
+      </div>
+      <div class="product-card">
+        <span class="icon">🌱</span>
+        <h4>咸水歌种子盲盒</h4>
+        <div class="detail">封面"疍家阿叔"/"虾嫂"卡通人物 + 咸水歌歌词。盒内：可降解育苗杯 + 斗门本地种子。长大后移栽至境一的共享种植角。</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:28px;">运营类</h3>
+    <div class="product-grid">
+      <div class="product-card">
+        <span class="icon">🪧</span>
+        <h4>招牌设计</h4>
+        <div class="detail">旧船板（宽 55cm × 高 28cm），白色丙烯手写字「三角茶寮」，右上角可翻转木牌（"开档"/"收档"），下方麻绳悬挂手写当日特饮及价格。</div>
+      </div>
+      <div class="product-card">
+        <span class="icon">🍹</span>
+        <h4>饮品包装设计</h4>
+        <div class="detail">280ml 可回收玻璃瓶，腰封青砖灰底色 + 莲雾粉 Logo。瓶盖贴纸三分色：蓝 = 凉茶系 / 粉 = 莲雾系 / 黄 = 陈皮系。定价 ¥2–5 元。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MATERIALS & BUDGET
+     ============================================================ -->
+<section>
+  <div class="container">
+    <h2>材料与造价 <span class="en">Materials &amp; Budget</span></h2>
+
+    <h3>本土材料获取策略</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>材料</th><th>方案</th><th>获取路径</th><th>单价参考</th></tr></thead>
+        <tbody>
+          <tr><td>木质构件</td><td>回收旧建筑木梁/旧门板 + 果园废弃荔枝木/龙眼木</td><td>旧村改造工地、本地果园冬剪</td><td>旧建筑木约 80–150 元/㎡</td></tr>
+          <tr><td>青砖</td><td>优先回收三角村本村旧房拆除青砖</td><td>村委会协调、建筑垃圾资源化中心</td><td>1–3 元/块（二手）</td></tr>
+          <tr><td>蚝壳</td><td>仅用于境三圆形广场水磨石（4.5㎡）</td><td>白藤头海鲜市场/本地餐厅废弃蚝壳</td><td>几乎为零</td></tr>
+          <tr><td>铺装主材</td><td>浅灰白透水混凝土砖 + 本地白麻碎石</td><td>建材市场常规采购</td><td>透水砖约 40–60 元/㎡</td></tr>
+          <tr><td>花岗岩</td><td>斗门本地花岗岩（棋盘桌+石凳）</td><td>本地石材厂</td><td>约 200–400 元/件</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>造价估算</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>分项</th><th>内容</th><th>估算金额（元）</th></tr></thead>
+        <tbody>
+          <tr><td>铺装工程</td><td>透水砖 55㎡ + 碎石草缝 65㎡ + 蚝壳水磨石 4.5㎡ + 树皮 35㎡</td><td>5,000 – 9,000</td></tr>
+          <tr><td>家具制作</td><td>棋盘桌 + 树池卡座 + 折叠推车 + 遮阳伞 ×2 + 木篱 + 石凳 + 长凳 + 种植箱</td><td>15,000 – 25,000</td></tr>
+          <tr><td>绿化</td><td>6 棵乔木保留 + 驱蚊植物 + 莲雾新植 + 地被</td><td>3,000 – 5,000</td></tr>
+          <tr><td>水电照明</td><td>茶寮 LED + 音频桩电子 + 标识矮墙埋地灯 + 太阳能灭蚊灯</td><td>4,000 – 6,000</td></tr>
+          <tr><td>标识与文创</td><td>入口铜字 + 可翻转木牌 + 杯垫/帆布袋/折页/盲盒首批</td><td>2,500 – 4,000</td></tr>
+          <tr><td>基础与土方</td><td>场地微平整 + 铺装基层 + 树根保护措施</td><td>2,000 – 4,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="budget-summary">
+      <div class="budget-total">
+        <div class="amount">¥ 31,500</div>
+        <div class="label">最低估算</div>
+      </div>
+      <div class="budget-total">
+        <div class="amount">¥ 53,000</div>
+        <div class="label">最高估算</div>
+      </div>
+      <div class="budget-total">
+        <div class="amount">2–3 周</div>
+        <div class="label">预计施工周期</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     OPERATIONS & MAINTENANCE
+     ============================================================ -->
+<section>
+  <div class="container">
+    <h2>运营管理 <span class="en">Operations &amp; Maintenance</span></h2>
+
+    <div class="overview-grid">
+      <div>
+        <h3>运营模式</h3>
+        <p><strong>「村委会监管 + 村民家庭轮值」</strong>微经营模式。本村有意愿的村民家庭以"周"为单位轮值，优先长者/低收入家庭。仅售 3–4 种饮品（不需明火烹饪），统一定价 5 元/杯。轮值家庭得 80%，20% 上交村委会作为场地维护基金。非营业时段推车折叠锁闭转为景观装置 + 夜间暖灯。</p>
+
+        <h3 style="margin-top:20px;">小场地独特优势</h3>
+        <ul style="list-style:none;font-size:0.9rem;">
+          <li style="padding:4px 0;">— 造价低：约 3–5 万即可完成，适合村集体自筹+小额奖补</li>
+          <li style="padding:4px 0;">— 施工快：约 2–3 周可完工，不扰民</li>
+          <li style="padding:4px 0;">— 维护轻：面积小 = 清扫量小、设备少 = 故障点少</li>
+          <li style="padding:4px 0;">— 可复制：「六棵树模型」可在斗门任意沿路带状绿地复制推广</li>
+          <li style="padding:4px 0;">— 亲和力强：小空间不空旷、三五个人就"满"了，更容易形成"有人气"的良性循环</li>
+        </ul>
+      </div>
+      <div>
+        <h3>维护分工</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>频率</th><th>任务</th><th>负责方</th></tr></thead>
+            <tbody>
+              <tr><td>每日</td><td>清扫铺装落叶、擦抹棋盘桌与茶寮台面</td><td>轮值村民</td></tr>
+              <tr><td>每周</td><td>检查树根保护区覆盖物、清理碎石区杂草</td><td>场地维护员</td></tr>
+              <tr><td>每月</td><td>检查木家具螺栓、补木蜡油</td><td>场地维护员</td></tr>
+              <tr><td>每季</td><td>修剪驱蚊植物、检查排水渗透情况</td><td>村委会组织</td></tr>
+              <tr><td>每年</td><td>全面检修 + 补铺装 + 台风季后遮阳伞检修</td><td>村委会 + 施工方</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AI RENDERING PROMPTS
+     ============================================================ -->
+<section>
+  <div class="container">
+    <h2>AI 绘图提示词精选 <span class="en">AI Rendering Prompts</span></h2>
+
+    <h3>境三「聚」· 茶寮核心场景</h3>
+    <div class="prompt-block">
+      <div class="lang-tag">中文</div>
+      <pre>写实风格景观建筑渲染，黄金时段暖光，中国岭南水乡街角微景观，一条狭窄的沿村路带状绿地（约 7m 进深），两棵相邻的保留榕树（树冠交织）之间放置木质折叠推车吧台，台面为蚝壳碎片水磨石纹理，吧台上摆放玻璃瓶装饮品和手写黑板菜单"三角茶寮·冰镇莲雾汁 ¥5"，两把水蓝色渐变遮阳伞（伞缘垂下丝印乐谱布帘）散布在推车和树下，地面从路边浅灰白透水砖向内部渐变为碎石草缝，推车前为圆形蚝壳水磨石小广场（直径约 2.5m），树下散落几个花岗岩石凳，路边无路牙石——铺装从路面"渗入"绿地，温暖金色阳光透过榕树叶形成斑驳光影，电影感浅景深，4K 超高清</pre>
+    </div>
+
+    <div class="prompt-block">
+      <div class="lang-tag">English</div>
+      <pre>Photorealistic landscape architecture rendering, golden hour warm light, Lingnan water village street corner micro-landscape, narrow linear greenspace along village road (approx 7m depth), between two adjacent preserved banyan trees with interweaving canopies sits a foldable wooden drink stall with oyster shell terrazzo countertop, glass bottles and hand-written chalk menu on counter, two water-blue gradient parasols (with musical-score-printed fabric edge curtains), ground paving gradients from light gray-white permeable bricks at roadside to gravel-with-grass-joints deeper inside, circular oyster shell terrazzo mini-plaza in front of stall, granite stone stools scattered under tree shade, no curb stone between road and greenspace, warm golden sunlight filtering through banyan leaves creating dappled light and shadow, cinematic shallow depth of field, 4K ultra HD</pre>
+    </div>
+
+    <h3>境二「弈」· 棋盘场景</h3>
+    <div class="prompt-block">
+      <div class="lang-tag">中文</div>
+      <pre>写实风格景观建筑渲染，下午 4 点暖光，中国岭南乡村路边带状绿地，一棵榕树下放置花岗岩象棋桌（0.8m 见方），桌面上散落木质象棋残局，两位老年男性面对面坐石凳上对弈（一人托腮思考，一人端搪瓷杯喝凉茶），拖鞋踢在桌脚边，树旁一张旧木长凳上坐着一位阿姨在剥花生，地面为碎石+草缝混合铺装，近路边处铺装渐变为透水砖，路边没有路牙——模糊的边界，阳光透过榕树叶洒落光斑在棋盘上，怀旧温暖氛围，竖向构图，4K 超高清</pre>
+    </div>
+
+    <h3>彩色总平面图</h3>
+    <div class="prompt-block">
+      <div class="lang-tag">中文</div>
+      <pre>彩色景观总平面图，手绘水彩渲染风格，长条形沿村路街角绿地（长约 26m，进深约 7m），6 棵保留树木沿路呈线性排列形成 5 个渐境节点，三条纵向渐变带清晰可见：沿路透水砖带→中部碎石草缝带→内侧树皮覆盖带，路边无路牙石标记，北侧标注村路和民居，莫兰迪柔色调，软配色，图例标注铺装类型和家具位置</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXHIBITION BOARDS
+     ============================================================ -->
+<section>
+  <div class="container">
+    <h2>展板排版建议 <span class="en">Exhibition Board Layout</span></h2>
+
+    <p style="margin-bottom:28px;">规格：2–3 张 A1 横版（841mm × 594mm），统一 MORANDI 配色。</p>
+
+    <h3>展板一：概念 + 渐变逻辑 + 总平面</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>区域</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td>左上</td><td>项目标题「三角·三环五境」+ 副标题</td></tr>
+          <tr><td>左中</td><td>兴安广场 → 三角村渐变转译对比表</td></tr>
+          <tr><td>左下</td><td>色彩基因图谱（六色横向色条 + 来源图标）</td></tr>
+          <tr><td>右侧 60%</td><td>彩色总平面图（1:100）+ 铺装渐变分区半透明色块 + 5 境名称标注</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>展板二：效果图 + 立面 + 家具详图</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>区域</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td>上方 55%</td><td>效果图三张并排：境三茶寮（最大）→ 境二棋盘 → 境一入口</td></tr>
+          <tr><td>下方左</td><td>主立面图（沿村路方向）+ 标高 + 5 境节点名称</td></tr>
+          <tr><td>下方中</td><td>纵向剖面图（Layer A→B→C 渐变带）</td></tr>
+          <tr><td>下方右</td><td>4 件非标家具三视图 + 材料标注</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>展板配色方案</h3>
+    <div class="palette-info" style="margin-top:16px;">
+      <div class="chip"><span style="background:#EDE8E1;"></span> 展板背景 · #EDE8E1</div>
+      <div class="chip"><span style="background:#A2ACB8;"></span> 标题主色 · #A2ACB8</div>
+      <div class="chip"><span style="background:#C2A8A5;"></span> 强调/标注 · #C2A8A5</div>
+      <div class="chip"><span style="background:#7A7068;"></span> 正文/图名 · #7A7068</div>
+      <div class="chip"><span style="background:#C4B292;"></span> 装饰线/页码 · #C4B292</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="logo-mark">三角 · 邻里汇</div>
+    <p>珠海斗门三角村街角微景观设计 &nbsp;|&nbsp; 邻里汇<br>MORANDI COLOR EDITION<br><br><small>可编辑 HTML 作品集 — 修改 <code>:root</code> 中的 CSS 变量即可更换全局色系</small></p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI创意技术探索者 — 个人作品集</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">Portfolio</a>
+      <ul class="nav-links">
+        <li><a href="#about">关于</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#projects">项目</a></li>
+        <li><a href="#workflow">工作流</a></li>
+        <li><a href="#contact">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <canvas id="particle-canvas"></canvas>
+    <div class="hero-content">
+      <h1 class="hero-name">Hi, 我是 <span class="accent-gold">探索者</span></h1>
+      <p class="hero-title">AI创意技术探索者</p>
+      <p class="hero-subtitle">
+        <span id="typewriter"></span><span class="cursor">|</span>
+      </p>
+      <a href="#about" class="scroll-indicator">
+        <span class="scroll-arrow"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2 class="section-title">关于我<span class="title-dot">.</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>我是一名深耕 <span class="accent-cyan">AI创意内容生成</span> 领域的多面手，专注于探索人工智能在数字人、古建筑可视化、自动化创意流水线等方向的落地应用。</p>
+        <p>从 <span class="accent-gold">古文物的数字化重生</span> 到 <span class="accent-purple">AI驱动的漫画创作系统</span>，我致力于用技术让创意更高效、更自由。</p>
+      </div>
+      <div class="about-card glass-card">
+        <div class="identity-tags">
+          <span class="tag">AI内容创作</span>
+          <span class="tag">3D可视化</span>
+          <span class="tag">自动化工作流</span>
+          <span class="tag">数字人技术</span>
+          <span class="tag">AI绘画引擎</span>
+          <span class="tag">创意编程</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <h2 class="section-title">技能矩阵<span class="title-dot">.</span></h2>
+    <div class="skills-grid">
+
+      <div class="skill-card glass-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3>Stable Diffusion / ComfyUI</h3>
+        <p>精通SD全生态：ControlNet精确控图、LoRA/DreamBooth微调、ComfyUI节点工作流搭建，对古建筑线稿→效果图管线有深厚积累。</p>
+      </div>
+
+      <div class="skill-card glass-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+          </svg>
+        </div>
+        <h3>3D建模与渲染</h3>
+        <p>Blender建模 + Cycles/Eevee渲染，结合AI纹理生成与PBR材质系统，可独立完成从CAD图纸到高质量效果图的全流程。</p>
+      </div>
+
+      <div class="skill-card glass-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h3>自动化工作流设计</h3>
+        <p>设计端到端AI创作流水线：剧本→分镜→提示词→出图，将多步骤创意流程系统化、自动化，提升生产效率。</p>
+      </div>
+
+      <div class="skill-card glass-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20 7l-8 4-8-4V5l8 4 8-4v2z"/>
+            <path d="M4 9l8 4 8-4M4 13l8 4 8-4"/>
+          </svg>
+        </div>
+        <h3>云服务集成</h3>
+        <p>阿里云/腾讯云API对接实战经验，涵盖TTS语音合成、数字人驱动、OSS/COS存储等，可快速搭建云端AI应用。</p>
+      </div>
+
+      <div class="skill-card glass-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <h3>Prompt Engineering</h3>
+        <p>深度掌握中英文提示词工程，擅长为建筑渲染、人物设计、场景美术等不同领域编写高质量结构化Prompt。</p>
+      </div>
+
+      <div class="skill-card glass-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <h3>全栈开发基础</h3>
+        <p>具备Python自动化脚本、前端开发(HTML/CSS/JS)、CI/CD流水线搭建能力，能将AI能力封装为可用的工具和系统。</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <h2 class="section-title">精选项目<span class="title-dot">.</span></h2>
+    <div class="projects-grid">
+
+      <div class="project-card glass-card">
+        <div class="project-header">
+          <span class="project-icon">&#x1f3ef;</span>
+          <span class="project-label">建筑可视化</span>
+        </div>
+        <h3>钟楼AI建模与效果图生成</h3>
+        <p>基于CAD施工图纸，通过ComfyUI + ControlNet + SDXL流程生成高质量古建筑3D效果图。从DWG线稿到V-Ray级别建筑渲染的全自动化管线。</p>
+        <div class="project-tags">
+          <span>ComfyUI</span><span>ControlNet</span><span>SDXL</span><span>Blender</span><span>CAD</span>
+        </div>
+      </div>
+
+      <div class="project-card glass-card">
+        <div class="project-header">
+          <span class="project-icon">&#x1f4d6;</span>
+          <span class="project-label">创意系统</span>
+        </div>
+        <h3>漫剧创作系统</h3>
+        <p>AI驱动的漫画创作自动化工作流：从故事点子到三幕式大纲、角色设计、分集剧本、分镜表格，再到文生图提示词拼接的全流程系统。</p>
+        <div class="project-tags">
+          <span>LLM</span><span>Prompt Engineering</span><span>自动化</span><span>故事创作</span>
+        </div>
+      </div>
+
+      <div class="project-card glass-card">
+        <div class="project-header">
+          <span class="project-icon">&#x1f3ac;</span>
+          <span class="project-label">数字人</span>
+        </div>
+        <h3>AI数字人视频自动生成</h3>
+        <p>基于云服务API（阿里云/腾讯云）的数字人视频自动生成工作流。脚本→TTS语音合成→数字人驱动→视频输出的端到端自动化方案。</p>
+        <div class="project-tags">
+          <span>TTS</span><span>数字人</span><span>阿里云</span><span>腾讯云</span><span>API集成</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Workflow Section -->
+  <section id="workflow" class="section">
+    <h2 class="section-title">创作哲学<span class="title-dot">.</span></h2>
+    <div class="workflow-timeline">
+      <div class="wf-step">
+        <div class="wf-icon">&#x1f4a1;</div>
+        <div class="wf-line"></div>
+        <h3>创意构思</h3>
+        <p>从灵感到故事，AI辅助发散与结构化</p>
+      </div>
+      <div class="wf-step">
+        <div class="wf-icon">&#x2699;</div>
+        <div class="wf-line"></div>
+        <h3>AI工具链</h3>
+        <p>ComfyUI / SD / Blender / TTS 多工具编排</p>
+      </div>
+      <div class="wf-step">
+        <div class="wf-icon">&#x2728;</div>
+        <div class="wf-line"></div>
+        <h3>自动化生产</h3>
+        <p>脚本驱动，端到端流水线解放重复劳动</p>
+      </div>
+      <div class="wf-step">
+        <div class="wf-icon">&#x1f3a8;</div>
+        <h3>创意成品</h3>
+        <p>高质量视频、渲染图、漫画作品输出</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <h2 class="section-title">联系我<span class="title-dot">.</span></h2>
+    <div class="contact-grid">
+      <div class="contact-info glass-card">
+        <p>如果你对 AI创意内容生成 感兴趣，或希望合作探索数字人、建筑可视化、自动化创作等方向，欢迎联系。</p>
+        <div class="social-links">
+          <a href="#" class="social-link" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="#" class="social-link" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+          </a>
+          <a href="#" class="social-link" title="Twitter / X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+      <form class="contact-form glass-card">
+        <input type="text" placeholder="你的名字" class="form-input">
+        <input type="email" placeholder="你的邮箱" class="form-input">
+        <textarea placeholder="你想说的话..." class="form-input" rows="4"></textarea>
+        <button type="submit" class="btn-submit">发送消息</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 AI Creative Explorer. Built with passion.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

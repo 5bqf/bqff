@@ -1,0 +1,9 @@
+name: Local Config
+version: 1.0.0
+schema: v1
+models:
+  - name: DeepSeek
+    provider: deepseek
+    model: deepseek-v4-pro
+    apiKey: sk-e1d1703f76c94736a83635736ee85c24
+    baseUrl: https://api.deepseek.com/v1

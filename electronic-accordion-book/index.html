@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#FFF0F3">
+  <title>电子风琴本</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== 全局粒子背景层 ===== -->
+  <canvas id="bg-particles" class="bg-particles"></canvas>
+
+  <!-- ===== 封面褶 ===== -->
+  <section id="fold-cover" class="fold-cover">
+    <canvas id="cover-canvas" class="cover-canvas"></canvas>
+    <div id="cover-gesture-zone" class="cover-gesture-zone"></div>
+    <div class="cover-content">
+      <div id="cover-title" class="cover-title-group">
+        <h1 class="cover-title-main">电子风琴本</h1>
+        <p class="cover-title-sub">画一颗爱心，开启我们的故事</p>
+      </div>
+      <div id="cover-hint" class="cover-hint">
+        <span class="cover-hint-icon">❤️</span>
+        <span class="cover-hint-text">用手指画出爱心解锁</span>
+      </div>
+      <button id="cover-fallback" class="cover-fallback hidden">直接进入</button>
+    </div>
+  </section>
+
+  <!-- ===== 风琴容器 ===== -->
+  <main id="accordion" class="accordion">
+
+    <!-- 顶部导航栏 -->
+    <nav class="acc-nav">
+      <button id="acc-back" class="acc-nav-btn" title="返回封面">◁ 封面</button>
+      <span class="acc-nav-title">电子风琴本</span>
+      <button id="acc-music" class="acc-nav-btn" title="背景音乐">🎵</button>
+    </nav>
+
+    <!-- 风琴滚动区 -->
+    <div id="acc-scroller" class="acc-scroller">
+
+      <!-- ===== 褶1: 照片褶 ===== -->
+      <section class="acc-fold" data-fold="0" id="fold-photo">
+        <div class="fold-tab" data-fold="0">
+          <span class="fold-tab-num">01</span>
+          <span class="fold-tab-name">照片褶 · 时光胶片</span>
+          <span class="fold-tab-arrow">▾</span>
+        </div>
+        <div class="fold-body">
+          <div class="fold-collapsed" id="photo-collapsed">
+            <div class="photo-stack" id="photo-stack">
+              <div class="photo-stack-empty">📷<br>点击上传照片</div>
+            </div>
+          </div>
+          <div class="fold-expanded" id="photo-expanded">
+            <div class="photo-fan" id="photo-fan"></div>
+            <div class="photo-actions">
+              <button class="acc-btn acc-btn-outline" id="photo-upload-btn">+ 添加照片</button>
+            </div>
+            <input type="file" id="photo-file-input" accept="image/*" multiple class="hidden-input">
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 褶2: 音频褶 ===== -->
+      <section class="acc-fold" data-fold="1" id="fold-audio">
+        <div class="fold-tab" data-fold="1">
+          <span class="fold-tab-num">02</span>
+          <span class="fold-tab-name">音频褶 · 声音信件</span>
+          <span class="fold-tab-arrow">▾</span>
+        </div>
+        <div class="fold-body">
+          <div class="fold-collapsed" id="audio-collapsed">
+            <canvas id="waveform-mini" class="waveform-mini"></canvas>
+            <div class="audio-mini-info">
+              <span id="audio-mini-title">录制一段声音</span>
+              <span id="audio-mini-dur">00:00</span>
+            </div>
+          </div>
+          <div class="fold-expanded" id="audio-expanded">
+            <div class="record-player" id="record-player">
+              <div class="vinyl-platter" id="vinyl-platter">
+                <div class="vinyl-rings"></div>
+                <div class="vinyl-label"></div>
+              </div>
+              <div class="tonearm" id="tonearm">
+                <div class="tonearm-base"></div>
+                <div class="tonearm-arm"></div>
+                <div class="tonearm-head"></div>
+              </div>
+            </div>
+            <div class="audio-timeline" id="audio-timeline">
+              <div class="timeline-bar" id="timeline-bar">
+                <div class="timeline-fill" id="timeline-fill"></div>
+                <div class="timeline-thumb" id="timeline-thumb"></div>
+              </div>
+              <div class="timeline-info">
+                <span id="time-current">00:00</span>
+                <span id="time-total">00:00</span>
+              </div>
+            </div>
+            <div class="audio-controls">
+              <button class="audio-ctrl-btn" id="btn-record" title="录音">🎙️</button>
+              <button class="audio-ctrl-btn audio-ctrl-play" id="btn-play" title="播放">▶️</button>
+              <button class="audio-ctrl-btn" id="btn-stop" title="停止">⏹️</button>
+            </div>
+            <div class="audio-upload-row">
+              <button class="acc-btn acc-btn-sm" id="audio-upload-btn">📁 上传音频</button>
+              <input type="file" id="audio-file-input" accept="audio/*" class="hidden-input">
+            </div>
+            <div id="recording-indicator" class="recording-indicator hidden">
+              <span class="rec-dot"></span> 录音中 <span id="rec-timer">00:00</span>
+            </div>
+            <div class="audio-playlist" id="audio-playlist"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 褶3: 游戏褶 ===== -->
+      <section class="acc-fold" data-fold="2" id="fold-game">
+        <div class="fold-tab" data-fold="2">
+          <span class="fold-tab-num">03</span>
+          <span class="fold-tab-name">游戏褶 · 互动时光</span>
+          <span class="fold-tab-arrow">▾</span>
+        </div>
+        <div class="fold-body">
+          <div class="fold-collapsed" id="game-collapsed">
+            <div class="game-mini">
+              <span class="game-mini-icon">🧩</span>
+              <span class="game-mini-icon">🪄</span>
+              <span class="game-mini-label">拼图 & 刮刮乐</span>
+            </div>
+          </div>
+          <div class="fold-expanded" id="game-expanded">
+            <div class="game-tabs" id="game-tabs">
+              <button class="game-tab active" data-game="puzzle">🧩 记忆拼图</button>
+              <button class="game-tab" data-game="scratch">🪄 刮刮乐</button>
+            </div>
+            <div class="game-stage" id="game-stage"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 褶4: 盲盒/AR褶 ===== -->
+      <section class="acc-fold" data-fold="3" id="fold-ar">
+        <div class="fold-tab" data-fold="3">
+          <span class="fold-tab-num">04</span>
+          <span class="fold-tab-name">盲盒褶 · 时光合影</span>
+          <span class="fold-tab-arrow">▾</span>
+        </div>
+        <div class="fold-body">
+          <div class="fold-collapsed" id="ar-collapsed">
+            <div class="mystery-box" id="mystery-box">
+              <div class="mystery-lid"></div>
+              <div class="mystery-bow"></div>
+              <div class="mystery-body">?</div>
+              <div class="mystery-ribbon-h"></div>
+              <div class="mystery-ribbon-v"></div>
+            </div>
+          </div>
+          <div class="fold-expanded" id="ar-expanded">
+            <div class="ar-tabs" id="ar-tabs">
+              <button class="ar-tab active" data-ar="camera">📷 AR合影</button>
+              <button class="ar-tab" data-ar="letter">💌 未来信</button>
+            </div>
+            <div class="ar-stage" id="ar-stage">
+              <!-- AR相机区域 -->
+              <div id="ar-camera-panel" class="ar-camera-panel">
+                <div class="ar-viewfinder" id="ar-viewfinder">
+                  <video id="ar-video" autoplay playsinline class="ar-video"></video>
+                  <canvas id="ar-overlay" class="ar-overlay"></canvas>
+                </div>
+                <div class="ar-camera-actions">
+                  <button class="ar-sticker-btn" id="ar-sticker-btn">💫 切换贴纸</button>
+                  <button class="ar-capture-btn" id="ar-capture-btn">📸</button>
+                  <span class="ar-sticker-label" id="ar-sticker-label">爱心粒子</span>
+                </div>
+              </div>
+              <!-- 未来信区域 -->
+              <div id="ar-letter-panel" class="ar-letter-panel hidden">
+                <textarea id="letter-text" class="letter-textarea" placeholder="写下你想对未来说的话..."></textarea>
+                <div class="letter-date-row">
+                  <span>📅 开启日期</span>
+                  <input type="date" id="letter-date">
+                </div>
+                <button class="acc-btn acc-btn-primary" id="letter-save">💌 封存未来信</button>
+                <div id="letter-list" class="letter-list"></div>
+              </div>
+            </div>
+            <div class="ar-gallery" id="ar-gallery"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 底部留白 -->
+      <div class="acc-footer">
+        <p>— 用心制作的礼物 —</p>
+      </div>
+    </div>
+
+    <!-- 侧边导航点 -->
+    <div class="acc-dots" id="acc-dots">
+      <span class="acc-dot" data-dot="0"></span>
+      <span class="acc-dot" data-dot="1"></span>
+      <span class="acc-dot" data-dot="2"></span>
+      <span class="acc-dot" data-dot="3"></span>
+    </div>
+  </main>
+
+  <!-- ===== 全局弹层 ===== -->
+  <div id="photo-viewer" class="photo-viewer hidden">
+    <button class="viewer-close" id="viewer-close">✕</button>
+    <button class="viewer-nav viewer-prev" id="viewer-prev">◀</button>
+    <img id="viewer-img" src="" alt="" class="viewer-img">
+    <button class="viewer-nav viewer-next" id="viewer-next">▶</button>
+    <button class="viewer-delete" id="viewer-delete">🗑️</button>
+  </div>
+
+  <canvas id="confetti-canvas" class="confetti-canvas hidden"></canvas>
+
+  <div id="toast" class="toast"></div>
+
+  <!-- ===== 脚本 ===== -->
+  <script src="utils/event-bus.js"></script>
+  <script src="utils/storage.js"></script>
+  <script src="utils/math.js"></script>
+  <script src="utils/canvas.js"></script>
+  <script src="utils/particle.js"></script>
+  <script src="utils/gesture.js"></script>
+  <script src="utils/audio-manager.js"></script>
+  <script src="utils/ambient-music.js"></script>
+  <script src="app.js"></script>
+  <script src="components/cover.js"></script>
+  <script src="components/accordion.js"></script>
+  <script src="components/photo-fold.js"></script>
+  <script src="components/audio-fold.js"></script>
+  <script src="components/puzzle.js"></script>
+  <script src="components/scratch.js"></script>
+  <script src="components/game-fold.js"></script>
+  <script src="components/ar-fold.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

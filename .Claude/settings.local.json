@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"d:/出图/portfolio\")",
+      "Read(//tmp/**)",
+      "Bash(npx vercel *)"
+    ],
+    "additionalDirectories": [
+      "d:\\出图"
+    ]
+  }
+}

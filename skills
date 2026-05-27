@@ -1,0 +1,54 @@
+# AI Digital Human Video Generator
+
+**description**: 基于云服务API（阿里云/腾讯云）的AI数字人视频自动生成工作流
+**author**: 你的名字
+**version**: 1.0
+**category**: media-production
+
+## 工作流概述
+
+本Skill用于在Claude Code项目中自动生成AI数字人视频。它遵循“脚本输入 -> 语音合成 -> 数字人驱动 -> 视频输出”的流水线。
+
+## 前置依赖
+
+1.  **云服务账号**：需要已开通阿里云（智能语音交互+数字人）或腾讯云（TI-ONE/数智人）服务，并配置好AccessKey/SecretKey。
+2.  **Python环境**：项目需配置Python 3.8+，并安装`requests`, `oss2`（阿里云）或`qcloud_cos`（腾讯云）等SDK。
+
+## 核心执行步骤
+
+### 步骤1：项目初始化与配置检查
+- 检查当前目录是否存在 `config.yaml` 文件。若不存在，基于模板生成。
+- 模板内容需包含：
+- 验证 `~/.cloud_credentials` 中是否存在对应的密钥配置。
+
+### 步骤2：脚本预处理
+- 读取用户输入的文本文件（如 `script.txt`）。
+- 自动进行文本清洗（去除特殊字符、分段），并生成符合TTS要求的SSML格式文本（如添加停顿 `<break time="500ms"/>`）。
+
+### 步骤3：语音合成（TTS）
+- 根据 `config.yaml` 调用对应云服务的TTS API。
+- 生成 `audio.wav` 文件并保存至 `output_dir`。
+- **关键代码逻辑**（Claude需生成）：
+
+### 步骤4：数字人视频生成
+- 将 `audio.wav` 和 `config.yaml` 中的数字人形象代码作为参数，调用数字人API。
+- 提交异步渲染任务，并轮询任务状态直至完成。
+- 下载生成的视频文件至 `output_dir`。
+
+### 其他：
+- 当用户需要做数字人脚本时，你需要读取'JIAOBEN.md'
+- 当用户需要做数字人视频时，你需要读取'SHUZISHIPING'
+### 步骤5：本地预览与清理
+- 生成一个 `preview.html` 文件，用于在浏览器中播放生成的视频。
+- 可选择性地清理临时文件（如 `temp_audio.wav`）。
+
+## 参考文件（References）
+
+- `references/aliyun_tts_api.md`：阿里云TTS API接口文档摘要。
+- `references/digital_human_code_list.md`：可用的数字人形象代码列表。
+- `templates/config_template.yaml`：配置文件模板。
+
+## 触发方式
+
+- **手动触发**：在Claude Code终端中输入 `/generate_digital_human`。
+- **自动触发**：当检测到目录中存在 `script.txt` 且文件内容变更时，自动运行此工作流。

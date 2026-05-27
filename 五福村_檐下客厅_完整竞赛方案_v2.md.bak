@@ -1,0 +1,1381 @@
+# 五福·六树渐境 —— 珠海斗门五福村街角微景观设计竞赛方案（修订版）
+
+---
+
+## 修订说明
+
+本版基于场地实测条件（沿路 6 棵保留乔木、面积较小、长条形）进行重大调整：
+- **核心策略转向**：从"三区划"转为兴安广场的 **「渐变空间」** 理念——空间不靠围墙分割，靠铺装密度、家具高度、植物郁闭度逐步过渡
+- **取消雨水花园**（场地面积不足以支撑），改为树根保护 + 渗透铺装实现生态功能
+- **6 棵树 = 6 个空间锚点**，形成从"动→静"、"公共→半私密"的渐境序列
+
+---
+
+## 目录
+
+1. [设计概念：从兴安广场到五福村的渐变转译](#一设计概念从兴安广场到五福村的渐变转译)
+2. [斗门本土色彩基因提取](#二斗门本土色彩基因提取)
+3. [场地解读与 6 棵树空间诊断](#三场地解读与-6-棵树空间诊断)
+4. [渐变空间布局：六树六境](#四渐变空间布局六树六境)
+5. [铺装渐变体系（兴安广场核心手法）](#五铺装渐变体系)
+6. [户外家具与设施清单（精简为 4 件非标设计）](#六户外家具与设施清单精简为-4-件)
+7. [「五福村·乡村客厅」文创产品系列](#七五福村乡村客厅文创产品系列)
+8. [材料选用与造价估算](#八材料选用与造价估算)
+9. [落地性专题与后期运营管理](#九落地性专题与后期运营管理)
+10. [AI 绘图提示词（中英双语·可直接复制）](#十ai-绘图提示词中英双语可直接复制)
+11. [Remotion 动画脚本（React + TypeScript）](#十一remotion-动画脚本react--typescript)
+12. [参赛成果文件夹结构 + 展板排版说明](#十二参赛成果文件夹结构--展板排版说明)
+
+---
+
+## 一、设计概念：从兴安广场到五福村的渐变转译
+
+### 1.1 兴安广场的「渐变」手法拆解
+
+湖北宜昌兴安广场（HID 翰地景观）的核心不是"放了几把椅子"，而是用 **三道渐变** 模糊了公共与商业的边界：
+
+| 渐变维度 | 兴安广场做法 | 效果 |
+|---|---|---|
+| **铺装渐变** | 市政人行道透水砖 → 渐变拼色铺装 → 木平台 → 室内地面 | 人不知不觉从"街道"走进"客厅" |
+| **家具密度渐变** | 沿路边散点座椅 → 中段组合卡座+吧台 → 内区围合式卡座 | 从"路过可坐"到"坐下不想走" |
+| **活动强度渐变** | 外圈通过/驻足 → 中圈社交/消费 → 内圈沉浸/停留 | 不需要指示牌，空间本身引导行为 |
+
+### 1.2 五福村版本的渐变转译
+
+| 兴安广场（城市版） | 五福村·六树渐境（乡村版） |
+|---|---|
+| 商业外摆 → 城市客厅 | **路边歇脚 → 檐下聚场 → 树根静坐** |
+| 红灰工业色调 | **蚝壳白 + 青砖灰 + 老木褐 + 水色蓝绿 + 莲雾粉** |
+| 咖啡馆固定吧台 | **「五福茶寮」可折叠推车（村民轮值）** |
+| 金属冲孔板 + 混凝土 | **旧青砖 + 回收旧木 + 蚝壳水磨石（仅重点区）** |
+| 城市青年为主要客群 | **老年下棋 / 青年打卡 / 儿童认知 / 路人歇脚，全龄共用** |
+
+### 1.3 设计概念说明（约 250 字）
+
+> **六棵树，六段渐渐慢下来的时光。**
+>
+> 五福村这条沿路绿地很窄，只有一排树。但兴安广场告诉我们：窄不是问题，关键是让空间自己"说话"。
+>
+> 街巷两侧的青砖老屋、檐下摇曳的红灯笼、远处淡蓝的山影——这条村路天生就有岭南水乡的烟火气。我们只是往路边的六棵树之间，"种"进去几个让人想坐下来的地方。
+>
+> 从西到东，铺装从硬质透水砖慢慢变成碎石草缝，再变成树皮木屑；家具从路边的一张石凳，慢慢变成树下的棋盘桌，再变成围着树干的一圈卡座，最后是一把遮阳伞下的茶寮推车——一个不想走的人，自然会沿着这六棵树走进去、坐下来、聊起来。
+>
+> 蚝壳白的铺地、青砖灰的矮墙、水蓝色的伞面、莲雾粉的招牌……斗门本土的六种颜色不吵不闹地散落在这条"渐境"里。黄昏时分，金色阳光穿过榕树叶洒在石板地面上，红灯笼在檐下微微晃动，阿伯在第二棵树下下棋，阿婆在第四棵树下剥花生，年轻人在第五棵树前举着莲雾汁拍照——六棵树，把一段普通的村路边角地，变成了全村最有温度的一排"檐下座"。
+
+---
+
+## 二、斗门本土色彩基因提取
+
+（替代兴安广场「红灰色调」）
+
+| 色彩基因 | 来源 | 色值参考 | 渐变中的角色 |
+|---|---|---|---|
+| **蚝壳白** | 斗门传统蚝壳墙 | 暖灰白 `#F2EFE9` | Layer A 硬质铺装主色 |
+| **青砖灰** | 岭南传统青砖民居 | 冷灰 `#7B8B7A` | 矮墙/花池收边/家具骨架 |
+| **老木褐** | 渔舟/农具/旧船板 | 深褐 `#8B6914` 系 | 所有木质坐面/长凳/茶寮台身 |
+| **水色蓝绿** | 河涌/稻田/蕉林 | `#5B8C7A` → `#3C6E71` | 遮阳伞面/标识系统/软装点缀 |
+| **疍家土黄** | 斗门沙田/竹编/稻作 | `#C9A96E` | 碎石铺装中的暖色颗粒/竹编元素 |
+| **莲雾粉** | 斗门特产莲雾果花色 | `#E8A0B4` | Logo/黑板菜单/文创跳色 |
+
+> **渐变中的色彩逻辑**：从路边的蚝壳白（最"硬"最公共）→ 向内逐步混入更多土黄和绿色（越"软"越私密），就像从村路走进田野。
+
+---
+
+## 三、场地解读与 6 棵树空间诊断
+
+### 3.1 场地基本参数（基于手绘草图）
+
+| 参数 | 估算值 |
+|---|---|
+| 沿路长度 | 约 24-28m |
+| 最大进深 | 约 6-8m |
+| 形状 | 长条形，沿村路线性展开 |
+| 北侧 | 村路（宽约 4-5m），路对面为民居 |
+| 南侧/内侧 | 场地内边界（围墙/农田/空地——需实地核实） |
+| 保留树木 | **6 棵**，沿路侧排列，胸径约 15-25cm |
+
+### 3.2 6 棵树的空间诊断
+
+6 棵树不是"6 棵植物"——它们是 **6 个天然的空间锚点**。每棵树自带遮荫半径（约 3-5m）、"树下领域感"和视觉焦点属性。
+
+```
+  ← 西（村巷口）                          东（村巷口）→
+  ┌────┬────┬────┬────┬────┬────┐
+  │ 树1│ 树2│ 树3│ 树4│ 树5│ 树6│    ← 沿村路
+  └────┴────┴────┴────┴────┴────┘
+    ↑                        ↑
+   较窄                     较宽（推测中段最宽）
+```
+
+**设计原则**：不移动任何一棵树，以每棵树为中心组织一个"微空间"，6 个微空间之间不设硬隔断，而是用铺装纹理和家具密度形成渐变。
+
+### 3.3 现状问题 → 设计对策
+
+| 现状问题 | 渐变策略 |
+|---|---|
+| 长条形 → 行人径直路过，不停留 | 用铺装纹理的"方向性渐变"（横向条纹→散点→无方向）暗示减速 |
+| 仅 6-8m 进深，做不了大广场 | 不做"面状聚集"，做"线状串联"——沿树列形成 6 个口袋空间 |
+| 6 棵树看似均匀，实际间距不等 | 中段 2 棵树间距最大处放大为"聚场"，两端收拢为"静角" |
+| 路边界面生硬（路牙+裸土） | 取消路牙，铺装从路边"渗入"树根区——让道路和绿地之间没有那条线 |
+
+---
+
+## 四、渐变空间布局：六树六境
+
+### 4.1 整体结构：三带 × 六境的渐变网格
+
+**纵向（垂直于村路，约 6-8m 进深）：3 条渐变带**
+
+```
+  村路
+  ════════════════════════════════════════════
+  ▌ Layer A · 通行带 ▌ 透水砖，开敞，公共
+  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  (无硬边界，铺装渐变)
+  ▌ Layer B · 坐憩带 ▌ 碎石+砖混合，半公共
+  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  (无硬边界，家具密度渐变)
+  ▌ Layer C · 沉浸带 ▌ 木屑/树皮，半私密
+  ════════════════════════════════════════════
+  场地内边界
+```
+
+| 带 | 距路边 | 宽度 | 铺装 | 活动类型 | 公共性 |
+|---|---|---|---|---|---|
+| **Layer A · 通行带** | 0-1.5m | 1.5m | 浅灰白透水混凝土砖（仿蚝壳色） | 通行、短暂驻足、看菜单 | ★★★★★ 全公共 |
+| **Layer B · 坐憩带** | 1.5-4.5m | 3m | 白麻碎石 + 草缝 + 局部蚝壳水磨石 | 下棋、喝饮品、聊天、打牌 | ★★★☆☆ 半公共 |
+| **Layer C · 沉浸带** | 4.5-6/8m | 1.5-3.5m | 树皮/木屑覆盖（树根保护） | 静坐、发呆、听咸水歌 | ★★☆☆☆ 半私密 |
+
+> **关键手法（兴安广场同款）**：三条带之间**没有任何硬质边界**——没有路牙、没有栏杆、没有挡墙。铺装的"纹理密度"和家具的"坐面高度"是唯一的分界语言。从路边走到树下，你甚至注意不到自己已经"进入"了客厅。
+
+**横向（沿村路，约 24-28m）：6 棵树 = 6 个渐境节点**
+
+| 节点 | 锚点 | 位置 | 主题 | 功能 | 强度 |
+|---|---|---|---|---|---|
+| **境一 · 引** | 树 1 | 西端入口 | 入口标识 + 共享种植角 | 迎候、认知、认养 | ★★ |
+| **境二 · 弈** | 树 2 | 西段 | 棋盘桌 + 石凳 | 下棋、围观、短暂歇脚 | ★★★ |
+| **境三 · 聚** | 树 3-4 | 中段（间距最大处） | 五福茶寮 + 遮阳伞 + 中央广场 | 聚集、喝茶、打卡、社交 | ★★★★★ |
+| **境四 · 憩** | 树 5 | 东段 | 树池环抱卡座 + 聊天角 | 长坐、闲聊、剥花生 | ★★★ |
+| **境五 · 韵** | 树 6 | 东端 | 咸水歌文化角 + 静坐区 | 文化感知、独处、听歌 | ★★ |
+
+> 活动强度从西到东的渐变曲线：`入口平缓 → 中段高峰 → 东端回落`——像一个深呼吸。
+
+### 4.2 各节点详细设计
+
+#### 境一「引」—— 树 1 | 入口标识 + 共享种植角
+
+这里是场地西端入口，第一个迎接从村巷口走来的人。
+
+| 元素 | 描述 | 尺寸/位置 |
+|---|---|---|
+| **入口标识矮墙** | 回收旧青砖错缝砌筑，顶面旧木压顶，正面嵌铜字「五福·檐下客厅」，夜间底部埋地灯洗亮 | 1.8m(L) × 0.3m(W) × 0.6m(H)，位于树 1 西侧 2m |
+| **共享种植角** | 3 个抬升种植箱沿场地内边界排列，回收旧门板拼制，村民认养种植紫苏/灯盏菜/红葱头/香茅。每个箱子侧板插一块可擦写亚克力名牌（"阿芳的紫苏""明叔的灯盏菜"） | 每箱 0.6m × 1.0m × H0.7m，总长约 3.5m |
+| **地面** | 浅灰白透水砖（Layer A 起点），树 1 根部保留直径 1.2m 的树皮覆盖圈 | — |
+| **照明** | 标识矮墙底部埋地 LED（暖白 3000K） | — |
+
+#### 境二「弈」—— 树 2 | 棋盘桌 + 散座
+
+| 元素 | 描述 | 尺寸/位置 |
+|---|---|---|
+| **榕荫棋盘桌** | 斗门本地花岗岩整石切割，桌面激光雕刻象棋棋盘格，四角各一个杯槽（不锈钢内胆可取）。桌腿由 4 墩旧青砖砌成 | 0.8m × 0.8m × H0.7m，位于树 2 南侧（Layer B 内），距树干 1.5m |
+| **石凳 ×4** | 本地花岗岩切块，简洁方凳造型，顶面荔枝面防滑处理 | 0.35m × 0.35m × H0.45m |
+| **树下散座** | 树 2 树干旁放置 1 张回收旧木拼制长凳（无靠背，双面可坐） | 1.5m(L) × 0.4m(W) × H0.45m |
+| **地面渐变起点** | Layer A（透水砖）与 Layer B（碎石+草缝）从此处开始出现第一条"模糊交界线"——透水砖边缘不再整齐，而是以不规则锯齿形嵌入碎石区 | — |
+
+#### 境三「聚」—— 树 3-4 | 五福茶寮 + 遮阳伞 + 中央广场
+
+这是整个场地的**核心高潮区**。树 3 和树 4 之间间距最大（推测约 6-8m），自然形成一个"林间空地"。
+
+| 元素 | 描述 | 尺寸/位置 |
+|---|---|---|
+| **「五福茶寮」折叠推车** | 位于树 3 与树 4 中间，Layer B 深度。展开态 L 型台面（蚝壳水磨石），台下储物格，侧面可擦写黑板菜单（"今日特饮：冰镇莲雾汁 ¥5 / 陈皮绿豆沙 ¥4 / 阿婆凉茶 ¥2"），最高点为遮阳伞插孔柱（兼作夜间暖光 LED 灯柱，3000K）。折叠态为一个 0.8m 见方的木盒雕塑，顶部有灯仍亮。 | 展开态 1.5m(L) × 0.8m(W) × H1.1m(台面) / H2.1m(伞柱)；折叠态 0.8m × 0.8m × H2.1m |
+| **咸水歌遮阳伞 ×2** | 水蓝色→莲雾粉渐变伞面，伞缘垂下短布帘（丝印咸水歌五线谱）。伞柱内置红外感应+微型音箱——有人坐下时轻声播放咸水歌选段（音量仅伞下可闻）。伞顶太阳能板供电。 | 伞径 2.5m，伞高 2.4m。一把插在茶寮推车上，一把独立置于树 4 旁 |
+| **蚝壳水磨石圆形小广场** | 茶寮前方，直径 2.4m 的圆形铺装区——全场**唯一使用蚝壳碎的区域**（与水磨石工艺结合，表面打磨光滑+防滑荔枝纹处理）。圆心嵌入五福村 Logo 铜标（蚝壳轮廓 + 篆书"五"字）。 | 直径 2.4m，位于树 3-4 之间 Layer B |
+| **树 3 围坐石凳** | 围绕树 3 的 3 个独立花岗岩石凳（非连续卡座），保持通透感 | 每个 0.4m × 0.4m × H0.45m，距树干 1.2-1.5m |
+| **饮品展示/取餐台** | 茶寮推车旁设一个固定小台面（青砖砌筑 + 旧木板台面），供顾客暂放饮品、自取杯垫 | 0.6m × 0.4m × H0.9m |
+
+#### 境四「憩」—— 树 5 | 树池卡座 + 聊天角
+
+| 元素 | 描述 | 尺寸/位置 |
+|---|---|---|
+| **树池环抱卡座** | 围绕树 5 的弧形木坐凳，约 150°环抱。坐面+靠背由回收旧建筑木梁拼成（表面打磨+木蜡油做旧），骨架为热镀锌方钢（深灰喷涂）。靠背木板激光蚀刻咸水歌《海底珍珠容易揾》片段歌词。扶手处嵌可取出烟灰缸槽。 | 内径 1.8m（距树干 1.2m+），坐面宽 0.45m，坐面高 0.45m，靠背高 0.5m |
+| **聊天角小桌** | 卡座弧心外侧放置一张小型旧木圆桌，方便放茶杯、零食 | 直径 0.5m，高 0.55m |
+| **驱蚊植物丛** | 卡座后方（Layer C 边界）丛植香茅 + 迷迭香 + 艾草 | 约 3㎡ 自然式丛植 |
+| **地面** | Layer B 区域为碎石+草缝（碎石比例降低、草缝变宽，越来越"软"），Layer C 为树皮覆盖 | — |
+
+#### 境五「韵」—— 树 6 | 咸水歌文化角 + 静坐区
+
+场地东端，最安静的一处。适合一个人坐着发呆、听歌、等邻居。
+
+| 元素 | 描述 | 尺寸/位置 |
+|---|---|---|
+| **咸水歌木篱** | 3 根回收荔枝木粗枝（直径 10-15cm）立柱，顶部悬挂镂空锈板——蚀刻《海底珍珠容易揾》全首歌词。风吹过时锈板轻微晃动，与木柱碰撞发出低沉"笃笃"声。 | 立柱 H1.5m，间距 1.2m |
+| **独坐长凳** | 一张回收旧木长凳，面向场地内侧（背对村路），供 2-3 人安静坐憩 | 1.8m(L) × 0.45m(W) × H0.45m |
+| **莲雾树（新植）** | 在树 6 旁新植一棵小莲雾树（斗门本土果树），作为"可生长的文化符号"——春天开花（莲雾粉），夏天结果，未来可与茶寮联动制作莲雾汁 | 胸径约 6-8cm，高约 2.5-3m |
+| **地面** | 树皮/木屑全覆盖，最"软"的地面——也是最安静的信号 | — |
+
+### 4.3 空间渐变总表
+
+| 维度 | 境一·引 | 境二·弈 | 境三·聚 | 境四·憩 | 境五·韵 |
+|---|---|---|---|---|---|
+| **铺装** | 100%透水砖 | 70%砖+30%碎石 | 50%碎石+30%砖+**20%蚝壳水磨石** | 70%碎石草缝+30%树皮 | 100%树皮木屑 |
+| **家具密度** | 低（只有矮墙+种植箱） | 中（棋盘桌+散座） | **高**（茶寮+伞+广场+石凳） | 中（卡座+小桌） | 低（一张长凳+木篱） |
+| **坐面高度** | — | H0.45m（石凳） | H0.45m(石凳)+站立(吧台) | H0.45m(卡座)+靠背 | H0.45m(长凳) |
+| **活动强度** | ★★ | ★★★ | ★★★★★ | ★★★ | ★★ |
+| **公共→私密** | 全公共 | 半公共 | 半公共(核心) | 半私密 | 半私密 |
+| **光照** | 树荫+开敞 | 树荫 | 树荫+伞下双重遮荫 | 树荫 | 树荫+新植树 |
+| **声音** | 村路车行声 | 棋子落盘声 | 聊天声+咸水歌轻唱 | 闲聊声+虫鸣 | 风吹锈板声+鸟鸣 |
+
+---
+
+## 五、铺装渐变体系
+
+（这是兴安广场最具参考价值的技法——**铺装不换，空间不分**）
+
+### 5.1 铺装渐变平面
+
+```
+村路（沥青路面）
+═══════════════════════════════════════════════════════
+Layer A · 透水混凝土砖（浅灰白 #F2EFE9 仿蚝壳色）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     ← 砖缝中开始出现碎石嵌入（渐变起点）→
+Layer B · 碎石+草缝，中段混入蚝壳水磨石圆形广场
+     ← 碎石比例降低，草缝变宽，树皮开始出现 →
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Layer C · 树皮/木屑全覆盖
+═══════════════════════════════════════════════════════
+场地内边界
+```
+
+### 5.2 铺装类型与面积
+
+| 铺装类型 | 应用区域 | 面积(估) | 占比 |
+|---|---|---|---|
+| 透水混凝土砖（浅灰白仿蚝壳色） | Layer A 全线 + 境一/境二 Layer B 部分 | 约 55㎡ | 35% |
+| 白麻碎石 + 草缝 | Layer B 主体（境二 ~ 境五） | 约 65㎡ | 40% |
+| **蚝壳碎+树脂水磨石（精装）** | 仅境三中央圆形广场（直径 2.4m） | 约 4.5㎡ | 3% |
+| 树皮/木屑覆盖 | Layer C 全线 + 所有树根保护区 | 约 35㎡ | 22% |
+| **合计** | | 约 160㎡ | 100% |
+
+> 蚝壳实际用量：仅 4.5㎡ × 3cm 厚 ≈ 0.14m³，约需蚝壳碎 100-150kg。一个海鲜餐厅约 3-5 天的蚝壳量即可满足。
+
+### 5.3 无路牙设计（兴安广场同款关键细节）
+
+- 村路边与场地之间**不设路牙石**
+- 透水砖从路边以 2% 坡度向场地内微倾，雨水自然排入碎石带下渗
+- 三种铺装之间不设金属收边条——碎石自然"渗入"砖缝，树皮自然"蔓延"进碎石区
+- 效果：你站在路边时，脚已经踩在场地上了；你还没决定"要不要进去"，就已经进去了
+
+---
+
+## 六、户外家具与设施清单（精简为 4 件非标设计）
+
+### 6.1 榕荫棋盘桌（境二）
+
+| 属性 | 内容 |
+|---|---|
+| **功能** | 老年人下棋、路人围观、自发聚集的"地标" |
+| **尺寸** | 0.8m × 0.8m × H0.7m |
+| **材料** | 台面：斗门本地花岗岩（荔枝面防滑）；桌腿：回收旧青砖 ×4 墩；杯槽：不锈钢内胆可取 |
+| **文化点** | 桌面激光雕刻象棋棋盘格 + 边缘阴刻「馬」「炮」粤语俗称 |
+| **维护** | 花岗岩耐久免维护，杯槽定期取出冲洗 |
+
+### 6.2 树池环抱卡座（境四）
+
+| 属性 | 内容 |
+|---|---|
+| **功能** | 围绕树 5 遮荫坐憩、保护树根、中老年人长坐聊天 |
+| **尺寸** | 150°弧形，内径 1.8m（距树干 1.2m+），坐面宽 0.45m，坐面高 0.45m，靠背高 0.5m |
+| **材料** | 坐面+靠背：回收旧建筑木梁/旧门板（打磨+木蜡油做旧）；骨架：热镀锌方钢（深灰氟碳喷涂）；基础：4 个预制混凝土垫块（不接触树根）；靠背：激光蚀刻咸水歌歌词 |
+| **细节** | 坐面下透气格栅保护树根；扶手嵌可取出烟灰缸槽+杯槽；靠背 3 块木板斜插（倾角 15°） |
+
+### 6.3 「五福茶寮」折叠推车（境三）
+
+| 属性 | 内容 |
+|---|---|
+| **功能** | 村民轮值售卖饮品（莲雾汁/凉茶/陈皮水）；非营业折叠后为景观装置+夜间暖光照明 |
+| **尺寸** | 折叠态 0.8m×0.8m×H2.1m；展开态 L 型台面 1.5m×0.6m+0.8m×0.4m，台面高 1.1m |
+| **材料** | 骨架：304 不锈钢方管（深灰喷涂）；台面：3cm 厚蚝壳碎+树脂水磨石；五金：不锈钢合页+气撑杆；车轮：4 寸橡胶万向轮（带刹车）×2；伞柱：铝合金+氟碳喷涂，顶部太阳能 LED 灯（暖白 3000K） |
+| **运营配套** | 侧面可擦写黑板菜单架、台下储物格、台面旁固定取餐小台（青砖+旧木板 0.6m×0.4m×H0.9m） |
+
+### 6.4 咸水歌遮阳伞 + 感应音频桩（境三 ×2 + 可选境四 ×1）
+
+| 属性 | 内容 |
+|---|---|
+| **功能** | 遮阳、拍照"出片点"、红外感应轻声播放咸水歌选段 |
+| **尺寸** | 伞径 2.5m，伞高 2.4m，伞座直径 60cm |
+| **材料** | 伞面：Sunbrella 防水帆布（水蓝→莲雾粉渐变）；伞骨：玻璃纤维；伞柱：铝合金+氟碳喷涂；伞座：预制混凝土（可螺栓固定）；电子模块：伞顶太阳能板 + 伞座内电池 + 红外感应 + 微型防水音箱 |
+| **文化点** | 伞缘垂帘（高 30cm）丝印咸水歌五线谱；红外感应范围伞下半径 1.5m；选曲 3 首轮播（《海底珍珠》《虾公虾婆》《水上情歌》）；音量仅伞下可闻 |
+| **维护** | 台风预警时拆卸伞面收入储物箱，伞柱放倒固定 |
+
+### 6.5 咸水歌木篱（境五）
+
+| 属性 | 内容 |
+|---|---|
+| **功能** | 文化展示 + 空间界定 + 风动声音装置 |
+| **尺寸** | 3 根立柱 H1.5m，间距 1.2m |
+| **材料** | 立柱：回收荔枝木/龙眼木粗枝（直径 10-15cm，去皮+防腐浸泡）；悬挂件：3mm 厚耐候钢板激光镂空歌词，麻绳悬挂于木柱横梁 |
+| **效果** | 风吹锈板微晃，与木柱碰撞发出低沉"笃笃"声——"咸水歌在风里自己唱" |
+
+---
+
+## 七、「五福村·乡村客厅」文创产品系列
+
+（以下沿用前版方案，根据场地缩小调整数量建议）
+
+### 7.1 实用类
+
+| 产品 | 规格 | 设计说明 | 色彩应用 |
+|---|---|---|---|
+| **莲雾杯垫（四枚组）** | 直径 10cm × 厚 0.8cm | 蚝壳粉+树脂浇筑，截面呈莲雾切片五角星形，四色渐变。正面压印 Logo，背面防滑软木 | 四色水色渐变 |
+| **「袋你饮茶」帆布袋** | 35cm × 40cm | 米白帆布，正面丝印简笔线稿茶寮推车+手写字"得闲来饮茶"，可折叠收纳 | 蚝壳白底 + 青砖灰线 + 莲雾粉字 |
+| **咸水歌歌词纸杯** | 280ml | 牛皮纸色双层隔热杯，外壁竖排印咸水歌选段，杯底小字"五福村·檐下客厅" | 牛皮纸本色 + 水色文字 |
+
+### 7.2 互动类
+
+| 产品 | 规格 | 设计说明 |
+|---|---|---|
+| **「六树漫步」折页** | 手风琴六折，单面 10cm × 15cm | 正面手绘线稿版六棵树+场地平面图，标注每棵树的"树下有什么"（棋盘桌/茶寮/卡座/歌词篱）。背面六段对应的小故事或农谚。集齐 6 枚"树叶印章"可在茶寮兑换一杯莲雾汁 |
+| **咸水歌种子盲盒** | 5cm × 3.5cm × 2cm | 封面"疍家阿叔"/"虾嫂"卡通人物+一句咸水歌歌词。盒内：可降解育苗杯+一颗斗门本地种子（紫苏/灯盏菜/香茅/红葱头）+种植小卡。**联动**：长大后移栽至境一的共享种植角 |
+
+### 7.3 运营类
+
+**招牌设计**：
+- 旧船板（或旧门板），宽 55cm × 高 28cm
+- 白色丙烯手写字「五福茶寮」，左上角烙铁烫印 Logo
+- 右上角可翻转木牌（一面"开档"一面"收档"）
+- 下方麻绳悬挂 3 块小木牌，手写当日特饮及价格
+
+**饮品包装设计**：
+- 280ml 可回收玻璃瓶
+- 腰封：青砖灰底色 + 莲雾粉 Logo
+- 正面大字「五福凉意」，背面小字「斗门·五福村」
+- 瓶盖贴纸三分色：蓝 = 凉茶系 / 粉 = 莲雾系 / 黄 = 陈皮系
+- 定价建议：莲雾汁 ¥5 / 陈皮绿豆沙 ¥4 / 凉茶 ¥2
+
+---
+
+## 八、材料选用与造价估算
+
+### 8.1 本土材料获取策略
+
+| 材料 | 调整后方案 | 获取路径 | 预估单价 |
+|---|---|---|---|
+| 木质构件（坐面/靠背/木篱） | 回收旧建筑木梁/旧门板（替代昂贵的旧船木）+ 荔枝木/龙眼木粗枝（果园废弃） | 斗门旧村改造工地、本地果园冬剪 | 旧建筑木约 80-150 元/㎡；果树枝干几乎零成本 |
+| 青砖 | 优先回收五福村本村旧房拆除青砖，不足部分从斗门旧村改造项目补充 | 村委会协调、建筑垃圾资源化中心 | 1-3 元/块（二手） |
+| 蚝壳 | 仅用于境三圆形广场水磨石（4.5㎡）——大幅缩减用量 | 白藤头海鲜市场/本地餐厅废弃蚝壳 | 几乎为零（需人工清洗破碎） |
+| 铺装主材 | 浅灰白透水混凝土砖 + 本地白麻碎石（替代大面积蚝壳铺装，用色彩延续"蚝壳白"基因） | 建材市场常规采购 | 透水砖约 40-60 元/㎡，碎石约 30-50 元/㎡ |
+| 花岗岩（棋盘桌+石凳） | 斗门本地花岗岩 | 本地石材厂 | 约 200-400 元/件（含切割+雕刻） |
+
+### 8.2 青砖用量估算（缩减版）
+
+| 用途 | 估算用量 |
+|---|---|
+| 入口标识矮墙（1.8m × 0.6m × 0.3m） | 约 380 块 |
+| 棋盘桌腿 ×1（4 墩 × 0.2m × 0.2m × 0.6m） | 约 80 块 |
+| 取餐小台（0.6m × 0.4m × 0.9m） | 约 120 块 |
+| 共享种植角花池收边 | 约 100 块 |
+| **合计** | **约 680 块（约 2-3 个旧房拆除量）** |
+
+### 8.3 造价估算（缩减版，适应小场地）
+
+| 分项 | 内容 | 估算金额（元） |
+|---|---|---|
+| 铺装工程 | 透水砖 55㎡ + 碎石草缝 65㎡ + 蚝壳水磨石 4.5㎡ + 树皮 35㎡ | 5,000 - 9,000 |
+| 家具制作 | 棋盘桌 ×1 + 树池卡座 ×1 + 折叠推车 + 遮阳伞 ×2 + 木篱 + 石凳 ×7 + 长凳 ×2 + 种植箱 ×3 | 15,000 - 25,000 |
+| 绿化 | 6 棵乔木保留 + 驱蚊植物 + 莲雾新植 ×1 + 地被 | 3,000 - 5,000 |
+| 水电照明 | 茶寮 LED + 音频桩电子 ×2 + 标识矮墙埋地灯 + 太阳能灭蚊灯 ×1 | 4,000 - 6,000 |
+| 标识与文创（首批） | 入口铜字 + 可翻转木牌 + 杯垫/帆布袋/折页/盲盒首批 | 2,500 - 4,000 |
+| 基础与土方 | 场地微平整 + 铺装基层 + 树根保护措施 | 2,000 - 4,000 |
+| **合计** | | **约 31,500 - 53,000 元** |
+
+> 小场地 + 精简家具 + 缩减蚝壳用量后，造价较前版显著降低。
+
+---
+
+## 九、落地性专题与后期运营管理
+
+### 9.1 蚝壳铺装可行性（定论）
+
+| 问题 | 风险 | 本方案对策 |
+|---|---|---|
+| 蚝壳碎片尖锐易划伤 | 大面积铺装摔伤风险高 | **仅用于 4.5㎡ 圆形广场水磨石**，碎片被树脂完全包裹，表面打磨+荔枝纹防滑处理 |
+| 雨后打滑 | 行人滑倒 | 水磨石表面荔枝面处理 + 位于遮阳伞下，雨天较少淋雨 |
+| 碳酸钙粉化 | 耐久性差 | 树脂包裹隔绝水分和酸性雨水，耐久性等同于水磨石地面（10 年+） |
+| 清洁困难 | 壳缝藏污纳垢 | 仅 4.5㎡，日常人工清扫即可；水磨石无缝，不藏垢 |
+| **大面积替代方案** | — | 其他 155+㎡ 使用同色系透水砖 + 本地碎石，以色彩而非材质延续"蚝壳白"基因 |
+
+### 9.2 旧木替代方案
+
+斗门旧船木已稀缺（500-1500 元/㎡），不适合竞赛级微景观。替代：
+
+| 用途 | 替代材料 | 成本 |
+|---|---|---|
+| 卡座坐面/靠背 ×1 | 回收旧建筑木梁/旧门板 + 木蜡油做旧 | 约为船木的 1/5 |
+| 木篱立柱 ×3 | 荔枝木/龙眼木粗枝（果园冬剪废弃，直径 10-15cm）去皮+防腐浸泡 | 几乎为零 |
+| 长凳/种植箱 | 回收旧门板/旧床板 | 极低 |
+| 茶寮推车台面 | 蚝壳水磨石（不含木质面） | — |
+
+### 9.3 后期运营管理
+
+（基本沿用前版，适配更小的场地和更少的设施）
+
+**运营模式**：「村委会监管 + 村民家庭轮值」微经营模式
+
+| 要素 | 方案 |
+|---|---|
+| 运营主体 | 本村有意愿的村民家庭轮值（以"周"为单位），优先长者/低收入家庭 |
+| 经营内容 | 仅 3-4 种饮品（莲雾汁/凉茶/陈皮水/绿豆沙），不需明火烹饪 |
+| 统一定价 | 5 元/杯 |
+| 收入分配 | 轮值家庭得 80%，20% 上交村委会作为场地维护基金 |
+| 非营业时段 | 推车折叠锁闭转为景观装置+夜间暖灯，冬季/农忙/雨天不强制营业 |
+
+**维护分工**：
+
+| 频率 | 任务 | 负责方 |
+|---|---|---|
+| 每日 | 清扫铺装落叶、擦抹棋盘桌与茶寮台面 | 轮值村民 |
+| 每周 | 检查树根保护区覆盖物、清理碎石区杂草 | 场地维护员 |
+| 每月 | 检查木家具螺栓、补木蜡油 | 场地维护员 |
+| 每季 | 修剪驱蚊植物、检查排水渗透情况 | 村委会组织 |
+| 每年 | 全面检修+补铺装+台风季后遮阳伞检修 | 村委会+施工方 |
+
+**场地维护资金**：
+
+| 来源 | 估算 |
+|---|---|
+| 茶寮营收 20% 提留 | 约 150-350 元/月（小场地、少客流） |
+| 村委会年度微景观维护专项 | 约 2,000-3,000 元/年 |
+| 文创售卖补充 | 不定 |
+
+### 9.4 小场地的独特优势（在方案中主动展示给评委）
+
+| 优势 | 说明 |
+|---|---|
+| **造价低** | 约 3-5 万即可完成，适合村集体自筹+小额奖补 |
+| **施工快** | 约 2-3 周可完工，不扰民 |
+| **维护轻** | 面积小=清扫量小、补植量小、设备少=故障点少 |
+| **可复制** | "六棵树模型"可在斗门任意沿路带状绿地复制推广 |
+| **亲和力强** | 小空间不空旷、不冷清，三五个人坐着就"满了"——更容易形成"有人气"的良性循环 |
+
+---
+
+## 十、AI 绘图提示词（中英双语·可直接复制）
+
+> **重要提示**：以下提示词已根据五福村效果图参考进行优化，强化了岭南建筑群背景、红灯笼氛围、石板铺装质感、暖金光照和远山薄雾层等视觉要素。建议出图时配合 **ControlNet Canny + Depth** 双控 + **启用高清修复（2x ESRGAN_4x）**，采样器 DPM++ 2M Karras / Euler a，CFG 7-9，步数 35-50。
+
+### 10.1 效果图提示词 — 境三「聚」茶寮核心场景（主效果图·横构图 16:9）
+
+> **出图工具**：建筑学长 AI / ComfyUI SDXL+ControlNet
+> **建议尺寸**：1344×768（横）或 1536×1024，高清修复 2x
+> **反向提示词见 10.7**
+
+**正向提示词（中文）**：
+
+```
+(杰作，最佳画质，8K超高清，建筑可视化渲染)，珠海斗门五福村街角微景观，
+中国传统岭南水乡村庄街巷场景，
+
+【建筑背景】街巷两侧为岭南传统青砖民居，青灰色清水砖墙(#7B8B7A)，
+硬山坡屋顶覆深灰色筒瓦，人字山墙/镬耳山墙轮廓，木质趟栊门和满洲窗，
+檐口下悬挂成串大红灯笼（暖黄光），建筑墙面有岁月风化痕迹和斑驳苔痕，
+
+【前景核心】沿村路一带状绿地（进深约7m，长条形），两棵保留大榕树之间
+放置木质折叠推车吧台"五福茶寮"，台面为蚝壳碎+树脂水磨石（灰白带贝壳纹理），
+吧台上摆放玻璃瓶装莲雾汁饮品和手写黑板菜单，两把水蓝色渐变遮阳伞
+（伞径约2.5m，伞缘垂下咸水歌五线谱丝印布帘）撑开在推车和树旁，
+
+【铺装渐变】地面从路边浅灰白透水砖→中部碎石+草缝→内侧树皮木屑三层渐变，
+推车前为直径2.5m圆形蚝壳水磨石小广场（表面打磨光滑+荔枝纹防滑），
+路面嵌入铜钱纹/蚝壳纹装饰铺地图案，路边无路牙——铺装自然"渗入"绿地，
+
+【光影氛围】黄金时段暖金色阳光从左侧45度斜射入街巷，穿过榕树叶形成斑驳光斑
+洒在石板地面和棋盘桌上，丁达尔体积光从屋檐缝隙射入，建筑投下深长阴影，
+地面湿润局部反光，空气中微尘在光束中浮动，暖金色受光面(#D4A574)，
+背光面深褐(#2A1A0A)，整体色调温暖怀旧，
+
+【远景与框景】背景远处可见淡蓝色山峦轮廓，山间薄雾缭绕，
+前景左侧香茅和艾草丛植作为框景，地面散落几片榕树落叶，
+建筑远处隐约可见炊烟或晨雾，天空为深蓝渐变暖橙(黄昏时刻),
+
+【材质细节】风化木质纹理可见年轮，青砖墙面有岁月侵蚀痕迹，
+蚝壳水磨石表面可见贝壳碎片的珠光反射，
+榕树气根垂落如帘，树干粗糙树皮质感真实,
+
+【渲染风格】UE5 Lumen光照，V-Ray建筑表现级渲染，
+PBR高精度材质，电影感浅景深(DOF)，
+35mm广角镜头，f/8光圈，三分法构图，建筑居中偏上占画面60%,
+暖金色调为主，莲雾粉和水蓝色为点缀色，4K超高清,
+```
+
+**正向提示词（English）**：
+
+```
+(masterpiece, best quality, 8K ultra HD, architectural visualization render),
+Zhuhai Doumen Wufu Village street corner micro-landscape,
+traditional Lingnan water village streetscape,
+
+[Architectural Background] Both sides of the lane lined with traditional
+Lingnan gray-brick dwellings (#7B8B7A), pitched hard-mountain roofs with
+dark gray barrel tiles, wok-ear gable walls (镬耳山墙), wooden sliding
+doors (趟栊门) and Manchu lattice windows, strings of large red lanterns
+hanging under eaves casting warm amber glow, weathered wall surfaces with
+moss patina and age marks,
+
+[Foreground Core] A narrow linear greenspace (approx 7m depth) along village
+road, between two large preserved banyan trees stands a foldable wooden
+drink stall "五福茶寮", oyster shell + resin terrazzo countertop (gray-white
+with visible shell fragment texture), glass bottles of lotus wax apple juice
+and hand-written chalkboard menu on counter, two water-blue gradient parasols
+(diam~2.5m, fabric edge curtains printed with Xianshui folk song musical
+scores) open above the stall and beside tree,
+
+[Paving Gradient] Ground transition from light gray-white permeable bricks
+at roadside → gravel with grass joints in middle zone → bark mulch inner zone,
+circular oyster shell terrazzo mini-plaza (diam 2.5m) in front of stall
+(surface polished smooth with lychee-pattern anti-slip finish), decorative
+coin/floral paving inlay patterns, NO curb stone—paving naturally "bleeds"
+from street into greenspace,
+
+[Lighting & Atmosphere] Golden hour warm sunlight at 45-degree angle from
+left entering the lane, filtering through banyan leaves creating dappled
+light spots on stone paving and chess table, crepuscular volumetric god
+rays streaming through eave gaps, buildings casting long deep shadows,
+slightly wet ground with subtle reflections, dust particles floating in
+light beams, warm gold lit surfaces (#D4A574), cool dark shadow areas
+(#2A1A0A), overall warm nostalgic tone,
+
+[Distant View & Framing] Distant misty blue mountain silhouettes beyond
+village rooftops, atmospheric haze between mountain layers,
+left foreground: lemongrass and mugwort clusters as framing elements,
+scattered banyan leaves on ground, faint cooking smoke or morning mist
+visible beyond architecture, sky gradient from deep blue to warm orange
+at dusk,
+
+[Material Details] Weathered wood with visible annual rings and grain,
+gray brick walls with age erosion traces, oyster shell terrazzo surface
+showing subtle pearlescent reflections from shell fragments,
+banyan aerial roots hanging like natural curtains, realistic rough bark texture,
+
+[Rendering Style] Unreal Engine 5 Lumen lighting, V-Ray architectural
+visualization quality, PBR high-precision materials,
+cinematic shallow depth of field (DOF), 35mm wide-angle lens, f/8 aperture,
+rule-of-thirds composition, architecture occupies 60% centered upper frame,
+warm gold dominant tone with lotus pink and water-blue accent colors,
+4K ultra HD,
+```
+
+### 10.2 效果图提示词 — 境二「弈」棋盘场景（竖构图 3:4）
+
+> **出图工具**：建筑学长 AI / Stable Diffusion WebUI
+> **建议尺寸**：1024×1366（竖幅），高清修复 2x
+
+**正向提示词（中文）**：
+
+```
+(杰作,最高画质,8K写实渲染)，珠海斗门五福村街边榕树下象棋场景，
+
+【场景】岭南乡村沿路带状绿地，一棵大榕树下(粗干,气根垂落)，
+放置一张斗门本地花岗岩象棋桌(0.8m见方，桌面激光刻棋盘格+边缘粤语俗称)，
+棋盘上散落木质象棋残局，两位阿伯面对面坐在石凳上对弈：
+左边阿伯托腮皱眉盯着棋盘，右手食指轻敲桌沿，
+右边阿伯端着搪瓷杯喝凉茶，眼神得意(仿佛胜券在握)，
+两双拖鞋随意踢在桌脚旁泥土上，一位阿姨坐在旁边旧木长凳上低头剥花生，
+
+【背景】村路对面青砖灰瓦岭南民居，人字山墙轮廓，檐下悬挂红灯笼(未点亮)，
+大门贴红色对联已略有褪色，墙根有青苔，傍晚炊烟从屋后升起的暗示，
+
+【铺装】地面白麻碎石+草缝混合铺装(碎石比例高)，靠近路边逐渐过渡为浅灰白透水砖，
+路边无路牙石——模糊的道路与绿地边界，地面散落几片榕树落叶，
+
+【光影】下午4点暖金色阳光从右侧斜射，穿过榕树茂密树冠形成无数圆形光斑洒在棋盘上，
+丁达尔光柱隐约可见(微尘在光束中浮动)，树荫下形成明暗交替的庇护感，
+受光面暖金(#D4A574)，阴影面深褐偏冷(#2A1A0A)，
+
+【氛围】怀旧温暖如老照片，生活气息浓厚，非摆拍的自然日常瞬间，
+浅景深聚焦棋盘和人物手的动作，背景建筑略微虚化，
+电影感调色：橙黄暖调为主+青砖灰冷调平衡，竖向构图(3:4), 4K超高清,
+```
+
+**正向提示词（English）**：
+
+```
+(masterpiece, highest quality, 8K photorealistic render),
+Zhuhai Doumen Wufu Village roadside chess scene under banyan tree,
+
+[Scene] Rural Lingnan linear greenspace along village road,
+under a large banyan tree (thick trunk, aerial roots hanging down),
+a local Doumen granite Chinese chess table (0.8m square, laser-engraved
+chessboard grid + Cantonese chess terms on edge), wooden chess pieces
+scattered mid-game on board, two elderly men sitting on stone stools
+facing each other playing: left man stroking chin frowning staring at
+board fingers tapping table edge, right man holding enamel mug drinking
+herbal tea with confident smirk, flip-flops kicked off casually under
+table, a woman sitting on adjacent old wooden bench shelling peanuts,
+
+[Background] Across the village road: Lingnan gray-brick tile-roof houses,
+wok-ear gable silhouettes, unlit red lanterns hanging under eaves,
+slightly faded red couplets on wooden doors, moss at wall base,
+hint of evening cooking smoke rising behind houses,
+
+[Paving] White gravel + grass-joint mixed paving (higher gravel ratio),
+gradually transitioning to light gray-white permeable bricks near road,
+no curb stone—blurred boundary between road and greenspace,
+a few scattered banyan leaves on ground,
+
+[Lighting] 4PM warm golden sunlight slanting from right through dense
+banyan canopy creating countless circular dappled light spots on chessboard,
+subtle crepuscular rays visible (dust particles floating in light),
+alternating light-shadow sheltering feel under tree shade,
+lit surfaces warm gold (#D4A574), shadow areas cool dark brown (#2A1A0A),
+
+[Atmosphere] Warm nostalgic like old photograph, authentic daily life,
+not posed—a natural candid moment, shallow DOF focusing on chessboard and
+hands, background architecture slightly blurred,
+cinematic color grading: orange-warm dominant + gray-brick cool balance,
+vertical composition (3:4), 4K ultra HD,
+```
+
+### 10.3 效果图提示词 — 境一「引」入口场景（横构图 16:9）
+
+> **出图工具**：建筑学长 AI / ComfyUI SDXL
+> **建议尺寸**：1344×768（横），高清修复 2x
+
+**正向提示词（中文）**：
+
+```
+(杰作,最高画质,8K建筑可视化)，珠海斗门五福村街角入口微景观，
+
+【场景】岭南乡村街角入口，沿路一侧，一座低矮旧青砖标识矮墙(高0.6m,长1.8m,
+旧木压顶)嵌铜字"五福·檐下客厅"，墙后一棵保留大榕树(树龄感强,气根垂落)，
+墙根地面暖白埋地LED灯带洗亮墙面(暖白3000K,暗示傍晚临近),
+
+【共享种植角】场地内侧靠边排列3个抬升旧木种植箱(每箱0.6m×1.0m×H0.7m)，
+箱内紫苏/香茅/红葱头/灯盏菜生长茂盛，有些刚冒出嫩芽，
+每箱侧板插可擦写亚克力名牌("阿芳的紫苏""明叔的灯盏菜""村委会·五福香茅")，
+种植箱旁一张旧木长凳(1.5m长)供人坐下换鞋/整理农具,
+
+【铺装】地面浅灰白透水混凝土砖(#F2EFE9仿蚝壳色)从路边延伸入场地，
+根部保留直径1.2m树皮覆盖圈保护树根，铺装与村路沥青之间无路牙，
+边缘呈不规则锯齿形过渡——街道与绿地的边界是模糊的,
+
+【背景】村路对面青砖民居(硬山坡顶,灰瓦,局部镬耳墙)，大红灯笼悬挂檐下，
+木质趟栊门半开，门内透出暖黄灯光，墙根青苔斑驳，远处淡蓝山峦轮廓,
+
+【光影】柔和午后自然光(约下午3-4点)，阳光从左侧45度穿过榕树叶洒落地面，
+光影斑驳柔和，无强烈阴影——干净、温暖、低调的入口氛围,
+
+【细节】标识墙铜字在阳光下微微反光，种植箱土壤微湿(刚浇过水)，
+榕树气根随风轻摆的暗示，墙角几丛驱蚊草(香茅/艾草)自然点缀,
+
+【渲染】电影感广角(28mm)，暖色调(#F2EFE9蚝壳白基底+老木褐点缀)，
+柔和色彩，不饱和度太高，4K超高清，横向构图16:9,
+```
+
+**正向提示词（English）**：
+
+```
+(masterpiece, highest quality, 8K architectural visualization),
+Zhuhai Doumen Wufu Village street corner entrance micro-landscape,
+
+[Scene] Lingnan village street corner entry, roadside, a low reclaimed
+gray-brick marker wall (H0.6m, L1.8m, reclaimed wood cap) with embedded
+bronze lettering "五福·檐下客厅", a preserved large banyan tree behind wall
+(strong age character, aerial roots hanging), warm white in-ground LED strip
+(3000K) washing the wall base—hinting approaching dusk,
+
+[Shared Planting Corner] 3 elevated reclaimed-wood planter boxes
+(0.6m×1.0m×H0.7m each) lined along inner edge, lush perilla/lemongrass/
+shallots/lantern-leaf growing, some tender new sprouts just emerging,
+each box side panel has erasable acrylic name tag ("阿芳的紫苏/"
+"明叔的灯盏菜"/"村委会·五福香茅"), an old wooden bench (L1.5m) nearby,
+
+[Paving] Light gray-white permeable concrete brick (#F2EFE9 oyster-shell-white
+tone) extending from roadside into site, 1.2m diameter bark mulch circle
+preserved around tree root zone, no curb between paving and village road
+asphalt—jagged irregular transition edge, blurred boundary,
+
+[Background] Across road: Lingnan gray-brick houses (hard-mountain roof,
+gray tiles, partial wok-ear gables), large red lanterns hanging under eaves,
+wooden sliding door half-open with warm yellow light inside,
+moss patches on wall base, distant faint blue mountain silhouettes,
+
+[Lighting] Soft afternoon natural light (~3-4PM), sunlight at 45° from left
+filtering through banyan leaves casting soft dappled ground patterns,
+no harsh shadows—clean, warm, understated entrance atmosphere,
+
+[Details] Bronze letters subtly reflecting sunlight, planter soil slightly
+moist (recently watered), hint of banyan aerial roots swaying gently,
+a few clusters of mosquito-repelling plants (lemongrass/mugwort) naturally
+scattered at wall corners,
+
+[Rendering] Cinematic wide-angle (28mm), warm palette (#F2EFE9 oyster white
+base + aged wood brown accents), soft muted colors not over-saturated,
+4K ultra HD, horizontal 16:9 composition,
+```
+
+### 10.4 彩色平面图提示词（SUAPP 线稿转彩平）
+
+> **出图工具**：Stable Diffusion + ControlNet Lineart / SUAPP AI 彩平功能
+> **建议尺寸**：1920×1080（展板可用），CFG 5-7（降低风格化强度）
+
+**正向提示词（中文）**：
+
+```
+彩色景观建筑总平面图，手绘水彩渲染风格(watercolor wash architectural plan)，
+珠海斗门五福村长条形沿村路街角绿地（长约26m，进深约7m），
+
+【空间布局】6棵保留榕树沿村路一侧呈线性排列，形成5个渐境节点(自西向东)：
+境一"引"·入口标识矮墙+3个旧木种植箱(淡绿色块)，
+境二"弈"·花岗岩棋盘桌+石凳(浅灰方块)，
+境三"聚"·圆形蚝壳水磨石广场+折叠推车标识+两把遮阳伞圆形投影(水蓝色)，
+境四"憩"·弧形树池卡座围绕树5(浅棕色弧线)，
+境五"韵"·木篱标识+长凳+新植莲雾树(深绿点)，
+
+【铺装渐变三层带】自路边向内:
+Layer A·通行带:浅灰白透水砖(#F2EFE9暖灰白)
+Layer B·坐憩带:白麻碎石+草缝混合(灰白色+绿色散点)
+Layer C·沉浸带:树皮/木屑覆盖(深褐#8B6914)
+三层带之间无硬边界——用不规则的锯齿状过渡线表达"渐变"，
+
+【关键标注】路边无路牙石标记(红色虚线箭头+"无路牙"文字注)，
+北侧标注"村路(宽4-5m)"和"青砖民居"，
+场地南北边界虚线框，6棵树编号(1-6)标注树种和冠幅，
+圆形蚝壳水磨石广场(直径2.5m)蓝色虚线圆圈+文字注，
+
+【配色方案】莫兰迪柔色调(Morandi soft palette):
+铺装:暖灰白+灰绿+褐
+树木:橄榄绿(#7B8B7A系)半透明水彩淡涂
+水体/遮阳伞:浅水蓝(#5B8C7A系)
+强调:莲雾粉(#E8A0B4)仅用于节点名称标注文字
+背景民居:浅灰(#D6E5E3)淡涂
+
+【图面元素】图例栏(右下角):铺装类型×4(透水砖/碎石草缝/蚝壳水磨石/树皮)
++家具符号×5(棋盘桌/卡座/推车/遮阳伞/木篱)，
+无指北针和比例尺(SUAPP线稿自带)，
+图纸四边留白30px，右下角Logo(蚝壳轮廓+篆书"五"),
+
+渲染风格:建筑学院派水彩渲染，柔色，不饱和度太高，
+纸纹肌理+水彩晕染边缘，4K分辨率,
+```
+
+**正向提示词（English）**：
+
+```
+Colorful landscape architectural master plan, hand-painted watercolor
+wash rendering style, Zhuhai Doumen Wufu Village elongated linear
+greenspace along village road (approx L26m × D7m),
+
+[Spatial Layout] 6 preserved banyan trees linearly arranged along roadside
+forming 5 gradient nodes (west to east):
+Node 1 "引" · entry marker wall + 3 reclaimed-wood planters (soft green blocks),
+Node 2 "弈" · granite chess table + stone stools (light gray squares),
+Node 3 "聚" · circular oyster shell terrazzo plaza + foldable stall marker +
+two parasol circular shadows (water-blue),
+Node 4 "憩" · curved tree-pit bench wrapping tree 5 (light brown arc),
+Node 5 "韵" · wood post fence marker + bench + newly planted lotus wax apple
+tree (dark green dot),
+
+[Paving Gradient Three Bands] From roadside inward:
+Layer A · Passage Band: light gray-white permeable brick (#F2EFE9 warm gray-white)
+Layer B · Sitting Band: white gravel + grass joints mixed (gray-white + green dots)
+Layer C · Immersion Band: bark/wood chip cover (dark brown #8B6914)
+No hard boundaries between bands—irregular jagged transition lines
+expressing "gradient",
+
+[Key Annotations] No curb stone marked at road edge (red dashed arrow +
+"无路牙" text note), north side labeled "村路 (W4-5m)" and "青砖民居",
+site boundary dashed frame, 6 trees numbered (1-6) with species and crown
+width labels, circular oyster shell terrazzo plaza (diam 2.5m) blue dashed
+circle + text note,
+
+[Color Palette] Morandi soft color scheme:
+Paving: warm gray-white + gray-green + brown
+Tree canopies: olive green (#7B8B7A range) semi-transparent watercolor wash
+Water/parasols: light water-blue (#5B8C7A range)
+Accent: lotus pink (#E8A0B4) ONLY for node name text labels
+Background houses: light gray (#D6E5E3) thin wash
+
+[Legend Elements] Legend box (bottom right): 4 paving types (permeable brick/
+gravel-grass/oyster terrazzo/bark mulch) + 5 furniture symbols (chess table/
+curved bench/foldable stall/parasol/wood post fence),
+no compass or scale bar (from SUAPP lineart),
+30px margin on all sides, Logo bottom right (oyster shell outline + seal "五"),
+
+Rendering style: architecture school watercolor wash, soft muted colors,
+not over-saturated, paper texture + watercolor bleeding edges, 4K resolution,
+```
+
+### 10.5 立面图提示词（建筑立面生成）
+
+> **出图工具**：Stable Diffusion + ControlNet Depth/Canny（输入CAD立面线稿）
+> **建议尺寸**：1920×600（超宽横幅）
+
+**正向提示词（中文）**：
+
+```
+景观建筑正立面图，人视角度从村路对面北向南看，长条形街景立面(约26m展开)，
+珠海斗门五福村沿村路带状绿地，
+
+【从左到右序列】
+- 最左:青砖标识矮墙(H0.6m,旧木压顶)+3个抬升种植箱(紫苏/香茅茂盛轮廓)
+- 树1:大榕树(H8-10m,半球形树冠,气根垂落),树旁为浅灰白透水砖铺装带
+- 树2:榕树下见花岗岩棋盘桌(0.8m见方,H0.7m)+4个石凳(H0.45m)+对弈人形剪影
+- 树3-4(中段核心):两棵榕树之间露出两把水蓝色渐变遮阳伞(伞径2.5m,H2.4m)+
+  木质折叠推车吧台轮廓(H2.1m伞柱)+圆形蚝壳水磨石广场(地面浅色圆形区域)
+- 树5:榕树下弧形木卡座靠背(H0.5m,150°弧线)+聊天人形剪影
+- 树6(最右):大榕树+3根荔枝木立柱(H1.5m)+新植小莲雾树(H2.5-3m)+独坐长凳
+- 地面层:三层渐变带清晰——透水砖(浅灰白)→碎石草缝(灰绿)→树皮(深褐)
+
+【背景层】村路(宽4-5m,沥青路面)作为前景底边，
+场地内各节点建筑/家具轮廓为中层，背景远处青砖民居屋顶轮廓线(约H5-7m)为上层，
+房屋上方远山淡蓝轮廓+天空渐变(黄昏暖色),
+
+【光影】柔和午后自然侧光(约下午3点,从左侧打入)，
+建筑和家具投下短阴影在右侧地面，天空为暖白到浅蓝渐变(非黄昏，保留白昼清晰度)，
+
+【人物剪影】所有人物为深灰剪影(成人H≈1.7m)，分布在:棋盘桌两侧×2，
+茶寮推车旁×1，卡座上×2，木篱旁×1，用作比例参考,
+
+【标注叠加(后期PS)】立面底部标注5个渐境节点名称和标高，
+关键家具高度标注(棋盘桌H0.7m/遮阳伞H2.4m/木立柱H1.5m等)，
+铺装渐变三层带用虚线分隔+文字Layer A/B/C,
+
+【渲染】建筑学院派立面渲染，干净线条+柔色填充，非照片写实(偏向竞赛展板风格)，
+横构图16:9→建议最终裁切为超宽幅，4K分辨率,
+```
+
+**正向提示词（English）**：
+
+```
+Landscape architecture front elevation, eye-level view from opposite side
+of village road looking south, elongated streetscape elevation (approx 26m
+unfolded), Zhuhai Doumen Wufu Village roadside linear greenspace,
+
+[Left-to-Right Sequence]
+- Far left: gray-brick marker wall (H0.6m, reclaimed wood cap) + 3 elevated
+  planters (lush perilla/lemongrass silhouettes)
+- Tree 1: large banyan (H8-10m, dome canopy, aerial roots hanging),
+  beside: light gray-white permeable brick paving band
+- Tree 2: under banyan, granite chess table (0.8m sq, H0.7m) + 4 stone stools
+  (H0.45m) + seated human silhouettes playing chess
+- Tree 3-4 (mid core): between two banyans, two water-blue gradient parasols
+  (diam 2.5m, H2.4m) + wooden foldable drink stall cart outline (H2.1m pole) +
+  circular oyster terrazzo plaza (light-colored circular ground area)
+- Tree 5: under banyan, curved wooden bench backrest (H0.5m, 150° arc) +
+  seated chatting human silhouettes
+- Tree 6 (far right): large banyan + 3 lychee wood posts (H1.5m) + newly planted
+  small lotus wax apple tree (H2.5-3m) + solitary bench
+- Ground level: three gradient bands clearly visible—permeable brick (pale
+  gray-white) → gravel-grass (gray-green) → bark mulch (dark brown)
+
+[Background Layers] Village road (W4-5m, asphalt) as foreground bottom edge,
+site furniture/architecture outlines as mid-layer, distant gray-brick house
+rooflines (H5-7m) as upper layer, faint distant mountain silhouettes + sky
+gradient (dusk warm tone) above houses,
+
+[Lighting] Soft afternoon natural side light (~3PM, from left), buildings and
+furniture casting short shadows to the right on ground, sky gradient from
+warm white to light blue (daytime clarity, NOT full dusk),
+
+[Human Silhouettes] All figures as dark gray silhouettes (adult H≈1.7m),
+distributed at: chess table ×2 seated, tea stall ×1 standing, bench ×2 seated,
+wood fence ×1 standing, serving as scale reference,
+
+[Annotations (post-processing in PS)] Bottom: 5 gradient node names + elevation
+marks, key furniture height labels (chess table H0.7m / parasol H2.4m /
+wood posts H1.5m etc.), paving gradient three bands separated by dashed lines
++ Layer A/B/C text labels,
+
+[Rendering] Architecture school elevation style, clean lines + soft color fill,
+NOT photorealistic (competition board style), horizontal 16:9 composition—
+recommend final crop to ultra-wide format, 4K resolution,
+```
+
+### 10.6 3D 模型提示词（腾讯混元 3D / Meshy.ai / TripoSR）
+
+> **用途**：生成低面数3D模型用于 Remotion 动画和展板截图
+> **输入**：配合场地线稿图/平面图+立面图作为 Image-to-3D 参考
+
+**正向提示词（中文）**：
+
+```
+一个低面数(low-poly)游戏风格的珠海斗门五福村街角微景观完整场景，
+长条形沿村路地块(长约26m,宽约7m)，
+
+【树木】6棵榕树沿路边等距排列，半球形树冠(深绿色)，粗干(棕色)，气根悬挂，
+树冠直径约5-6m，树干高约3-4m，树1-6自西向东均匀分布,
+
+【建筑背景(新增)】场地北侧村路对面一排岭南青砖民居建筑群，
+硬山坡顶+深灰瓦屋面+人字山墙轮廓，墙面为青灰色(#7B8B7A)，
+檐下悬挂红色灯笼(小方块)，建筑高度约5-7m(低于榕树)，
+
+【铺装渐变地面】从路边向内侧三层渐变:
+- 最外层(沿路):浅灰白色透水砖纹理(#F2EFE9),
+- 中间层:灰色碎石+绿色草缝混合纹理,
+- 最内层:深褐色树皮/木屑覆盖(#8B6914),
+- 路边无路牙，铺装边缘不规则锯齿过渡,
+
+【各节点家具(自西向东)】
+- 境一(树1旁):低矮青砖标识墙(H0.6m)+3个木质种植箱(深棕色方块,含绿色植物)
+- 境二(树2下):方形花岗岩棋盘桌(0.8m见方,灰色)+4个方形石凳
+- 境三(树3-4间):木质L形折叠推车吧台(棕色,H约2.1m伞柱)+
+  两把圆形水蓝色遮阳伞(伞径2.5m)+圆形浅灰色水磨石广场(直径2.5m,贝壳纹理)
+- 境四(树5周围):弧形木长凳(150°环抱,棕色)围绕树干
+- 境五(树6旁):3根木立柱(H1.5m,深棕色)+一张长凳+一棵小型莲雾树(粉色花点)
+
+【场景要求】适合导出为单个.glb文件，所有元素合并为一个mesh组，
+无动画，低多边形风格(low-poly)，PBR材质，
+缩放至真实尺寸比例(1 unit = 1 meter)，场景总包围盒约30m×15m×12m，
+建议三角面数控制在50K-200K(适合Web/移动端展示),
+树冠使用半透明面片+alpha贴图模拟榕树茂密质感,
+```
+
+**正向提示词（English）**：
+
+```
+A low-poly game-style Zhuhai Doumen Wufu Village street corner micro-landscape
+complete scene, elongated linear plot along village road (approx L26m × D7m),
+
+[Trees] 6 banyan trees evenly spaced along roadside, dome-shaped canopies
+(dark green), thick trunks (brown), hanging aerial roots, canopy diameter
+approx 5-6m, trunk height approx 3-4m, trees 1-6 distributed west to east,
+
+[Architectural Background (NEW)] North side across village road: row of
+Lingnan gray-brick residential buildings, pitched hard-mountain roofs with
+dark gray tiles + wok-ear gable silhouettes, wall color gray-blue (#7B8B7A),
+red lanterns (small blocks) hanging under eaves, building height approx 5-7m
+(below banyan tree height),
+
+[Paving Gradient Ground] Three bands gradient from roadside inward:
+- Outer band (roadside): light gray-white permeable brick texture (#F2EFE9),
+- Middle band: gray gravel + green grass joint mixed texture,
+- Inner band: dark brown bark/wood chip cover (#8B6914),
+- No curb at road edge, paving edges with irregular jagged transitions,
+
+[Node Furniture (west to east)]
+- Node 1 (beside Tree 1): low gray-brick marker wall (H0.6m) + 3 wooden planter
+  boxes (dark brown blocks with green plant fills)
+- Node 2 (under Tree 2): square granite chess table (0.8m sq, gray) + 4 square
+  stone stools
+- Node 3 (between Trees 3-4): wooden L-shaped foldable drink stall cart (brown,
+  H~2.1m pole) + 2 circular water-blue parasols (diam 2.5m) + circular light
+  gray terrazzo plaza (diam 2.5m, shell texture)
+- Node 4 (around Tree 5): curved wooden bench (150° wrap, brown) around trunk
+- Node 5 (beside Tree 6): 3 wooden posts (H1.5m, dark brown) + one bench +
+  one small lotus wax apple tree (pink flower dots)
+
+[Scene Requirements] Suitable for export as single .glb file, all elements
+merged into one mesh group, no animation, low-poly style, PBR materials,
+scaled to real-world dimensions (1 unit = 1 meter), total bounding box
+approx 30m × 15m × 12m, recommended triangle count 50K-200K (suitable for
+web/mobile display), banyan canopies using semi-transparent face cards +
+alpha textures to simulate dense foliage quality,
+```
+
+---
+
+### 10.7 通用反向提示词 + 推荐参数配置
+
+#### 反向提示词（Negative Prompt）— 适用于所有效果图
+
+> **直接复制使用**。对于 SD/ComfyUI 可加上 `(worst quality, low quality:1.4)` 权重修饰。
+
+```
+(worst quality, low quality, blurry, distorted, deformed, disfigured:1.4),
+extra limbs, bad anatomy, fused fingers, missing fingers, extra fingers,
+mutation, mutilated, ugly, poorly drawn hands, poorly drawn face,
+bad proportions, cloned face, watermark, signature, logo, text, date stamp,
+username, artist name, frame, border, letterbox,
+
+modern buildings, glass curtain wall, concrete, steel structure,
+modern windows, modern doors, advertising billboards, neon signs,
+street lamps (modern), cars, vehicles, asphalt road with markings,
+traffic signs, parking meters, air conditioning units, satellite dishes,
+Western architecture, European style, Gothic, Mediterranean style,
+
+cartoon style, 2D flat, anime, illustration, sketch, wireframe,
+line art, blueprint, untextured, white model, clay render,
+grayscale, monochrome, black and white,
+
+overexposed, underexposed, washed out, over-saturated colors,
+harsh shadows, flat lighting, sterile lighting, fluorescent lighting,
+repeating textures, visible seams, tiling artifacts,
+symmetric (too perfect), structural asymmetry, proportion errors,
+missing roof tiles, broken eaves, collapsed structures, ruins,
+
+crowded scene (too many people), modern clothing (jeans, t-shirts, sneakers),
+tourists with cameras, selfie sticks, smartphones,
+plastic furniture, IKEA style, modern cafe furniture,
+```
+
+> **注意**：如场景需要特定人物（如 10.2 棋盘场景），需将上述反向提示词中的 `bad hands / extra limbs` 等人物相关项权重降低为 `:1.1` 或暂时移除。
+
+#### 通用参数配置（适用于 ComfyUI / SD WebUI）
+
+| 参数 | 推荐值 | 说明 |
+|---|---|---|
+| **采样器** | DPM++ 2M Karras / Euler a | 建筑写实效果好，细节丰富 |
+| **采样步数** | 35-50 | 低于30细节不够，高于50收益递减 |
+| **CFG Scale** | 7-9 | 7偏自然光感，9偏风格化 |
+| **输出尺寸** | 1344×768(横) / 1024×1366(竖) / 1536×1024(方横) | 至少1024，底线768 |
+| **高清修复** | 开启，放大2x，ESRGAN_4x | 去噪强度 0.35-0.45 |
+| **Seed** | 随机出图4-8张 → 选择最佳构图 → 固定Seed微调 | — |
+| **ControlNet** | Canny (0.75-0.85) + Depth (0.4-0.55) 双控 | 输入CAD线稿或手工草图 |
+
+#### 不同场景的特别参数调整
+
+| 场景 | CFG | 步数 | 特殊建议 |
+|---|---|---|---|
+| 10.1 茶寮主场景(日景) | 7.5 | 40 | 可加 `cinematic lighting` LoRA (权重0.3) |
+| 10.1 夜景(可选) | 8 | 45 | 加 `blue hour` / `night` 标签，调低色温 |
+| 10.2 棋盘场景(有人物) | 7 | 50 | 人物反向提示词降低，加 `candid moment` |
+| 10.3 入口场景 | 7 | 35 | 干净画面，不加过重的风格化LoRA |
+| 10.4 彩平图 | 5-6 | 25-30 | 低CFG保留软配色，加 `watercolor` LoRA |
+| 10.5 立面图 | 7 | 30 | 配合CAD线稿ControlNet Lineart(0.9) |
+
+#### 色彩一致性控制（关键！）
+
+为保证所有效果图视觉统一：
+
+```
+所有正向提示词末尾统一追加色彩基调标签:
+"...暖金色调为主(#D4A574受光/#2A1A0A阴影)，莲雾粉和水蓝色为点缀色，
+蚝壳白基底(#F2EFE9)，青砖灰(#7B8B7A)建筑背景，莫兰迪柔色调，4K超高清"
+```
+
+> 若使用 **ComfyUI**，可开启 IP-Adapter 并以五福村参考效果图作为 style reference image（权重0.3-0.5），统一所有输出图的色调和氛围。
+
+---
+
+## 十一、Remotion 动画脚本（React + TypeScript）
+
+### 11.1 使用说明
+
+- 将 3D 模型文件（.glb）放入 `public/` 目录
+- 修改 `MODEL_PATH` 常量为你的模型文件名
+- 运行 `npx remotion render` 输出 15 秒 MP4
+
+### 11.2 项目初始化
+
+```bash
+npx create-video@latest wufu-animation
+cd wufu-animation
+npm install @remotion/three @react-three/fiber @react-three/drei three
+```
+
+### 11.3 `src/Root.tsx`
+
+```tsx
+import { Composition } from "remotion";
+import { WufuScene } from "./WufuScene";
+
+export const RemotionRoot: React.FC = () => {
+  return (
+    <Composition
+      id="WufuSixTrees"
+      component={WufuScene}
+      durationInFrames={450}
+      fps={30}
+      width={1920}
+      height={1080}
+      defaultProps={{
+        modelPath: "public/wufu-six-trees.glb", // ← 替换为你的模型路径
+      }}
+    />
+  );
+};
+```
+
+### 11.4 `src/WufuScene.tsx`
+
+```tsx
+import React, { useRef, Suspense } from "react";
+import {
+  useCurrentFrame,
+  useVideoConfig,
+  AbsoluteFill,
+  interpolate,
+} from "remotion";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Environment, ContactShadows } from "@react-three/drei";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import type { Group } from "three";
+
+const Model: React.FC<{ modelPath: string; rotationSpeed: number }> = ({
+  modelPath,
+  rotationSpeed,
+}) => {
+  const groupRef = useRef<Group>(null);
+  const gltf = useLoader(GLTFLoader, modelPath);
+
+  useFrame(() => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += rotationSpeed;
+    }
+  });
+
+  return (
+    <group ref={groupRef}>
+      <primitive object={gltf.scene} />
+    </group>
+  );
+};
+
+const ThreeScene: React.FC<{ modelPath: string; rotationSpeed: number }> = ({
+  modelPath,
+  rotationSpeed,
+}) => {
+  return (
+    <Canvas
+      camera={{ position: [10, 7, 12], fov: 40 }}
+      shadows
+      style={{ width: "100%", height: "100%" }}
+    >
+      <ambientLight intensity={0.6} />
+      <directionalLight
+        position={[10, 15, 5]}
+        intensity={1.2}
+        castShadow
+        shadow-mapSize-width={2048}
+        shadow-mapSize-height={2048}
+      />
+      <hemisphereLight args={["#FFF7E6", "#5B8C7A", 0.4]} />
+      <Suspense fallback={null}>
+        <Model modelPath={modelPath} rotationSpeed={rotationSpeed} />
+      </Suspense>
+      <ContactShadows
+        position={[0, -2.5, 0]}
+        opacity={0.4}
+        scale={25}
+        blur={2}
+        far={4}
+      />
+      <Environment preset="sunset" />
+    </Canvas>
+  );
+};
+
+interface WufuSceneProps {
+  modelPath: string;
+}
+
+export const WufuScene: React.FC<WufuSceneProps> = ({ modelPath }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const totalFrames = fps * 15;
+  const fadeInEnd = fps * 1;
+  const fadeOutStart = fps * 13.5;
+
+  const sceneOpacity = interpolate(
+    frame,
+    [0, fadeInEnd, fadeOutStart, totalFrames - fps * 0.5, totalFrames],
+    [0, 1, 1, 0, 0]
+  );
+
+  const rotationSpeed = 0.004;
+
+  const titleOpacity = interpolate(
+    frame,
+    [fadeInEnd, fps * 2, fadeOutStart, fadeOutStart + fps * 0.5],
+    [0, 1, 1, 0]
+  );
+  const titleY = interpolate(
+    frame,
+    [fadeInEnd, fps * 2],
+    [20, 0]
+  );
+
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#F2EFE9" }}>
+      <div style={{ width: "100%", height: "100%", opacity: sceneOpacity }}>
+        <ThreeScene modelPath={modelPath} rotationSpeed={rotationSpeed} />
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          bottom: "8%",
+          left: 0,
+          right: 0,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 10,
+          opacity: titleOpacity,
+          transform: `translateY(${titleY}px)`,
+          pointerEvents: "none",
+        }}
+      >
+        <h1
+          style={{
+            fontFamily: '"思源宋体 CN", "Noto Serif SC", serif',
+            fontSize: 54,
+            fontWeight: 700,
+            color: "#3C6E71",
+            margin: 0,
+            letterSpacing: "0.12em",
+            textShadow: "0 2px 20px rgba(242, 239, 233, 0.85)",
+          }}
+        >
+          五福村 · 六树渐境
+        </h1>
+        <p
+          style={{
+            fontFamily: '"思源黑体 CN", "Noto Sans SC", sans-serif',
+            fontSize: 22,
+            fontWeight: 400,
+            color: "#8B6914",
+            margin: 0,
+            letterSpacing: "0.06em",
+          }}
+        >
+          檐下客厅 —— 珠海斗门五福村街角微景观设计
+        </p>
+      </div>
+    </AbsoluteFill>
+  );
+};
+```
+
+### 11.5 `src/index.ts`
+
+```ts
+import { registerRoot } from "remotion";
+import { RemotionRoot } from "./Root";
+
+registerRoot(RemotionRoot);
+```
+
+### 11.6 渲染命令
+
+```bash
+npx remotion render WufuSixTrees out/wufu-six-trees.mp4
+```
+
+---
+
+## 十二、参赛成果文件夹结构 + 展板排版说明
+
+### 12.1 文件夹结构
+
+```
+五福村_六树渐境_竞赛成果/
+│
+├── 01_方案文本/
+│   ├── 五福村_六树渐境_完整竞赛方案_v2.md
+│   ├── 五福村_六树渐境_展板排版稿.pptx
+│   └── 五福村_六树渐境_展板排版稿.pdf
+│
+├── 02_图纸文件/
+│   ├── 总平面图/
+│   │   ├── 六树渐境_总平面图_线稿.png
+│   │   ├── 六树渐境_总平面图_彩平.png          ← AI 彩平输出
+│   │   └── 六树渐境_总平面图_渐变分析.png      ← 铺装渐变+功能分区叠加
+│   ├── 立面图/
+│   │   ├── 六树渐境_主立面图_村路方向.png
+│   │   └── 六树渐境_剖面图_纵向渐变.png
+│   ├── 效果图/
+│   │   ├── 六树渐境_效果图_境三茶寮吧台.png    ← 核心场景
+│   │   ├── 六树渐境_效果图_境二棋盘区.png
+│   │   ├── 六树渐境_效果图_境一入口区.png
+│   │   └── 六树渐境_效果图_夜景.png            ← 可选
+│   └── 分析图/
+│       ├── 六树渐境_场地区位分析.png
+│       ├── 六树渐境_6棵树空间诊断.png
+│       ├── 六树渐境_铺装渐变分析图.png
+│       └── 六树渐境_色彩基因图谱.png
+│
+├── 03_3D模型/
+│   ├── 六树渐境_3D模型.glb
+│   ├── 六树渐境_3D模型_展板截图.png
+│   └── Remotion动画/
+│       ├── wufu-animation/
+│       └── out/wufu-six-trees.mp4
+│
+├── 04_家具与设施详图/
+│   ├── 棋盘桌_三视图+材料表.png
+│   ├── 树池卡座_三视图+材料表.png
+│   ├── 茶寮推车_三视图+材料表.png
+│   ├── 遮阳伞音频桩_详图.png
+│   └── 木篱_详图.png
+│
+├── 05_文创产品/
+│   ├── 杯垫_设计稿.png
+│   ├── 帆布袋_设计稿.png
+│   ├── 纸杯_设计稿.png
+│   ├── 六树漫步折页_设计稿.png
+│   ├── 种子盲盒_设计稿.png
+│   └── 招牌+饮品包装_设计稿.png
+│
+├── 06_运营管理/
+│   └── 运营模式图+维护分工表.png
+│
+└── 07_参考资料/
+    ├── 场地现状照片+6棵树实测/
+    ├── 兴安广场_渐变空间参考/
+    └── 斗门文化素材/
+```
+
+### 12.2 展板排版说明
+
+**规格**：2-3 张 A1 横版（841mm × 594mm），以竞赛官方要求为准。
+
+#### 展板一：概念 + 渐变逻辑 + 总平面
+
+| 区域 | 内容 | 排版 |
+|---|---|---|
+| 左上 | 项目标题「五福·六树渐境」+ 副标题 | 大字，莲雾粉强调色，深蓝绿水色标题 |
+| 左中 | 兴安广场 → 五福村渐变转译对比表（3 行） | 简洁表格，浅水色底色 |
+| 左下 | 色彩基因图谱（六色横向色条 + 来源图标 + 渐变中的角色标注） | 横排，搭配来源实景缩略图 |
+| 右侧 65% | 彩色总平面图（1:100）+ 叠加铺装渐变分区半透明色块 + 5 境名称标注 | 主图，展示三层铺装渐变带 |
+
+> **展板一视觉提示**：右上角放置一张**现状场地照片**（小图）作为对比锚点，让评委一目了然"从荒芜到渐境"的转变。
+
+#### 展板二：效果图 + 立面 + 家具详图
+
+| 区域 | 内容 | 排版 |
+|---|---|---|
+| 上方 55% | 效果图三张并排：**境三茶寮（最大，全景横构图）→ 境二棋盘（竖构图）→ 境一入口（横构图）**。统一暖金色调，岭南街巷氛围，黄昏光影统一，红灯笼+青砖建筑背景贯穿 | 三图横向排列，茶寮图占宽50% |
+| 下方左 35% | 主立面图（沿村路方向，人视点北向南）+ 相对标高 + 5境节点标注 + 每棵树编号 | 超宽横幅（裁切为展板宽度） |
+| 下方中 30% | 纵向剖面图（Layer A→B→C 渐变带 + 铺装厚度构造层标注，40cm 厚基础层级标注） | 竖向长图+构造标注引线 |
+| 下方右 35% | 4件非标家具三视图（棋盘桌+茶寮推车+树池卡座+木篱，各附材料标注小表+尺寸） | 四件家具等大网格排列 |
+
+> **展板二视觉提示**：三张效果图上方统一加浅灰白底色条（H约60px），内写场景名称（"境三·聚 / 茶寮共聚""境二·弈 / 榕荫对弈""境一·引 / 檐下迎客"），字体思源宋体CN，莲雾粉色。所有效果图边缘叠加微妙的暖色暗角（vignette），增强电影感统一。
+
+#### 展板三（可选）：运营 + 文创 + 落地性
+
+| 区域 | 内容 | 排版 |
+|---|---|---|
+| 上部 | 运营模式流程图 + 维护分工表 + 资金流向三列，使用暖色调图标和柔色渐变背景条 | 图表化，配扁平图标 |
+| 中左 | 文创产品 mockup 展示（白底产品摄影风，杯垫/帆布袋/纸杯实物感渲染） | 实物渲染，投影柔和 |
+| 中右 | 招牌 + 饮品包装设计 mockup（场景化：茶寮推车旁实际摆放状态） | 场景化呈现，带榕树背景虚化 |
+| 下部 | 落地性专题（蚝壳分级策略 / 旧木替代 / 无路牙设计 / 小场地优势）+ 造价表 | 三列文字+图标+圆形数据可视化 |
+
+> **展板三视觉提示**：文创产品统一使用**白底+柔和自然侧光**的产品摄影风格，背景可加入五福村效果图的虚化版本（blur 20px）作为情境暗示而非纯白底。
+
+### 12.3 排版配色（统一所有展板）
+
+| 用途 | 色值 | 色块 | 说明 |
+|---|---|---|---|
+| 展板背景 | `#F2EFE9`（蚝壳白） | ██████ | 暖灰白基底，不刺眼 |
+| 标题主色 | `#3C6E71`（水色深蓝绿） | ██████ | 沉稳有文化质感 |
+| 强调/标注/场景名 | `#E8A0B4`（莲雾粉） | ██████ | 仅用于重点标注，控制面积 |
+| 正文/图名/说明 | `#5B5B5B`（深灰） | ██████ | 阅读舒适，不纯黑 |
+| 表格底色/辅助线 | `#D6E5E3`（浅水色） | ██████ | 分区底色，轻透 |
+| 装饰线/页码/分隔 | `#C9A96E`（疍家土黄） | ██████ | 展板边框、章节分隔线 |
+| 效果图暖光参考 | `#D4A574`（暖金受光面） | ██████ | 效果图主色调参考，不作为UI色 |
+| 灯笼红（新增） | `#C9413B`（岭南朱砂红） | ██████ | 效果图中红灯笼/对联点缀色 |
+| 榕树深绿（新增） | `#4A6741`（树冠暗面） | ██████ | 植被标注/分析图植被色 |
+
+**字体**：标题「思源宋体 CN Heavy」+ 正文「思源黑体 CN Regular」+ 英文数字「Cormorant Garamond」
+
+**统一元素**：每张右下角 Logo（蚝壳轮廓+篆书「五」）+ 页脚横线（疍家土黄色）+ 页码
+- 左上角统一放置章节标题条（宽100%, H40px, 深蓝绿底色 #3C6E71, 蚝壳白文字）
+- 效果图统一叠加暖色暗角(vignette)，增强电影感和视觉统一性
+- 所有表格首行统一深蓝绿底+白字，其余行交替浅水色/蚝壳白底
+
+---
+
+> **全文完**
+>
+> 本修订版将兴安广场「渐变空间」理念完整转译为五福村线性场地的「六树渐境」方案，以"无路牙"的铺装渐变、"六棵树五个口袋空间"的布局、以及从小到大的活动强度曲线，回应小场地、保留树木、低成本、高落地性的竞赛核心诉求。
