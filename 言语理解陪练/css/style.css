@@ -1365,6 +1365,104 @@ body {
 
 .field-map-value.filled { border: 1px solid var(--success); }
 
+/* ── Smart Generate UI ── */
+.gen-source-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .gen-source-row { grid-template-columns: 1fr; }
+}
+
+.gen-source-col {
+  background: var(--paper-warm);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+
+.gen-source-col h3 {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.gen-source-status {
+  font-size: 0.82rem;
+  padding: 8px 12px;
+  background: white;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--border);
+  color: var(--ink-light);
+  margin-bottom: 8px;
+  min-height: 36px;
+}
+
+.gen-source-status.ready {
+  border-color: var(--success);
+  color: var(--success);
+  border-style: solid;
+}
+
+.gen-question-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  transition: all var(--transition);
+}
+
+.gen-question-card:hover { border-color: var(--gold); box-shadow: var(--shadow-sm); }
+
+.gen-q-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.gen-q-passage {
+  background: var(--paper-warm);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  border-left: 3px solid var(--gold);
+}
+
+.gen-q-edit-area { margin-top: 10px; }
+
+.gen-edit-json {
+  width: 100%;
+  font-family: monospace;
+  font-size: 0.75rem;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--paper-warm);
+  resize: vertical;
+}
+
+/* Picker items */
+.picker-item {
+  padding: 10px 14px;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.picker-item:hover {
+  background: var(--paper-warm);
+  border-color: var(--gold);
+}
+
 /* ── Confetti ── */
 .confetti-piece {
   position: fixed;

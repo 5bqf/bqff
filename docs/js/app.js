@@ -239,6 +239,7 @@
         <button class="btn btn-outline btn-sm" id="btn-random-question">🎲 随机一题</button>
         <button class="btn btn-outline btn-sm" id="btn-admin-panel">⚙️ 管理题库</button>
         <button class="btn btn-outline btn-sm" id="btn-import-doc">📥 导入PDF/Word</button>
+        <button class="btn btn-accent btn-sm" id="btn-smart-generate">🧠 智能出题</button>
         <button class="btn btn-outline btn-sm" id="btn-reset-progress">🔄 重置进度</button>
       </div>
 
@@ -284,7 +285,11 @@
     });
     document.getElementById('btn-admin-panel')?.addEventListener('click', renderAdminPanel);
     document.getElementById('btn-import-doc')?.addEventListener('click', () => {
-      if (typeof ImportWizard !== 'undefined') ImportWizard.open();
+      if (typeof ImportWizard !== 'undefined') ImportWizard.open('import');
+      else alert('导入向导加载中，请刷新页面后重试');
+    });
+    document.getElementById('btn-smart-generate')?.addEventListener('click', () => {
+      if (typeof ImportWizard !== 'undefined') ImportWizard.open('generate');
       else alert('导入向导加载中，请刷新页面后重试');
     });
     document.getElementById('btn-reset-progress')?.addEventListener('click', () => {

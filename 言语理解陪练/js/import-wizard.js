@@ -7,13 +7,17 @@
   'use strict';
 
   // ── 导出到全局 ──
-  window.ImportWizard = { open, close };
+  window.ImportWizard = { open, close, openGenerate };
 
   // 状态
   let extractedText = '';
   let fileName = '';
+  let wizardMode = 'import'; // 'import' | 'generate'
 
-  // 字段映射
+  // 智能出题状态
+  let genRefQuestion = null;
+  let genNewsText = '';
+  let genResult = null;
   const FIELD_DEFS = [
     { key: 'passage', label: '📝 文段（含______空格）', required: true, hint: '包含空格的完整文段' },
     { key: 'correctAnswer', label: '✅ 正确答案', required: true, hint: '填入空格的词' },
@@ -57,6 +61,25 @@
 
   function close() {
     document.getElementById('import-wizard-overlay')?.remove();
+  }
+
+  function openGenerate(refQuestion, newsText) {
+    wizardMode = 'generate';
+    genRefQuestion = refQuestion;
+    genNewsText = newsText || '';
+    genResult = null;
+    document.querySelector('.admin-overlay')?.remove();
+
+    const overlay = document.createElement('div');
+    overlay.className = 'admin-overlay';
+    overlay.id = 'import-wizard-overlay';
+    overlay.innerHTML = renderGenerateWizard();
+    document.body.appendChild(overlay);
+    bindGenerateEvents(overlay);
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) close();
+    });
   }
 
   // ── 渲染向导 ──
@@ -429,5 +452,377 @@
     el.style.transition = 'all 0.15s ease';
     setTimeout(() => { el.style.background = orig; el.style.color = ''; }, 300);
   }
+
+  // ═══════════════════════════════════════════
+  // 智能出题模式 UI
+  // ═══════════════════════════════════════════
+
+  function renderGenerateWizard() {
+    const refTitle = genRefQuestion ? (genRefQuestion.title || '已加载真题') : '未加载';
+    const newsLen = genNewsText ? genNewsText.length : 0;
+
+    return `
+    <div class="admin-panel wizard-panel fade-in" style="max-width:820px;">
+      <button class="close-btn" id="wiz-close">✕</button>
+      <h2>🧠 智能出题引擎</h2>
+      <p style="font-size:0.82rem;color:var(--ink-light);margin-bottom:16px;">
+        上传一道真题（学习陷阱模式）+ 一篇新闻（提取素材）→ 自动生成同类陷阱的新题
+      </p>
+
+      <!-- 来源区：双栏 -->
+      <div class="gen-source-row">
+        <div class="gen-source-col">
+          <h3>📝 真题参考</h3>
+          <div class="gen-source-status ${genRefQuestion ? 'ready' : ''}">
+            ${genRefQuestion ? '✅ ' + refTitle : '📤 上传或选择真题'}
+          </div>
+          <button class="btn btn-sm btn-outline" id="gen-load-ref">从题库选择</button>
+          <input type="file" id="gen-file-ref" accept=".pdf,.docx,.txt,.json" hidden>
+          <button class="btn btn-sm btn-outline" id="gen-upload-ref">上传文件</button>
+        </div>
+        <div class="gen-source-col">
+          <h3>📰 新闻素材</h3>
+          <div class="gen-source-status ${genNewsText ? 'ready' : ''}">
+            ${genNewsText ? '✅ 已加载 ' + newsLen + ' 字' : '📤 上传或粘贴新闻'}
+          </div>
+          <textarea id="gen-news-textarea" placeholder="粘贴新闻全文…" rows="3"
+                    style="width:100%;font-size:0.78rem;padding:8px;border:1px solid var(--border);border-radius:4px;resize:vertical;">${escapeHTML(genNewsText)}</textarea>
+          <input type="file" id="gen-file-news" accept=".pdf,.docx,.txt" hidden>
+          <button class="btn btn-sm btn-outline" id="gen-upload-news">上传PDF/Word</button>
+        </div>
+      </div>
+
+      <div class="btn-row" style="justify-content:center;margin-top:14px;">
+        <button class="btn btn-accent btn-lg" id="gen-start" ${!genRefQuestion || !genNewsText ? 'disabled' : ''}>
+          🚀 开始分析 & 出题
+        </button>
+      </div>
+
+      <!-- 分析结果区 -->
+      <div id="gen-analysis-area" class="${genResult ? '' : 'hidden'}">
+        ${genResult ? renderAnalysisResult(genResult) : ''}
+      </div>
+
+      <!-- 生成题目区 -->
+      <div id="gen-questions-area" class="${genResult && genResult.questions ? '' : 'hidden'}">
+        ${genResult && genResult.questions ? renderGeneratedQuestions(genResult) : ''}
+      </div>
+    </div>`;
+  }
+
+  function renderAnalysisResult(result) {
+    const dna = result.dna || {};
+    const news = result.newsAnalysis || {};
+    return `
+    <div class="admin-section" style="margin-top:16px;">
+      <h3>📊 分析结果</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.82rem;">
+        <div style="background:var(--paper-warm);padding:12px;border-radius:8px;">
+          <strong>🧬 真题陷阱DNA</strong><br>
+          逻辑：${(dna.logicTypes || []).join('、') || '未识别'}<br>
+          陷阱：${(dna.distractorStrategies || []).join('、') || '近义混淆'}<br>
+          空格词性：${dna.blankPOS || '未知'}<br>
+          句式骨架：<span style="font-size:0.75rem;opacity:0.7;">${dna.sentenceStructure || '-'}</span>
+        </div>
+        <div style="background:var(--paper-warm);padding:12px;border-radius:8px;">
+          <strong>📰 新闻分析</strong><br>
+          总句数：${news.sentences ? news.sentences.length : 0}<br>
+          可考词：${news.testableWords ? news.testableWords.length : 0} 个<br>
+          候选句（出题用）：${news.topCandidates ? news.topCandidates.length : 0} 句<br>
+          状态：${result.success ? '✅ 成功生成' : '⚠️ ' + (result.error || '')}
+        </div>
+      </div>
+      ${news.topCandidates && news.topCandidates.length > 0 ? `
+        <details style="margin-top:10px;font-size:0.8rem;">
+          <summary>📋 候选句列表（得分排序）</summary>
+          <ol style="max-height:200px;overflow-y:auto;padding-left:18px;line-height:1.6;">
+            ${news.topCandidates.slice(0, 10).map(c => `
+              <li>
+                <span style="color:var(--accent);">${c.score}分</span>
+                ${c.text.substring(0, 60)}${c.text.length>60?'…':''}
+                <span style="font-size:0.72rem;opacity:0.5;">${c.reasons.join('·')}</span>
+              </li>
+            `).join('')}
+          </ol>
+        </details>
+      ` : ''}
+    </div>`;
+  }
+
+  function renderGeneratedQuestions(result) {
+    const questions = result.questions || [];
+    if (questions.length === 0) {
+      return `<div class="admin-section"><p style="color:var(--error);">⚠️ 未能生成题目，请尝试更换新闻素材</p></div>`;
+    }
+    return `
+    <div class="admin-section">
+      <h3>📝 生成题目（${questions.length} 道）</h3>
+      ${questions.map((q, i) => `
+        <div class="gen-question-card" id="gen-q-${i}">
+          <div class="gen-q-header">
+            <strong>题${i + 1} · ${q.logicTags.join('+')}</strong>
+            <span style="font-size:0.75rem;opacity:0.6;">${q.source}</span>
+            <div style="margin-left:auto;display:flex;gap:6px;">
+              <button class="btn btn-sm btn-outline gen-edit-btn" data-idx="${i}">✏️ 编辑</button>
+              <button class="btn btn-sm btn-accent gen-import-btn" data-idx="${i}">📥 导入</button>
+            </div>
+          </div>
+          <div class="gen-q-passage">${q.passage.replace('______', '<span class="blank-marker">______</span>')}</div>
+          <div style="font-size:0.82rem;margin-top:6px;">
+            <strong>✅ ${q.options[0].label}. ${q.options[0].word}</strong>
+            ${q.options.slice(1).map(o => ` · ${o.label}. ${o.word}`).join('')}
+          </div>
+          <div class="gen-q-edit-area hidden" id="gen-edit-${i}">
+            <textarea class="gen-edit-json" id="gen-edit-json-${i}" rows="10">${escapeHTML(JSON.stringify(q, null, 2))}</textarea>
+            <button class="btn btn-sm btn-outline gen-save-edit-btn" data-idx="${i}">💾 保存修改</button>
+          </div>
+        </div>
+      `).join('')}
+      <div class="btn-row" style="justify-content:center;margin-top:12px;">
+        <button class="btn btn-outline btn-sm" id="gen-import-all">📥 全部导入题库</button>
+        <button class="btn btn-outline btn-sm" id="gen-retry">🔄 换一批</button>
+      </div>
+    </div>`;
+  }
+
+  function bindGenerateEvents(overlay) {
+    overlay.querySelector('#wiz-close').addEventListener('click', close);
+
+    // 加载真题
+    overlay.querySelector('#gen-load-ref')?.addEventListener('click', () => {
+      overlay.remove();
+      // 让用户从首页选择题库中的一道作为参考
+      showQuestionPicker((q) => {
+        genRefQuestion = q;
+        openGenerate(q, genNewsText);
+      });
+    });
+
+    overlay.querySelector('#gen-upload-ref')?.addEventListener('click', () => {
+      overlay.querySelector('#gen-file-ref').click();
+    });
+    overlay.querySelector('#gen-file-ref')?.addEventListener('change', function() {
+      handleGenerateFile(this.files[0], 'ref', overlay);
+    });
+
+    // 加载新闻
+    overlay.querySelector('#gen-upload-news')?.addEventListener('click', () => {
+      overlay.querySelector('#gen-file-news').click();
+    });
+    overlay.querySelector('#gen-file-news')?.addEventListener('change', function() {
+      handleGenerateFile(this.files[0], 'news', overlay);
+    });
+    overlay.querySelector('#gen-news-textarea')?.addEventListener('input', function() {
+      genNewsText = this.value;
+      overlay.querySelector('#gen-start').disabled = !genRefQuestion || !genNewsText;
+    });
+
+    // 开始出题
+    overlay.querySelector('#gen-start')?.addEventListener('click', () => {
+      if (typeof QuestionGenerator === 'undefined') {
+        alert('出题引擎加载中，请刷新后重试');
+        return;
+      }
+      overlay.querySelector('#gen-start').textContent = '⏳ 分析中…';
+      overlay.querySelector('#gen-start').disabled = true;
+      setTimeout(() => {
+        genResult = QuestionGenerator.generate(genRefQuestion, genNewsText, { maxQuestions: 5 });
+        // 重新渲染
+        const newHTML = renderGenerateWizard();
+        overlay.innerHTML = newHTML;
+        bindGenerateEvents(overlay);
+        overlay.querySelector('#gen-analysis-area')?.classList.remove('hidden');
+        overlay.querySelector('#gen-questions-area')?.classList.remove('hidden');
+      }, 100); // 微延迟让UI先更新
+    });
+
+    // 单题导入
+    overlay.querySelectorAll('.gen-import-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.idx);
+        const q = genResult.questions[idx];
+        if (!q) return;
+        // 检查ID冲突并修复
+        const existingIds = new Set(QUESTION_BANK.map(qq => qq.id));
+        if (existingIds.has(q.id)) {
+          q.id = 'gen' + Date.now().toString(36) + idx;
+        }
+        QUESTION_BANK.push(q);
+        btn.textContent = '✅ 已导入';
+        btn.disabled = true;
+        showAdminToast(`题${idx + 1} 已导入题库`, 'success');
+      });
+    });
+
+    // 全部导入
+    overlay.querySelector('#gen-import-all')?.addEventListener('click', () => {
+      let count = 0;
+      const existingIds = new Set(QUESTION_BANK.map(qq => qq.id));
+      (genResult.questions || []).forEach((q, i) => {
+        if (existingIds.has(q.id)) {
+          q.id = 'gen' + Date.now().toString(36) + i;
+        }
+        QUESTION_BANK.push(q);
+        existingIds.add(q.id);
+        count++;
+      });
+      showAdminToast(`全部 ${count} 题已导入题库！`, 'success');
+      setTimeout(() => { window.location.hash = '#/'; window.location.reload(); }, 1500);
+    });
+
+    // 换一批
+    overlay.querySelector('#gen-retry')?.addEventListener('click', () => {
+      genResult = QuestionGenerator.generate(genRefQuestion, genNewsText, { maxQuestions: 5 });
+      const newHTML = renderGenerateWizard();
+      overlay.innerHTML = newHTML;
+      bindGenerateEvents(overlay);
+    });
+
+    // 编辑按钮
+    overlay.querySelectorAll('.gen-edit-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = btn.dataset.idx;
+        const editArea = overlay.querySelector(`#gen-edit-${idx}`);
+        editArea.classList.toggle('hidden');
+      });
+    });
+
+    // 保存编辑
+    overlay.querySelectorAll('.gen-save-edit-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.idx);
+        const textarea = overlay.querySelector(`#gen-edit-json-${idx}`);
+        try {
+          const edited = JSON.parse(textarea.value);
+          genResult.questions[idx] = edited;
+          showAdminToast('修改已保存 ✅', 'success');
+        } catch(e) {
+          showAdminToast('JSON 格式错误: ' + e.message, 'error');
+        }
+      });
+    });
+  }
+
+  async function handleGenerateFile(file, type, overlay) {
+    const statusEl = overlay.querySelector(type === 'ref' ? '.gen-source-col:first-child .gen-source-status' : '.gen-source-col:last-child .gen-source-status');
+    if (!statusEl) return;
+    statusEl.textContent = '⏳ 解析中…';
+
+    try {
+      const ext = file.name.split('.').pop().toLowerCase();
+      let text = '';
+      if (ext === 'pdf') text = await parsePDF(file);
+      else if (ext === 'docx') text = await parseDOCX(file);
+      else if (ext === 'txt' || ext === 'json') text = await parseTXT(file);
+      else throw new Error('不支持的格式');
+
+      if (type === 'ref') {
+        // 尝试解析为JSON
+        try {
+          genRefQuestion = JSON.parse(text);
+          if (!genRefQuestion.passage) throw new Error('不是有效的题目JSON');
+          statusEl.textContent = '✅ ' + (genRefQuestion.title || '真题已加载');
+          statusEl.classList.add('ready');
+        } catch {
+          // 纯文本，包装为简单题目结构
+          genRefQuestion = {
+            id: 'ref-upload',
+            title: '上传真题',
+            type: '逻辑填空',
+            logicTags: [],
+            difficulty: 2,
+            passage: text.substring(0, 300),
+            blanks: [{ index: 0, correctWord: '待标注' }],
+            options: [
+              { label: 'A', word: '待标注', isCorrect: true, analysis: {} },
+              { label: 'B', word: '待标注', isCorrect: false, analysis: { differenceFromCorrect: '' } },
+              { label: 'C', word: '待标注', isCorrect: false, analysis: {} },
+              { label: 'D', word: '待标注', isCorrect: false, analysis: {} },
+            ],
+            logicClues: [],
+            commonMisses: [],
+            similarQuestions: [],
+          };
+          statusEl.textContent = '⚠️ 真题为纯文本（陷阱识别受限）';
+        }
+      } else {
+        genNewsText = text;
+        statusEl.textContent = '✅ 已加载 ' + text.length + ' 字';
+        statusEl.classList.add('ready');
+        // 同步到textarea
+        const textarea = overlay.querySelector('#gen-news-textarea');
+        if (textarea) textarea.value = text;
+      }
+
+      const startBtn = overlay.querySelector('#gen-start');
+      if (startBtn) startBtn.disabled = !genRefQuestion || !genNewsText;
+
+    } catch(err) {
+      statusEl.textContent = '❌ ' + err.message;
+    }
+  }
+
+  function showQuestionPicker(callback) {
+    const overlay = document.createElement('div');
+    overlay.className = 'admin-overlay';
+    overlay.innerHTML = `
+      <div class="admin-panel fade-in" style="max-width:600px;">
+        <button class="close-btn" id="picker-close">✕</button>
+        <h2>📚 选择题库中的真题作为参考</h2>
+        <p style="font-size:0.82rem;color:var(--ink-light);margin-bottom:12px;">
+          选择一道题，系统将学习它的陷阱模式来生成新题
+        </p>
+        <div style="max-height:400px;overflow-y:auto;">
+          ${QUESTION_BANK.map(q => `
+            <div class="picker-item" data-id="${q.id}" style="padding:10px;border:1px solid var(--border-light);border-radius:6px;margin-bottom:6px;cursor:pointer;transition:all 0.15s;">
+              <strong>${q.title}</strong>
+              <span style="font-size:0.78rem;opacity:0.6;margin-left:8px;">${q.logicTags.join('+')}</span>
+              <div style="font-size:0.75rem;opacity:0.5;">${q.passage.substring(0, 50)}…</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    overlay.querySelector('#picker-close').addEventListener('click', () => overlay.remove());
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+    overlay.querySelectorAll('.picker-item').forEach(item => {
+      item.addEventListener('mouseenter', () => item.style.background = 'var(--paper-warm)');
+      item.addEventListener('mouseleave', () => item.style.background = '');
+      item.addEventListener('click', () => {
+        const q = QUESTION_BANK.find(qq => qq.id === item.dataset.id);
+        if (q) { callback(q); overlay.remove(); }
+      });
+    });
+  }
+
+  function showAdminToast(msg, type) {
+    document.querySelector('.admin-toast')?.remove();
+    const toast = document.createElement('div');
+    toast.className = `admin-toast ${type}`;
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2500);
+  }
+
+  // ── 更新 open 函数：加 Tab 切换 ──
+  const _originalOpen = open;
+  open = function(mode) {
+    wizardMode = mode || 'import';
+    if (wizardMode === 'generate') {
+      if (!genRefQuestion) {
+        // 没有真题，先让用户从题库选
+        showQuestionPicker((q) => {
+          genRefQuestion = q;
+          openGenerate(q, genNewsText);
+        });
+        return;
+      }
+      openGenerate(genRefQuestion, genNewsText);
+      return;
+    }
+    // 默认导入模式
+    _originalOpen();
+  };
 
 })();
