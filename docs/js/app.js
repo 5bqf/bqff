@@ -99,68 +99,121 @@
     const stats = getStats();
     const progress = loadProgress();
 
-    // 收集所有逻辑标签用于筛选
-    const allTags = ['all', ...new Set(QUESTION_BANK.flatMap(q => q.logicTags))];
+    const allTags = new Set(QUESTION_BANK.flatMap(q => q.logicTags));
     const tagCounts = {};
-    allTags.forEach(t => {
-      tagCounts[t] = t === 'all' ? QUESTION_BANK.length :
-        QUESTION_BANK.filter(q => q.logicTags.includes(t)).length;
-    });
+    allTags.forEach(t => { tagCounts[t] = QUESTION_BANK.filter(q => q.logicTags.includes(t)).length; });
 
-    // 筛选后的题目
     const filtered = activeFilter === 'all' ?
       QUESTION_BANK : QUESTION_BANK.filter(q => q.logicTags.includes(activeFilter));
 
-    // 逻辑类型图标映射
     const typeIcons = {
       '转折关系': '↔️', '递进关系': '📈', '并列关系': '🔗', '因果关系': '⚡',
       '解释说明': '💬', '感情色彩': '🎨', '搭配习惯': '📎', '指代词': '🏷️',
       '语义对应': '🎯', '综合': '🧩'
     };
 
+    const particles = ['的','一','是','不','了','人','在','有','中','大','这','和','上','国','为','以','生','时','要','就','出','会','可','也','对','能','下','过','子','说','成','都','看','那','得','着','自','之','年','而','后','去','用','道','行','所','然','家','种','事','方','多','工','法','学','如','同','本','经','中','国','人','民'];
+
+    // 生成随机粒子
+    const particleElements = particles.sort(() => Math.random() - 0.5).slice(0, 18).map((ch, i) =>
+      `<span class="hero-particle" style="left:${Math.random()*90}%;animation-delay:-${Math.random()*12}s;animation-duration:${8+Math.random()*8}s;font-size:${1+Math.random()*2}rem;">${ch}</span>`
+    ).join('');
+
     $app.innerHTML = `
-      <div class="app-header fade-in">
-        <h1>📖 言语理解 · 逻辑填空陪练</h1>
-        <p class="subtitle">基于网友红领巾解题方法论 · 先找逻辑，再看选项 · 五步训练闭环</p>
-        <p style="font-size:0.78rem;color:var(--ink-light);opacity:0.5;margin-top:2px;">
-          💡 键盘快捷键：作答时按 <kbd style="background:var(--paper-warm);border:1px solid var(--border);border-radius:3px;padding:1px 6px;font-family:monospace;">1-4</kbd> 选答案 · <kbd style="background:var(--paper-warm);border:1px solid var(--border);border-radius:3px;padding:1px 6px;font-family:monospace;">Enter</kbd> 提交
-        </p>
+      <!-- ═══ Hero Section ═══ -->
+      <div class="hero fade-in">
+        <div class="hero-particles">${particleElements}</div>
+        <div class="hero-content">
+          <h1>言语理解 · 逻辑填空陪练</h1>
+          <p class="hero-sub">AI时代的行测训练系统 — 不是刷题，是训练思维方式</p>
+          <div class="hero-method">🧣 基于 B站网友红领巾 解题方法论</div>
+          <div class="hero-cta">
+            <button class="btn-hero btn-hero-primary" id="hero-start">🚀 开始训练</button>
+            <button class="btn-hero btn-hero-ghost" id="hero-random">🎲 随机一题</button>
+          </div>
+        </div>
       </div>
 
-      <!-- 统计面板 -->
+      <!-- ═══ Stats Bar ═══ -->
       <div class="stats-bar fade-in">
         <div class="stat-item">
-          <div class="stat-num">${QUESTION_BANK.length}</div>
-          <div class="stat-label">📚 总题量</div>
+          <div class="stat-num" id="counter-total">0</div>
+          <div class="stat-label">📚 精品题目</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">${new Set(QUESTION_BANK.flatMap(q => q.logicTags)).size}</div>
+          <div class="stat-num">${allTags.size}</div>
           <div class="stat-label">🏷️ 逻辑类型</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">${stats.completed}</div>
+          <div class="stat-num" id="counter-completed">0</div>
           <div class="stat-label">✅ 已完成</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">${stats.accuracy}%</div>
+          <div class="stat-num" id="counter-accuracy">0%</div>
           <div class="stat-label">🎯 正确率</div>
         </div>
       </div>
 
-      <!-- 筛选标签 -->
-      <div class="filter-bar fade-in" id="filter-bar">
-        ${allTags.map(t => `
-          <button class="filter-tab ${activeFilter === t ? 'active' : ''}" data-tag="${t}">
-            ${t === 'all' ? '📋 全部' : (typeIcons[t] || '') + ' ' + t}
-            <span class="filter-count">${tagCounts[t]}</span>
-          </button>
-        `).join('')}
+      <!-- ═══ How It Works ═══ -->
+      <div class="how-section fade-in">
+        <h2>🧠 五步训练闭环</h2>
+        <div class="steps-visual">
+          <div class="step-visual-card">
+            <div class="step-icon">🔍</div>
+            <div class="step-num">STEP 1</div>
+            <div class="step-name">找逻辑</div>
+            <div class="step-desc">选项锁定，只读文段找对应线索</div>
+          </div>
+          <div class="step-visual-card">
+            <div class="step-icon">📋</div>
+            <div class="step-num">STEP 2</div>
+            <div class="step-name">查遗漏</div>
+            <div class="step-desc">系统对比，逐条提示漏了哪里</div>
+          </div>
+          <div class="step-visual-card">
+            <div class="step-icon">✍️</div>
+            <div class="step-num">STEP 3</div>
+            <div class="step-name">选答案</div>
+            <div class="step-desc">基于逻辑判断，键盘1-4快选</div>
+          </div>
+          <div class="step-visual-card">
+            <div class="step-icon">📖</div>
+            <div class="step-num">STEP 4</div>
+            <div class="step-name">看解析</div>
+            <div class="step-desc">本意·引申义·褒贬·人民日报例句</div>
+          </div>
+          <div class="step-visual-card">
+            <div class="step-icon">🔄</div>
+            <div class="step-num">STEP 5</div>
+            <div class="step-name">固同类</div>
+            <div class="step-desc">按逻辑标签推荐，闭环强化</div>
+          </div>
+        </div>
       </div>
 
-      <!-- 题目网格 -->
+      <!-- ═══ Type Badges ═══ -->
+      <div class="type-badges-section fade-in">
+        <h2>📂 按逻辑类型筛选</h2>
+        <div class="type-badges-grid" id="type-badges-grid">
+          <span class="type-badge ${activeFilter === 'all' ? 'active' : ''}" data-tag="all">
+            📋 全部 <span class="badge-count">${QUESTION_BANK.length}</span>
+          </span>
+          ${[...allTags].map(t => `
+            <span class="type-badge ${activeFilter === t ? 'active' : ''}" data-tag="${t}">
+              ${typeIcons[t] || ''} ${t} <span class="badge-count">${tagCounts[t]}</span>
+            </span>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- ═══ Question Grid ═══ -->
+      <div class="section-divider fade-in">
+        <span>📝 题目列表</span>
+      </div>
+
       <div class="home-grid fade-in" id="home-grid">
         ${filtered.length === 0 ? `
-          <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--ink-light);opacity:0.6;">
+          <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--ink-light);opacity:0.5;">
             📭 该类型暂无题目
           </div>
         ` : filtered.map(q => {
@@ -170,49 +223,94 @@
           return `
             <a href="#/${q.id}/clues" class="question-card ${isCompleted ? 'completed' : ''}">
               <div class="q-num">${q.title}</div>
-              <div class="q-title">${q.passage.substring(0, 45)}${q.passage.length > 45 ? '…' : ''}</div>
+              <div class="q-title">${q.passage.replace(/______/g, '____').substring(0, 48)}${q.passage.length > 48 ? '…' : ''}</div>
               <div class="q-tags">${q.logicTags.map(t => `<span class="q-tag">${typeIcons[t] || ''} ${t}</span>`).join('')}</div>
               <div class="q-meta">
                 <span class="q-diff">${'★'.repeat(q.difficulty)}${'☆'.repeat(4 - q.difficulty)}</span>
-                ${isCompleted ? `<span style="font-size:0.75rem;color:${wasCorrect ? 'var(--success)' : 'var(--error)'};">${wasCorrect ? '✅' : '❌'}</span>` : ''}
+                ${isCompleted ? `<span style="font-size:0.75rem;color:${wasCorrect ? 'var(--success)' : 'var(--error)'};">${wasCorrect ? '✅' : '❌'}</span>` : '<span style="font-size:0.7rem;color:var(--ink-light);opacity:0.4;">待练习</span>'}
               </div>
             </a>
           `;
         }).join('')}
       </div>
 
-      <!-- 底部操作 -->
-      <div class="text-center mt-20 fade-in" style="opacity:0.7;">
-        <button class="btn btn-outline btn-sm" id="btn-reset-progress">🔄 重置进度</button>
+      <!-- ═══ Bottom Actions ═══ -->
+      <div class="text-center mt-16 fade-in" style="opacity:0.7;">
         <button class="btn btn-outline btn-sm" id="btn-random-question">🎲 随机一题</button>
         <button class="btn btn-outline btn-sm" id="btn-admin-panel">⚙️ 管理题库</button>
+        <button class="btn btn-outline btn-sm" id="btn-import-doc">📥 导入PDF/Word</button>
+        <button class="btn btn-outline btn-sm" id="btn-reset-progress">🔄 重置进度</button>
       </div>
+
+      <p style="text-align:center;font-size:0.72rem;color:var(--ink-light);opacity:0.4;margin-top:18px;">
+        💡 键盘快捷键：答题时 <kbd style="background:var(--paper-warm);border:1px solid var(--border);border-radius:3px;padding:1px 6px;font-family:monospace;">1-4</kbd> 选答案 ·
+        <kbd style="background:var(--paper-warm);border:1px solid var(--border);border-radius:3px;padding:1px 6px;font-family:monospace;">Enter</kbd> 提交 ·
+        <kbd style="background:var(--paper-warm);border:1px solid var(--border);border-radius:3px;padding:1px 6px;font-family:monospace;">←→</kbd> 切换步骤 ·
+        <kbd style="background:var(--paper-warm);border:1px solid var(--border);border-radius:3px;padding:1px 6px;font-family:monospace;">Esc</kbd> 回首页
+      </p>
     `;
 
-    // 绑定筛选事件
-    document.getElementById('filter-bar').addEventListener('click', (e) => {
-      const tab = e.target.closest('.filter-tab');
-      if (!tab) return;
-      activeFilter = tab.dataset.tag;
+    // ── 计数器动画 ──
+    setTimeout(() => {
+      animateCounter('counter-total', QUESTION_BANK.length);
+      animateCounter('counter-completed', stats.completed);
+      document.getElementById('counter-accuracy').textContent = stats.accuracy + '%';
+    }, 300);
+
+    // ── 筛选标签 ──
+    document.getElementById('type-badges-grid').addEventListener('click', (e) => {
+      const badge = e.target.closest('.type-badge');
+      if (!badge) return;
+      activeFilter = badge.dataset.tag;
       renderHome();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // 绑定底部按钮
+    // ── Hero 按钮 ──
+    document.getElementById('hero-start')?.addEventListener('click', () => {
+      document.querySelector('.home-grid')?.scrollIntoView({ behavior: 'smooth' });
+    });
+    document.getElementById('hero-random')?.addEventListener('click', () => {
+      const pool = filtered.length > 0 ? filtered : QUESTION_BANK;
+      const random = pool[Math.floor(Math.random() * pool.length)];
+      window.location.hash = `#/${random.id}/clues`;
+    });
+
+    // ── 底部按钮 ──
+    document.getElementById('btn-random-question')?.addEventListener('click', () => {
+      const pool = filtered.length > 0 ? filtered : QUESTION_BANK;
+      const random = pool[Math.floor(Math.random() * pool.length)];
+      window.location.hash = `#/${random.id}/clues`;
+    });
+    document.getElementById('btn-admin-panel')?.addEventListener('click', renderAdminPanel);
+    document.getElementById('btn-import-doc')?.addEventListener('click', () => {
+      if (typeof ImportWizard !== 'undefined') ImportWizard.open();
+      else alert('导入向导加载中，请刷新页面后重试');
+    });
     document.getElementById('btn-reset-progress')?.addEventListener('click', () => {
       if (confirm('确定清除所有练习进度吗？此操作不可撤销。')) {
         localStorage.removeItem(STORAGE_KEY);
         renderHome();
       }
     });
-    document.getElementById('btn-random-question')?.addEventListener('click', () => {
-      const pool = filtered.length > 0 ? filtered : QUESTION_BANK;
-      const random = pool[Math.floor(Math.random() * pool.length)];
-      window.location.hash = `#/${random.id}/clues`;
-    });
-    document.getElementById('btn-admin-panel')?.addEventListener('click', () => {
-      renderAdminPanel();
-    });
+  }
+
+  // ── 数字滚动动画 ──
+  function animateCounter(id, target) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const duration = 1200;
+    const start = performance.now();
+    const from = 0;
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutExpo
+      const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      el.textContent = Math.floor(from + (target - from) * eased);
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
   }
 
   function renderQuestion() {
@@ -711,9 +809,9 @@
         <div class="admin-section">
           <h3>➕ 快速添加题目</h3>
           <p style="font-size:0.82rem;color:var(--ink-light);margin-bottom:8px;">
-            使用向导逐步填写题目信息。
+            支持从 PDF / Word / 纯文本文件中导入题目。自动提取文字，智能映射字段。
           </p>
-          <button class="btn btn-primary btn-sm" id="btn-wizard">🧙 题目向导（开发中）</button>
+          <button class="btn btn-accent btn-sm" id="btn-open-import-wizard">📥 打开导入向导（支持PDF/Word/TXT）</button>
         </div>
 
         <div class="admin-section">
@@ -817,9 +915,11 @@
       }
     });
 
-    // 向导按钮
-    overlay.querySelector('#btn-wizard').addEventListener('click', () => {
-      showAdminToast('题目向导功能即将推出，当前请使用 JSON 模板手动添加', 'error');
+    // 导入向导按钮
+    overlay.querySelector('#btn-open-import-wizard')?.addEventListener('click', () => {
+      overlay.remove();
+      if (typeof ImportWizard !== 'undefined') ImportWizard.open();
+      else alert('导入向导加载中，请刷新后重试');
     });
   }
 
